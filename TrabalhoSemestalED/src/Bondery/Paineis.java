@@ -104,7 +104,6 @@ private void atualizarLogoRedimensionado() {
         pnPreenchimentoVertical = new javax.swing.JPanel();
         txtUsuario = new javax.swing.JTextField();
         lbSenha = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JTextField();
         lbLogo = new javax.swing.JLabel();
         pnPreenchimentoSuperior = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
@@ -112,6 +111,7 @@ private void atualizarLogoRedimensionado() {
         pnPreenchimentoHorizontalFim = new javax.swing.JPanel();
         pnPreenchimentoHorizontalInicio = new javax.swing.JPanel();
         pnPreenchimentoVertical2 = new javax.swing.JPanel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,6 +161,7 @@ private void atualizarLogoRedimensionado() {
         pnDireita.add(pnPreenchimentoVertical, gridBagConstraints);
 
         txtUsuario.setColumns(20);
+        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setMinimumSize(new java.awt.Dimension(100, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -175,15 +176,6 @@ private void atualizarLogoRedimensionado() {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         pnDireita.add(lbSenha, gridBagConstraints);
-
-        txtSenha.setColumns(20);
-        txtSenha.setMinimumSize(new java.awt.Dimension(100, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.1;
-        pnDireita.add(txtSenha, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -295,6 +287,18 @@ private void atualizarLogoRedimensionado() {
         gridBagConstraints.weighty = 0.5;
         pnDireita.add(pnPreenchimentoVertical2, gridBagConstraints);
 
+        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        pnDireita.add(jPasswordField1, gridBagConstraints);
+
         pnPrincipal.add(pnDireita);
 
         getContentPane().add(pnPrincipal, java.awt.BorderLayout.CENTER);
@@ -302,6 +306,10 @@ private void atualizarLogoRedimensionado() {
         setSize(new java.awt.Dimension(414, 308));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     public static void main(String args[]) {
         FlatLightLaf.setup();
@@ -314,6 +322,7 @@ private void atualizarLogoRedimensionado() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lbLogo;
     private javax.swing.JLabel lbSenha;
     private javax.swing.JLabel lbUsuario;
@@ -326,7 +335,6 @@ private void atualizarLogoRedimensionado() {
     private javax.swing.JPanel pnPreenchimentoVertical1;
     private javax.swing.JPanel pnPreenchimentoVertical2;
     private javax.swing.JPanel pnPrincipal;
-    private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
