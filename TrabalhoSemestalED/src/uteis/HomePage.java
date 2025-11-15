@@ -1,4 +1,4 @@
-package ComponentesUIUteis;
+package uteis;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +24,8 @@ public class HomePage extends javax.swing.JFrame {
                     cardLayout.show(jContentPane, "email");
                 } else if(source == clientesItem){
                     cardLayout.show(jContentPane, "clientes");
+                } else if(source == SIM){
+                    cardLayout.show(jContentPane, "card5");
                 }
             }
             
@@ -32,6 +34,7 @@ public class HomePage extends javax.swing.JFrame {
         dashboardItem.addMouseListener(menuListener);
         emailItem.addMouseListener(menuListener);
         clientesItem.addMouseListener(menuListener);
+        SIM.addMouseListener(menuListener);
     }
 
 
@@ -47,6 +50,8 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         emailItem = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        SIM = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jContentPane = new javax.swing.JPanel();
         dashboardPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -54,6 +59,8 @@ public class HomePage extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         emailPanel = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        SIMPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,7 +110,7 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(dashboardItemLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabel1)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenuLateral.add(dashboardItem);
@@ -127,7 +134,7 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(clientesItemLayout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabel2)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenuLateral.add(clientesItem);
@@ -142,19 +149,43 @@ public class HomePage extends javax.swing.JFrame {
         emailItemLayout.setHorizontalGroup(
             emailItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(emailItemLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         emailItemLayout.setVerticalGroup(
             emailItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(emailItemLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(73, 73, 73)
                 .addComponent(jLabel3)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenuLateral.add(emailItem);
+
+        SIM.setName("SIM"); // NOI18N
+        SIM.setPreferredSize(new java.awt.Dimension(200, 30));
+
+        jLabel4.setText("SIM");
+
+        javax.swing.GroupLayout SIMLayout = new javax.swing.GroupLayout(SIM);
+        SIM.setLayout(SIMLayout);
+        SIMLayout.setHorizontalGroup(
+            SIMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SIMLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
+        );
+        SIMLayout.setVerticalGroup(
+            SIMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SIMLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jMenuLateral.add(SIM);
 
         getContentPane().add(jMenuLateral, java.awt.BorderLayout.LINE_START);
 
@@ -230,6 +261,36 @@ public class HomePage extends javax.swing.JFrame {
 
         jContentPane.add(emailPanel, "email");
 
+        SIMPanel.setBackground(new java.awt.Color(255, 0, 0));
+        SIMPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(10, 1, 10, 1, new java.awt.Color(0, 0, 102)));
+        SIMPanel.setForeground(new java.awt.Color(255, 255, 0));
+        SIMPanel.setToolTipText("");
+        SIMPanel.setFont(new java.awt.Font("Vivaldi", 1, 36)); // NOI18N
+        SIMPanel.setName("SIM"); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("<HTML> COLEVATI PARA <br>PRESIDENTE DA FATEC ZL 2026");
+
+        javax.swing.GroupLayout SIMPanelLayout = new javax.swing.GroupLayout(SIMPanel);
+        SIMPanel.setLayout(SIMPanelLayout);
+        SIMPanelLayout.setHorizontalGroup(
+            SIMPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SIMPanelLayout.createSequentialGroup()
+                .addContainerGap(81, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+        SIMPanelLayout.setVerticalGroup(
+            SIMPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SIMPanelLayout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
+        );
+
+        jContentPane.add(SIMPanel, "card5");
+
         getContentPane().add(jContentPane, java.awt.BorderLayout.CENTER);
 
         setSize(new java.awt.Dimension(1014, 608));
@@ -250,6 +311,8 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel SIM;
+    private javax.swing.JPanel SIMPanel;
     private javax.swing.JPanel clientesItem;
     private javax.swing.JPanel clientesPanel;
     private javax.swing.JPanel dashboardItem;
@@ -263,6 +326,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jMenuLateral;
     private javax.swing.JPanel jcabecalho;
     // End of variables declaration//GEN-END:variables
