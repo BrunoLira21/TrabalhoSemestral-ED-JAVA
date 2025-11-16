@@ -14,8 +14,8 @@ public class GerenciadorCentral {
     String separador = ";";
     
     public boolean validarLogin(String usuario, String senha){
-        String arquivo = "Arquivos/usuarios.csv";
-        
+        String arquivo = "TrabalhoSemestalED/Arquivos/usuarios.csv";
+
         try(BufferedReader ler = new BufferedReader(new FileReader(arquivo))){
             String linha;
             while ((linha = ler.readLine()) != null){
