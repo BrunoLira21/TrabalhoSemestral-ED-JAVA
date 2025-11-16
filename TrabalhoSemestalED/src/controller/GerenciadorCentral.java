@@ -1,13 +1,8 @@
-package Controller;
+package controller;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.List;
-import java.util.ArrayList;
-import br.edu.fateczl.Lista;
-import br.edu.fateczl.fila.Fila;
-import br.edu.fateczl.pilha.Pilha;
 
 import java.io.IOException;
 public class GerenciadorCentral {

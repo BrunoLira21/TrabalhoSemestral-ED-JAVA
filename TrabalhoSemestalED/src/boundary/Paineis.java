@@ -1,13 +1,11 @@
-package Bondery;
+package boundary;
 import com.formdev.flatlaf.FlatLightLaf;
-import Controller.GerenciadorCentral;
-import Bondery.HomePage;
+import controller.GerenciadorCentral;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.net.URL;
 import java.awt.event.ComponentAdapter; 
-import java.awt.event.ComponentEvent;   
-import java.io.IOException;
+import java.awt.event.ComponentEvent;
 import javax.swing.JOptionPane;
 
 public class Paineis extends javax.swing.JFrame {
