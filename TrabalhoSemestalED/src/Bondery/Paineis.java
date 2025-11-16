@@ -1,15 +1,17 @@
 package Bondery;
 import com.formdev.flatlaf.FlatLightLaf;
-
-
+import Controller.GerenciadorCentral;
+import Bondery.HomePage;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.net.URL;
 import java.awt.event.ComponentAdapter; 
 import java.awt.event.ComponentEvent;   
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 public class Paineis extends javax.swing.JFrame {
-
+GerenciadorCentral gc = new GerenciadorCentral();
     private ImageIcon logoOriginal; 
     private boolean logoCarregadoComSucesso = false; 
 
@@ -90,7 +92,9 @@ private void atualizarLogoRedimensionado() {
         e.printStackTrace();
         System.err.println("Erro ao redimensionar o logo dinamicamente.");
     }
+    
 }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -202,6 +206,11 @@ private void atualizarLogoRedimensionado() {
         pnDireita.add(pnPreenchimentoSuperior, gridBagConstraints);
 
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -310,6 +319,21 @@ private void atualizarLogoRedimensionado() {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        
+        String usuario = txtUsuario.getText();
+        String senha = new String(jPasswordField1.getPassword());
+        boolean acesso = gc.validarLogin(usuario, senha);
+        if (acesso){
+            HomePage principal = new HomePage();
+            principal.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos", "Login", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void main(String args[]) {
         FlatLightLaf.setup();
