@@ -6,14 +6,17 @@ import java.awt.Image;
 import java.net.URL;
 import java.awt.event.ComponentAdapter; 
 import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
-public class Paineis extends javax.swing.JFrame {
+public class TelaLogin extends javax.swing.JFrame {
 GerenciadorCentral gc = new GerenciadorCentral();
     private ImageIcon logoOriginal; 
     private boolean logoCarregadoComSucesso = false; 
 
-    public Paineis() {
+    public TelaLogin() {
         initComponents();
       
         carregarImagemOriginal();
@@ -24,19 +27,28 @@ GerenciadorCentral gc = new GerenciadorCentral();
             atualizarLogoRedimensionado();
         }
     });
-}
+    
+    jLabel2.addMouseListener(new MouseAdapter(){
+        @Override
+        public void mouseClicked(MouseEvent e){
+            novoCadastro();
+        }
+    });
+    
+ }
 
     private void carregarImagemOriginal() {
     try {
+        
         String caminhoString = "/uteis/logofatec.png"; 
-        URL caminhoURL = Paineis.class.getResource(caminhoString);
+        URL caminhoURL = TelaLogin.class.getResource(caminhoString);
         
         if (caminhoURL == null) {
             System.err.println("Imagem não encontrada em: " + caminhoString);
             lbLogo.setText("Logo não encontrado");
             this.logoCarregadoComSucesso = false;
         } else {
-            // Carrega e armazena na variável de classe
+        
             this.logoOriginal = new ImageIcon(caminhoURL); 
             this.logoCarregadoComSucesso = true;
         }
@@ -48,7 +60,7 @@ GerenciadorCentral gc = new GerenciadorCentral();
 }
 
 private void atualizarLogoRedimensionado() {
-    // Se a imagem não foi carregada, não faz nada
+
     if (!this.logoCarregadoComSucesso) {
         return;
     }
@@ -64,14 +76,14 @@ private void atualizarLogoRedimensionado() {
     // --- Lógica do Tamanho ---
     int novaLargura = (int) (larguraPainel * 0.3);
 
-    // Para manter a proporção da imagem (evitar distorção):
+    
     int larguraOriginal = logoOriginal.getIconWidth();
     int alturaOriginal = logoOriginal.getIconHeight();
     
-    // Calcula a nova altura baseado na nova largura (Regra de três)
+    
     int novaAltura = (novaLargura * alturaOriginal) / larguraOriginal;
     
-    // Evita erro se o cálculo der 0
+    
     if (novaLargura <= 0) novaLargura = 1;
     if (novaAltura <= 0) novaAltura = 1;
     //-----------------------------------------------------
@@ -94,6 +106,7 @@ private void atualizarLogoRedimensionado() {
 }
 
 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -114,6 +127,9 @@ private void atualizarLogoRedimensionado() {
         pnPreenchimentoHorizontalInicio = new javax.swing.JPanel();
         pnPreenchimentoVertical2 = new javax.swing.JPanel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        pnPreenchimentoVertical3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,7 +141,7 @@ private void atualizarLogoRedimensionado() {
         pnEsquerda.setLayout(pnEsquerdaLayout);
         pnEsquerdaLayout.setHorizontalGroup(
             pnEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         pnEsquerdaLayout.setVerticalGroup(
             pnEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +172,7 @@ private void atualizarLogoRedimensionado() {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weighty = 1.0;
@@ -212,6 +228,7 @@ private void atualizarLogoRedimensionado() {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         pnDireita.add(btnLogin, gridBagConstraints);
 
         javax.swing.GroupLayout pnPreenchimentoVertical1Layout = new javax.swing.GroupLayout(pnPreenchimentoVertical1);
@@ -227,7 +244,7 @@ private void atualizarLogoRedimensionado() {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weighty = 0.5;
@@ -306,11 +323,45 @@ private void atualizarLogoRedimensionado() {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         pnDireita.add(jPasswordField1, gridBagConstraints);
 
+        jLabel1.setText("Ainda não tem cadastro?");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        pnDireita.add(jLabel1, gridBagConstraints);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Clique aqui!");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        pnDireita.add(jLabel2, gridBagConstraints);
+
+        javax.swing.GroupLayout pnPreenchimentoVertical3Layout = new javax.swing.GroupLayout(pnPreenchimentoVertical3);
+        pnPreenchimentoVertical3.setLayout(pnPreenchimentoVertical3Layout);
+        pnPreenchimentoVertical3Layout.setHorizontalGroup(
+            pnPreenchimentoVertical3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnPreenchimentoVertical3Layout.setVerticalGroup(
+            pnPreenchimentoVertical3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.weighty = 0.5;
+        pnDireita.add(pnPreenchimentoVertical3, gridBagConstraints);
+
         pnPrincipal.add(pnDireita);
 
         getContentPane().add(pnPrincipal, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(414, 308));
+        setSize(new java.awt.Dimension(495, 308));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -333,17 +384,25 @@ private void atualizarLogoRedimensionado() {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    public void novoCadastro(){
+    TelaCadastro tc = new TelaCadastro();
+    tc.setVisible(true);
+    this.dispose();
+    }
+    
     public static void main(String args[]) {
         FlatLightLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Paineis().setVisible(true);
+                new TelaLogin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lbLogo;
     private javax.swing.JLabel lbSenha;
@@ -356,6 +415,7 @@ private void atualizarLogoRedimensionado() {
     private javax.swing.JPanel pnPreenchimentoVertical;
     private javax.swing.JPanel pnPreenchimentoVertical1;
     private javax.swing.JPanel pnPreenchimentoVertical2;
+    private javax.swing.JPanel pnPreenchimentoVertical3;
     private javax.swing.JPanel pnPrincipal;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
