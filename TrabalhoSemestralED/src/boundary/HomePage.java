@@ -10,6 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 public class HomePage extends javax.swing.JFrame {
@@ -334,6 +337,7 @@ public class HomePage extends javax.swing.JFrame {
 
         btnDisciplinas.setText("Disciplinas");
         btnDisciplinas.setBorder(null);
+        btnDisciplinas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDisciplinas.setOpaque(true);
         btnDisciplinas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -883,13 +887,10 @@ public class HomePage extends javax.swing.JFrame {
         btnAdicionarCur.setText("Adicionar");
         btnAdicionarCur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    btnAdicionarCurActionPerformed(evt);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+                btnAdicionarCurActionPerformed(evt);
             }
         });
+
         tabelaCursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
