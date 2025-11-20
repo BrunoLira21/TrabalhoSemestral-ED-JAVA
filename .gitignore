@@ -1,4 +1,22 @@
-/TrabalhoSemestalED/nbproject/private/
-/TrabalhoSemestalED/build/
-/TrabalhoSemestralED/build/
-/TrabalhoSemestralED/dist/
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+*.iws
+out/
+
+# --- NetBeans ---
+# Ignora pastas de build e configurações privadas, mas mantem o projeto
+**/nbproject/private/
+**/build/
+**/dist/
+**/nbbuild/
+**/nbdist/
+.nb-gradle/
+
+# --- Java (Arquivos compilados) ---
+*.class
+*.log
+
+# --- Arquivos de Sistema (Lixo) ---
+.DS_Store
+Thumbs.db
