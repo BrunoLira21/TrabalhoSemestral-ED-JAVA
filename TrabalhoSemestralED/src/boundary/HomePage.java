@@ -39,14 +39,10 @@ public class HomePage extends javax.swing.JFrame {
         inscricoesItem.addMouseListener(menuListener);
         consultasItem.addMouseListener(menuListener);
         
-        
+        //Icones Logo
         ImageIcon iconeHomePage;
         String caminho = "src/uteis/logofatec.png";
         iconeHomePage = new ImageIcon(caminho);
-        lblIcone.setIcon(iconeHomePage);
-        lblIcone1.setIcon(iconeHomePage);
-        lblIcone2.setIcon(iconeHomePage);
-        
         
         try {
         Image imagemOriginal = iconeHomePage.getImage();
@@ -54,36 +50,36 @@ public class HomePage extends javax.swing.JFrame {
         
         ImageIcon logoRedimensionado = new ImageIcon(imagemRedimensionada);
         lblIcone.setIcon(logoRedimensionado);
-        
-        } catch (Exception e) {
-        e.printStackTrace();
-        System.err.println("Erro ao redimensionar o logo dinamicamente.");
-        }
-        
-        try {
-        Image imagemOriginal = iconeHomePage.getImage();
-        Image imagemRedimensionada = imagemOriginal.getScaledInstance(123, 53, Image.SCALE_SMOOTH);
-        
-        ImageIcon logoRedimensionado = new ImageIcon(imagemRedimensionada);
         lblIcone1.setIcon(logoRedimensionado);
-        
+        lblIcone2.setIcon(logoRedimensionado);
+        lbIcone3.setIcon(logoRedimensionado);
         } catch (Exception e) {
         e.printStackTrace();
         System.err.println("Erro ao redimensionar o logo dinamicamente.");
         }
         
+        //Icones Botões
+        ImageIcon iconeButton;
+        String caminhoBtnIcon = "src/uteis/login.png";
+        iconeButton = new ImageIcon(caminhoBtnIcon);
         try {
-        Image imagemOriginal = iconeHomePage.getImage();
-        Image imagemRedimensionada = imagemOriginal.getScaledInstance(123, 53, Image.SCALE_SMOOTH);
+        Image imagemOriginal = iconeButton.getImage();
+        Image imagemRedimensionada = imagemOriginal.getScaledInstance(80, 30, Image.SCALE_SMOOTH);
         
         ImageIcon logoRedimensionado = new ImageIcon(imagemRedimensionada);
-        lblIcone2.setIcon(logoRedimensionado);
-        
+        btnCursos.setIcon(logoRedimensionado);
+        btnDisciplinas.setIcon(logoRedimensionado);
+        btnProfessores.setIcon(logoRedimensionado);
+        btnInscricoes.setIcon(logoRedimensionado);
         } catch (Exception e) {
         e.printStackTrace();
         System.err.println("Erro ao redimensionar o logo dinamicamente.");
         }
         
+        
+        
+        
+      
     }
 
 
@@ -104,6 +100,11 @@ public class HomePage extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jContentPane = new javax.swing.JPanel();
         consultasPanel = new javax.swing.JPanel();
+        lbIcone3 = new javax.swing.JLabel();
+        btnDisciplinas = new javax.swing.JToggleButton();
+        btnProfessores = new javax.swing.JToggleButton();
+        btnInscricoes = new javax.swing.JToggleButton();
+        btnCursos = new javax.swing.JToggleButton();
         inscricoesPanel = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         professoresPanel = new javax.swing.JPanel();
@@ -326,15 +327,64 @@ public class HomePage extends javax.swing.JFrame {
         jContentPane.setBackground(new java.awt.Color(255, 255, 255));
         jContentPane.setLayout(new java.awt.CardLayout());
 
+        consultasPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnDisciplinas.setText("Disciplinas");
+        btnDisciplinas.setBorder(null);
+        btnDisciplinas.setOpaque(true);
+        btnDisciplinas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        btnProfessores.setText("Professores");
+        btnProfessores.setBorder(null);
+        btnProfessores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        btnInscricoes.setText("Inscrições");
+        btnInscricoes.setBorder(null);
+        btnInscricoes.setOpaque(true);
+        btnInscricoes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        btnCursos.setText("Cursos");
+        btnCursos.setBorder(null);
+        btnCursos.setOpaque(true);
+        btnCursos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout consultasPanelLayout = new javax.swing.GroupLayout(consultasPanel);
         consultasPanel.setLayout(consultasPanelLayout);
         consultasPanelLayout.setHorizontalGroup(
             consultasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(consultasPanelLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addGroup(consultasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultasPanelLayout.createSequentialGroup()
+                        .addComponent(lbIcone3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultasPanelLayout.createSequentialGroup()
+                        .addGroup(consultasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnInscricoes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(consultasPanelLayout.createSequentialGroup()
+                                .addComponent(btnCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                                .addComponent(btnDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(127, 127, 127))))
+            .addGroup(consultasPanelLayout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(btnProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         consultasPanelLayout.setVerticalGroup(
             consultasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(consultasPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lbIcone3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addGroup(consultasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addGroup(consultasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInscricoes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69))
         );
 
         jContentPane.add(consultasPanel, "Consultas");
@@ -509,10 +559,11 @@ public class HomePage extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(professoresPanelLayout.createSequentialGroup()
-                                .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelPro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelPro3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelPro4))
+                                    .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelPro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabelPro4)))
                                 .addGap(7, 7, 7)
                                 .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -527,9 +578,8 @@ public class HomePage extends javax.swing.JFrame {
                             .addComponent(txtNomeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAreaProfessor))
                         .addGap(13, 13, 13)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPro)
                     .addComponent(btnAdicionarPro)
@@ -1041,9 +1091,13 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton btnAdicionarCur;
     private javax.swing.JButton btnAdicionarDis;
     private javax.swing.JButton btnAdicionarPro;
+    private javax.swing.JToggleButton btnCursos;
+    private javax.swing.JToggleButton btnDisciplinas;
+    private javax.swing.JToggleButton btnInscricoes;
     private javax.swing.JButton btnLimparCur;
     private javax.swing.JButton btnLimparDis;
     private javax.swing.JButton btnLimparPro;
+    private javax.swing.JToggleButton btnProfessores;
     private javax.swing.JButton btnRemoverCur;
     private javax.swing.JButton btnRemoverDis;
     private javax.swing.JButton btnRemoverPro;
@@ -1084,6 +1138,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lbIcone3;
     private javax.swing.JLabel lblIcone;
     private javax.swing.JLabel lblIcone1;
     private javax.swing.JLabel lblIcone2;
