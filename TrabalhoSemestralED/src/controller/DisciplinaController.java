@@ -1,30 +1,53 @@
 package controller;
 import entity.Disciplina;
 import br.edu.fateczl.fila.Fila;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import javax.swing.*;
+import java.io.*;
 
 public class DisciplinaController {
     public void adicionarDisciplina(Disciplina disciplina) throws Exception {
 
         String caminho = "Arquivos/disciplinas.csv";
-        try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
-            String sep = ";";
-            String linha = disciplina.getCodigoDisciplina() + sep +
-                            disciplina.getNomeDisciplina() + sep +
-                            disciplina.getDiaSemana() + sep +
-                            disciplina.getHorarioInicial() + sep +
-                            disciplina.getQuantidadeHoras() + sep +
-                            disciplina.getCodigoCurso();
+        String separador = ";";
 
-            escrever.write(linha);
-            escrever.newLine();
-        }catch(IOException e){
-            e.printStackTrace();
+        if (!exists(disciplina.getNomeDisciplina())) {
+            try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
+                String linha = disciplina.getCodigoDisciplina() + separador +
+                        disciplina.getNomeDisciplina() + separador +
+                        disciplina.getDiaSemana() + separador +
+                        disciplina.getHorarioInicial() + separador +
+                        disciplina.getQuantidadeHoras() + separador +
+                        disciplina.getCodigoCurso();
+                escrever.write(linha);
+                escrever.newLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Disciplina '" + disciplina.getNomeDisciplina() + "' já cadastrada!",
+                    "Cadastro da Discplina", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    public void removerDisciplina(){
 
+    public void removerDisciplina() {
+
+    }
+
+    private boolean exists(String nomeDisciplina) throws Exception {
+        BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas.csv"));
+        String linha;
+        while ((linha = ler.readLine()) != null) {
+            String separador = ";";
+            String[] colunas = linha.split(separador);
+
+            if (colunas.length == 6) {
+                String nome = colunas[1].trim();
+
+                if (nome.equals(nomeDisciplina)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
