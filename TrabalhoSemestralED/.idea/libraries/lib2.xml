@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lib2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/PilhaGeneric.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/ComponentesUIUteis.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/flatlaf-3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/FilaGeneric.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/LibPilhaInt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/LibListaGeneric.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

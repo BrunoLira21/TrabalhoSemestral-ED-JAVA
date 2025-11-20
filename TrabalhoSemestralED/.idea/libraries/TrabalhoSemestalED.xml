@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TrabalhoSemestalED">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/TrabalhoSemestalED.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
