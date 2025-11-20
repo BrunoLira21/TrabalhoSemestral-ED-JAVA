@@ -9,6 +9,8 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
@@ -19,370 +21,219 @@ GerenciadorCentral gc = new GerenciadorCentral();
     public TelaLogin() {
         initComponents();
       
-        carregarImagemOriginal();
 
     pnDireita.addComponentListener(new ComponentAdapter() {
         @Override
         public void componentResized(ComponentEvent e) {
-            atualizarLogoRedimensionado();
+
         }
     });
     
-    jLabel2.addMouseListener(new MouseAdapter(){
+    lbUsuario.addMouseListener(new MouseAdapter(){
         @Override
         public void mouseClicked(MouseEvent e){
             novoCadastro();
         }
     });
+    ImageIcon iconeLogin;
+    String caminhoLogin = "src/uteis/login.png";
+    iconeLogin = new ImageIcon(caminhoLogin);
+    lbLoginIcon.setIcon(iconeLogin);
     
- }
-
-    private void carregarImagemOriginal() {
+    
     try {
-        
-        String caminhoString = "/uteis/logofatec.png"; 
-        URL caminhoURL = TelaLogin.class.getResource(caminhoString);
-        
-        if (caminhoURL == null) {
-            System.err.println("Imagem não encontrada em: " + caminhoString);
-            lbLogo.setText("Logo não encontrado");
-            this.logoCarregadoComSucesso = false;
-        } else {
-        
-            this.logoOriginal = new ImageIcon(caminhoURL); 
-            this.logoCarregadoComSucesso = true;
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-        System.err.println("Erro ao carregar o logo original.");
-        this.logoCarregadoComSucesso = false;
-    }
-}
-
-private void atualizarLogoRedimensionado() {
-
-    if (!this.logoCarregadoComSucesso) {
-        return;
-    }
-
-    // Pega a largura ATUAL do painel branco
-    int larguraPainel = pnDireita.getWidth();
-    
-    // Se o painel for muito pequeno, não faz nada
-    if (larguraPainel < 10) { 
-        return;
-    }
-
-    // --- Lógica do Tamanho ---
-    int novaLargura = (int) (larguraPainel * 0.3);
-
-    
-    int larguraOriginal = logoOriginal.getIconWidth();
-    int alturaOriginal = logoOriginal.getIconHeight();
-    
-    
-    int novaAltura = (novaLargura * alturaOriginal) / larguraOriginal;
-    
-    
-    if (novaLargura <= 0) novaLargura = 1;
-    if (novaAltura <= 0) novaAltura = 1;
-    //-----------------------------------------------------
-    try {
-        Image imagemOriginal = logoOriginal.getImage();
-        Image imagemRedimensionada = imagemOriginal.getScaledInstance(
-                novaLargura, 
-                novaAltura, 
-                Image.SCALE_SMOOTH
-        );
+        Image imagemOriginal = iconeLogin.getImage();
+        Image imagemRedimensionada = imagemOriginal.getScaledInstance(100, 80, Image.SCALE_SMOOTH);
         
         ImageIcon logoRedimensionado = new ImageIcon(imagemRedimensionada);
-        lbLogo.setIcon(logoRedimensionado);
+        lbLoginIcon.setIcon(logoRedimensionado);
         
     } catch (Exception e) {
         e.printStackTrace();
         System.err.println("Erro ao redimensionar o logo dinamicamente.");
     }
     
-}
+    
+    
+    ImageIcon iconeFatec;
+    String caminhoFatec = "src/uteis/logofatec.png";
+    iconeFatec = new ImageIcon(caminhoFatec);
+    lbLogoFatec.setIcon(iconeFatec);
+    
+    
+    try {
+        Image imagemOriginal = iconeFatec.getImage();
+        Image imagemRedimensionada = imagemOriginal.getScaledInstance(164, 71, Image.SCALE_SMOOTH);
+        
+        ImageIcon logoRedimensionado = new ImageIcon(imagemRedimensionada);
+        lbLogoFatec.setIcon(logoRedimensionado);
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.err.println("Erro ao redimensionar o logo dinamicamente.");
+    }
+    
+    
+    
+ }
+
+
 
 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        pnPrincipal = new javax.swing.JPanel();
         pnEsquerda = new javax.swing.JPanel();
+        lbLogin = new javax.swing.JLabel();
+        lbLoginIcon = new javax.swing.JLabel();
         pnDireita = new javax.swing.JPanel();
         lbUsuario = new javax.swing.JLabel();
-        pnPreenchimentoVertical = new javax.swing.JPanel();
-        txtUsuario = new javax.swing.JTextField();
         lbSenha = new javax.swing.JLabel();
-        lbLogo = new javax.swing.JLabel();
-        pnPreenchimentoSuperior = new javax.swing.JPanel();
+        txtUsuario = new javax.swing.JTextField();
+        pswSenha = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
-        pnPreenchimentoVertical1 = new javax.swing.JPanel();
-        pnPreenchimentoHorizontalFim = new javax.swing.JPanel();
-        pnPreenchimentoHorizontalInicio = new javax.swing.JPanel();
-        pnPreenchimentoVertical2 = new javax.swing.JPanel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        pnPreenchimentoVertical3 = new javax.swing.JPanel();
+        lbprimeiroAcesso = new javax.swing.JLabel();
+        lbCadastro = new javax.swing.JLabel();
+        lbLogoFatec = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        pnPrincipal.setLayout(new java.awt.GridLayout(1, 2));
+        setTitle("Cadastro de Professor");
+        setAlwaysOnTop(true);
+        setPreferredSize(new java.awt.Dimension(800, 800));
+        setResizable(false);
 
         pnEsquerda.setBackground(new java.awt.Color(0, 102, 102));
+        pnEsquerda.setPreferredSize(new java.awt.Dimension(200, 300));
+
+        lbLogin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbLogin.setForeground(new java.awt.Color(255, 255, 255));
+        lbLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbLogin.setText("LOGIN");
 
         javax.swing.GroupLayout pnEsquerdaLayout = new javax.swing.GroupLayout(pnEsquerda);
         pnEsquerda.setLayout(pnEsquerdaLayout);
         pnEsquerdaLayout.setHorizontalGroup(
             pnEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
+            .addGroup(pnEsquerdaLayout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addGroup(pnEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbLoginIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         pnEsquerdaLayout.setVerticalGroup(
             pnEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnEsquerdaLayout.createSequentialGroup()
+                .addContainerGap(105, Short.MAX_VALUE)
+                .addComponent(lbLoginIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(lbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(161, 161, 161))
         );
-
-        pnPrincipal.add(pnEsquerda);
 
         pnDireita.setBackground(new java.awt.Color(255, 255, 255));
-        pnDireita.setLayout(new java.awt.GridBagLayout());
+        pnDireita.setPreferredSize(new java.awt.Dimension(200, 300));
 
-        lbUsuario.setText("Usuario");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        pnDireita.add(lbUsuario, gridBagConstraints);
-
-        javax.swing.GroupLayout pnPreenchimentoVerticalLayout = new javax.swing.GroupLayout(pnPreenchimentoVertical);
-        pnPreenchimentoVertical.setLayout(pnPreenchimentoVerticalLayout);
-        pnPreenchimentoVerticalLayout.setHorizontalGroup(
-            pnPreenchimentoVerticalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnPreenchimentoVerticalLayout.setVerticalGroup(
-            pnPreenchimentoVerticalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 1.0;
-        pnDireita.add(pnPreenchimentoVertical, gridBagConstraints);
-
-        txtUsuario.setColumns(20);
-        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsuario.setMinimumSize(new java.awt.Dimension(100, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.2;
-        pnDireita.add(txtUsuario, gridBagConstraints);
+        lbUsuario.setText("Usuário");
 
         lbSenha.setText("Senha");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        pnDireita.add(lbSenha, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        pnDireita.add(lbLogo, gridBagConstraints);
-
-        javax.swing.GroupLayout pnPreenchimentoSuperiorLayout = new javax.swing.GroupLayout(pnPreenchimentoSuperior);
-        pnPreenchimentoSuperior.setLayout(pnPreenchimentoSuperiorLayout);
-        pnPreenchimentoSuperiorLayout.setHorizontalGroup(
-            pnPreenchimentoSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnPreenchimentoSuperiorLayout.setVerticalGroup(
-            pnPreenchimentoSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 0.5;
-        pnDireita.add(pnPreenchimentoSuperior, gridBagConstraints);
 
         btnLogin.setText("Login");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLoginMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pnDireita.add(btnLogin, gridBagConstraints);
 
-        javax.swing.GroupLayout pnPreenchimentoVertical1Layout = new javax.swing.GroupLayout(pnPreenchimentoVertical1);
-        pnPreenchimentoVertical1.setLayout(pnPreenchimentoVertical1Layout);
-        pnPreenchimentoVertical1Layout.setHorizontalGroup(
-            pnPreenchimentoVertical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnPreenchimentoVertical1Layout.setVerticalGroup(
-            pnPreenchimentoVertical1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        lbprimeiroAcesso.setText("Primeiro Acesso?");
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 0.5;
-        pnDireita.add(pnPreenchimentoVertical1, gridBagConstraints);
+        lbCadastro.setText("Clique aqui!");
 
-        javax.swing.GroupLayout pnPreenchimentoHorizontalFimLayout = new javax.swing.GroupLayout(pnPreenchimentoHorizontalFim);
-        pnPreenchimentoHorizontalFim.setLayout(pnPreenchimentoHorizontalFimLayout);
-        pnPreenchimentoHorizontalFimLayout.setHorizontalGroup(
-            pnPreenchimentoHorizontalFimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnDireitaLayout = new javax.swing.GroupLayout(pnDireita);
+        pnDireita.setLayout(pnDireitaLayout);
+        pnDireitaLayout.setHorizontalGroup(
+            pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnLogin)
+                .addGap(125, 125, 125))
+            .addGroup(pnDireitaLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnDireitaLayout.createSequentialGroup()
+                            .addComponent(lbprimeiroAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnDireitaLayout.createSequentialGroup()
+                                .addComponent(lbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pswSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnDireitaLayout.createSequentialGroup()
+                                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
-        pnPreenchimentoHorizontalFimLayout.setVerticalGroup(
-            pnPreenchimentoHorizontalFimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.5;
-        gridBagConstraints.weighty = 1.0;
-        pnDireita.add(pnPreenchimentoHorizontalFim, gridBagConstraints);
-
-        javax.swing.GroupLayout pnPreenchimentoHorizontalInicioLayout = new javax.swing.GroupLayout(pnPreenchimentoHorizontalInicio);
-        pnPreenchimentoHorizontalInicio.setLayout(pnPreenchimentoHorizontalInicioLayout);
-        pnPreenchimentoHorizontalInicioLayout.setHorizontalGroup(
-            pnPreenchimentoHorizontalInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnPreenchimentoHorizontalInicioLayout.setVerticalGroup(
-            pnPreenchimentoHorizontalInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        pnDireitaLayout.setVerticalGroup(
+            pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnDireitaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbUsuario)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSenha)
+                    .addComponent(pswSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(btnLogin)
+                .addGap(53, 53, 53)
+                .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbprimeiroAcesso)
+                    .addComponent(lbCadastro))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.5;
-        gridBagConstraints.weighty = 1.0;
-        pnDireita.add(pnPreenchimentoHorizontalInicio, gridBagConstraints);
-
-        javax.swing.GroupLayout pnPreenchimentoVertical2Layout = new javax.swing.GroupLayout(pnPreenchimentoVertical2);
-        pnPreenchimentoVertical2.setLayout(pnPreenchimentoVertical2Layout);
-        pnPreenchimentoVertical2Layout.setHorizontalGroup(
-            pnPreenchimentoVertical2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pnPreenchimentoVertical2Layout.setVerticalGroup(
-            pnPreenchimentoVertical2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 0.5;
-        pnDireita.add(pnPreenchimentoVertical2, gridBagConstraints);
-
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pnDireita.add(jPasswordField1, gridBagConstraints);
-
-        jLabel1.setText("Ainda não tem cadastro?");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 8;
-        pnDireita.add(jLabel1, gridBagConstraints);
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Clique aqui!");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        pnDireita.add(jLabel2, gridBagConstraints);
-
-        javax.swing.GroupLayout pnPreenchimentoVertical3Layout = new javax.swing.GroupLayout(pnPreenchimentoVertical3);
-        pnPreenchimentoVertical3.setLayout(pnPreenchimentoVertical3Layout);
-        pnPreenchimentoVertical3Layout.setHorizontalGroup(
-            pnPreenchimentoVertical3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnPreenchimentoVertical3Layout.setVerticalGroup(
-            pnPreenchimentoVertical3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 0.5;
-        pnDireita.add(pnPreenchimentoVertical3, gridBagConstraints);
-
-        pnPrincipal.add(pnDireita);
-
-        getContentPane().add(pnPrincipal, java.awt.BorderLayout.CENTER);
-
-        setSize(new java.awt.Dimension(495, 308));
+        setSize(new java.awt.Dimension(701, 423));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
-
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
+    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+        GerenciadorCentral gc = new GerenciadorCentral();
         String usuario = txtUsuario.getText();
-        String senha = new String(jPasswordField1.getPassword());
+        String senha = new String(pswSenha.getPassword());
+        
         boolean acesso = gc.validarLogin(usuario, senha);
-        if (acesso){
-            HomePage principal = new HomePage();
-            principal.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos", "Login", JOptionPane.ERROR_MESSAGE);
-
+        if(acesso){
+        HomePage principal = new HomePage();
+        principal.setVisible(true);
+        this.dispose();
         }
-    }//GEN-LAST:event_btnLoginActionPerformed
+        
+        
+    }//GEN-LAST:event_btnLoginMouseClicked
 
     public void novoCadastro(){
     TelaCadastro tc = new TelaCadastro();
@@ -401,22 +252,16 @@ private void atualizarLogoRedimensionado() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JLabel lbLogo;
+    private javax.swing.JLabel lbCadastro;
+    private javax.swing.JLabel lbLogin;
+    private javax.swing.JLabel lbLoginIcon;
+    private javax.swing.JLabel lbLogoFatec;
     private javax.swing.JLabel lbSenha;
     private javax.swing.JLabel lbUsuario;
+    private javax.swing.JLabel lbprimeiroAcesso;
     private javax.swing.JPanel pnDireita;
     private javax.swing.JPanel pnEsquerda;
-    private javax.swing.JPanel pnPreenchimentoHorizontalFim;
-    private javax.swing.JPanel pnPreenchimentoHorizontalInicio;
-    private javax.swing.JPanel pnPreenchimentoSuperior;
-    private javax.swing.JPanel pnPreenchimentoVertical;
-    private javax.swing.JPanel pnPreenchimentoVertical1;
-    private javax.swing.JPanel pnPreenchimentoVertical2;
-    private javax.swing.JPanel pnPreenchimentoVertical3;
-    private javax.swing.JPanel pnPrincipal;
+    private javax.swing.JPasswordField pswSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
