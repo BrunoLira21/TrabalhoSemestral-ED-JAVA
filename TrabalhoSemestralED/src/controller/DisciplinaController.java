@@ -25,7 +25,7 @@ public class DisciplinaController {
             }
         } else {
             JOptionPane.showMessageDialog(null, "Disciplina '" + disciplina.getNomeDisciplina() + "' já cadastrada!",
-                    "Cadastro da Discplina", JOptionPane.INFORMATION_MESSAGE);
+                    "Cadastro da Disciplina", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
