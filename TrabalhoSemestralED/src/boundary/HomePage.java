@@ -1,5 +1,11 @@
 package boundary;
 
+import controller.CursoController;
+import entity.Curso;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -75,11 +81,8 @@ public class HomePage extends javax.swing.JFrame {
         e.printStackTrace();
         System.err.println("Erro ao redimensionar o logo dinamicamente.");
         }
-        
-        
-        
-        
-      
+
+        carregarDadosCursoCSV();
     }
 
 
@@ -880,10 +883,13 @@ public class HomePage extends javax.swing.JFrame {
         btnAdicionarCur.setText("Adicionar");
         btnAdicionarCur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarCurActionPerformed(evt);
+                try {
+                    btnAdicionarCurActionPerformed(evt);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
-
         tabelaCursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -998,8 +1004,26 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimparCurActionPerformed
 
-    private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCurActionPerformed
+    private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) throws Exception {//GEN-FIRST:event_btnAdicionarCurActionPerformed
         // TODO add your handling code here:
+
+        Curso curso = new Curso();
+
+        curso.setCodigoCurso(Integer.parseInt(txtCodigoCurso.getText()));
+        curso.setNomeCurso(txtNomeCurso.getText());
+        curso.setArea(txtAreaCurso.getText());
+
+        CursoController cc = new CursoController();
+
+        boolean sucesso = cc.adicionarCurso(curso);
+
+        if(sucesso){
+            javax.swing.JOptionPane.showMessageDialog(this, "Curso salvo com sucesso!");
+            btnLimparCurActionPerformed(evt);
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Curso já existe.");
+        }
+
     }//GEN-LAST:event_btnAdicionarCurActionPerformed
 
     private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
@@ -1078,6 +1102,33 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPontuacaoActionPerformed
 
+    private void carregarDadosCursoCSV(){
+        String arquivo = "Arquivos/cursos.csv";
+        String separador = ";";
+        String linha = "";
+
+        DefaultTableModel model = (DefaultTableModel) tabelaCursos.getModel();
+        model.setRowCount(0);
+
+        try(BufferedReader ler = new BufferedReader(new FileReader(arquivo))){
+            while((linha = ler.readLine()) != null){
+                String[] dados = linha.split(separador);
+                if(dados.length >= 3){
+                    try{
+                        int codigo = Integer.parseInt(dados[0].trim());
+                        String nome = dados[1].trim();
+                        String area = dados[2].trim();
+
+                        model.addRow(new Object[]{codigo, nome, area});
+                    }catch(NumberFormatException ex){
+                        System.out.println("Ignorando linha com código inválido: " + linha);
+                    }
+                }
+            }
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(this, "Erro ao ler arquivo CSV: " + e.getMessage());
+        }
+    }
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
