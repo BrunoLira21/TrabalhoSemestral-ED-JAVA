@@ -18,27 +18,163 @@ public class inscricoesPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         inscricoesPanel = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        jLabelIns1 = new javax.swing.JLabel();
+        jLabelIns2 = new javax.swing.JLabel();
+        jLabelIns3 = new javax.swing.JLabel();
+        lblIcone = new javax.swing.JLabel();
+        cbxCPFProfessorIns = new javax.swing.JComboBox<>();
+        cbxDisciplinaIns = new javax.swing.JComboBox<>();
+        txtCodProcessoIns = new javax.swing.JTextField();
+        btnSalvarIns = new javax.swing.JButton();
+        btnInscreverIns = new javax.swing.JButton();
+        btnRemoverIns = new javax.swing.JButton();
+        btnLimparIns = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaInscricoes = new javax.swing.JTable();
 
-        inscricoesPanel.setBackground(new java.awt.Color(51, 255, 0));
+        inscricoesPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("Clientes");
+        jLabelIns1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelIns1.setText("CPF do Professor");
+
+        jLabelIns2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelIns2.setText("Código da Disciplina");
+
+        jLabelIns3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelIns3.setText("Código do Processo");
+
+        cbxCPFProfessorIns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbxDisciplinaIns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtCodProcessoIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCodProcessoIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodProcessoInsActionPerformed(evt);
+            }
+        });
+
+        btnSalvarIns.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSalvarIns.setForeground(new java.awt.Color(51, 102, 0));
+        btnSalvarIns.setText("Salvar");
+
+        btnInscreverIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnInscreverIns.setForeground(new java.awt.Color(0, 51, 255));
+        btnInscreverIns.setText("Inscrever");
+        btnInscreverIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscreverInsActionPerformed(evt);
+            }
+        });
+
+        btnRemoverIns.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnRemoverIns.setForeground(new java.awt.Color(255, 51, 51));
+        btnRemoverIns.setText("Remover");
+        btnRemoverIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverInsActionPerformed(evt);
+            }
+        });
+
+        btnLimparIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnLimparIns.setForeground(new java.awt.Color(255, 102, 102));
+        btnLimparIns.setText("Limpar Campos");
+        btnLimparIns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparInsActionPerformed(evt);
+            }
+        });
+
+        tabelaInscricoes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CPF do Professor", "Código da Disciplina", "Código do Processo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaInscricoes.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaInscricoes);
+        if (tabelaInscricoes.getColumnModel().getColumnCount() > 0) {
+            tabelaInscricoes.getColumnModel().getColumn(0).setResizable(false);
+            tabelaInscricoes.getColumnModel().getColumn(1).setResizable(false);
+            tabelaInscricoes.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         javax.swing.GroupLayout inscricoesPanelLayout = new javax.swing.GroupLayout(inscricoesPanel);
         inscricoesPanel.setLayout(inscricoesPanelLayout);
         inscricoesPanelLayout.setHorizontalGroup(
             inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inscricoesPanelLayout.createSequentialGroup()
-                .addGap(302, 302, 302)
-                .addComponent(jButton2)
-                .addContainerGap(626, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(inscricoesPanelLayout.createSequentialGroup()
+                        .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbxCPFProfessorIns, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelIns1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbxDisciplinaIns, 0, 152, Short.MAX_VALUE)
+                            .addComponent(jLabelIns2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCodProcessoIns, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelIns3))
+                        .addGap(46, 46, 46)
+                        .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inscricoesPanelLayout.createSequentialGroup()
+                        .addComponent(btnSalvarIns)
+                        .addGap(81, 81, 81)
+                        .addComponent(btnInscreverIns)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRemoverIns)
+                        .addGap(60, 60, 60)
+                        .addComponent(btnLimparIns)))
+                .addGap(56, 56, 56))
         );
         inscricoesPanelLayout.setVerticalGroup(
             inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inscricoesPanelLayout.createSequentialGroup()
-                .addGap(209, 209, 209)
-                .addComponent(jButton2)
-                .addContainerGap(705, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(inscricoesPanelLayout.createSequentialGroup()
+                        .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelIns1)
+                            .addComponent(jLabelIns2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxCPFProfessorIns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxDisciplinaIns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(inscricoesPanelLayout.createSequentialGroup()
+                        .addComponent(jLabelIns3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodProcessoIns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarIns)
+                    .addComponent(btnRemoverIns)
+                    .addComponent(btnLimparIns)
+                    .addComponent(btnInscreverIns))
+                .addGap(389, 389, 389))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -63,9 +199,37 @@ public class inscricoesPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRemoverInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverInsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoverInsActionPerformed
+
+    private void btnLimparInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparInsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimparInsActionPerformed
+
+    private void txtCodProcessoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProcessoInsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodProcessoInsActionPerformed
+
+    private void btnInscreverInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscreverInsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInscreverInsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInscreverIns;
+    private javax.swing.JButton btnLimparIns;
+    private javax.swing.JButton btnRemoverIns;
+    private javax.swing.JButton btnSalvarIns;
+    private javax.swing.JComboBox<String> cbxCPFProfessorIns;
+    private javax.swing.JComboBox<String> cbxDisciplinaIns;
     private javax.swing.JPanel inscricoesPanel;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabelIns1;
+    private javax.swing.JLabel jLabelIns2;
+    private javax.swing.JLabel jLabelIns3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblIcone;
+    private javax.swing.JTable tabelaInscricoes;
+    private javax.swing.JTextField txtCodProcessoIns;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,9 +3,11 @@ package boundary;
 
 import controller.CursoController;
 import entity.Curso;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,7 +23,6 @@ public class cursosPanel extends javax.swing.JPanel {
         this();
         this.homePage = hp;
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -131,6 +132,11 @@ public class cursosPanel extends javax.swing.JPanel {
         });
         tabelaCursos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelaCursos);
+        if (tabelaCursos.getColumnModel().getColumnCount() > 0) {
+            tabelaCursos.getColumnModel().getColumn(0).setResizable(false);
+            tabelaCursos.getColumnModel().getColumn(1).setResizable(false);
+            tabelaCursos.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         javax.swing.GroupLayout cursosPanelLayout = new javax.swing.GroupLayout(cursosPanel);
         cursosPanel.setLayout(cursosPanelLayout);

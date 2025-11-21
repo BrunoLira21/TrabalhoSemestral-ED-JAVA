@@ -176,6 +176,15 @@ public class disciplinasPanel extends javax.swing.JPanel {
         });
         tabelaDisiciplinas.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tabelaDisiciplinas);
+        if (tabelaDisiciplinas.getColumnModel().getColumnCount() > 0) {
+            tabelaDisiciplinas.getColumnModel().getColumn(0).setResizable(false);
+            tabelaDisiciplinas.getColumnModel().getColumn(1).setResizable(false);
+            tabelaDisiciplinas.getColumnModel().getColumn(2).setResizable(false);
+            tabelaDisiciplinas.getColumnModel().getColumn(3).setResizable(false);
+            tabelaDisiciplinas.getColumnModel().getColumn(4).setResizable(false);
+            tabelaDisiciplinas.getColumnModel().getColumn(5).setResizable(false);
+            tabelaDisiciplinas.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         javax.swing.GroupLayout disciplinasPanelLayout = new javax.swing.GroupLayout(disciplinasPanel);
         disciplinasPanel.setLayout(disciplinasPanelLayout);
@@ -184,7 +193,6 @@ public class disciplinasPanel extends javax.swing.JPanel {
             .addGroup(disciplinasPanelLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(disciplinasPanelLayout.createSequentialGroup()
                         .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(disciplinasPanelLayout.createSequentialGroup()
@@ -224,7 +232,8 @@ public class disciplinasPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRemoverDis)
                         .addGap(70, 70, 70)
-                        .addComponent(btnLimparDis)))
+                        .addComponent(btnLimparDis))
+                    .addComponent(jScrollPane2))
                 .addGap(29, 29, 29))
         );
         disciplinasPanelLayout.setVerticalGroup(
