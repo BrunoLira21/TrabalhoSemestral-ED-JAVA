@@ -23,27 +23,25 @@ public class HomePage extends javax.swing.JFrame {
         MouseAdapter menuListener = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JPanel source = (JPanel) e.getSource(); 
-                if (source == cursosItem) {
+                JToggleButton source = (JToggleButton) e.getSource(); 
+                if (source == btnCursos) {
                     cardLayout.show(jContentPane, "Cursos");
-                } else if (source == professoresItem) {
+                } else if (source == btnProfessores) {
                     cardLayout.show(jContentPane, "Professores");
-                } else if(source == disciplinasItem){
+                } else if(source == btnDisciplinas){
                     cardLayout.show(jContentPane, "Disciplinas");
-                } else if(source == inscricoesItem){
+                } else if(source == btnInscricoes){
                     cardLayout.show(jContentPane, "Inscrições");
-                } else if(source == consultasItem){
-                    cardLayout.show(jContentPane, "Consultas");
-                }
+                } 
             }
 
         };
 
-        cursosItem.addMouseListener(menuListener);
-        professoresItem.addMouseListener(menuListener);
-        disciplinasItem.addMouseListener(menuListener);
-        inscricoesItem.addMouseListener(menuListener);
-        consultasItem.addMouseListener(menuListener);
+        btnCursos.addMouseListener(menuListener);
+        btnProfessores.addMouseListener(menuListener);
+        btnDisciplinas.addMouseListener(menuListener);
+        btnInscricoes.addMouseListener(menuListener);
+        
 
         //Icones Logo
         ImageIcon iconeHomePage = new ImageIcon("src/uteis/logofatec.png");
@@ -91,17 +89,6 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuLateral = new javax.swing.JPanel();
-        consultasItem = new javax.swing.JPanel();
-        jLabel = new javax.swing.JLabel();
-        cursosItem = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        disciplinasItem = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        professoresItem = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        inscricoesItem = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jContentPane = new javax.swing.JPanel();
         consultasPanel = new javax.swing.JPanel();
         lbIcone3 = new javax.swing.JLabel();
@@ -167,231 +154,59 @@ public class HomePage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jMenuLateral.setBackground(new java.awt.Color(0, 102, 102));
-        jMenuLateral.setForeground(new java.awt.Color(255, 255, 255));
-        jMenuLateral.setPreferredSize(new java.awt.Dimension(200, 500));
-        jMenuLateral.setLayout(new javax.swing.BoxLayout(jMenuLateral, javax.swing.BoxLayout.Y_AXIS));
-
-        consultasItem.setBackground(new java.awt.Color(0, 102, 102));
-        consultasItem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
-        consultasItem.setPreferredSize(new java.awt.Dimension(200, 20));
-
-        jLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel.setText("Consultas");
-
-        javax.swing.GroupLayout consultasItemLayout = new javax.swing.GroupLayout(consultasItem);
-        consultasItem.setLayout(consultasItemLayout);
-        consultasItemLayout.setHorizontalGroup(
-            consultasItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultasItemLayout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(jLabel)
-                .addGap(51, 51, 51))
-        );
-        consultasItemLayout.setVerticalGroup(
-            consultasItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consultasItemLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel)
-                .addGap(45, 45, 45))
-        );
-
-        jMenuLateral.add(consultasItem);
-        consultasItem.getAccessibleContext().setAccessibleName("Consultas");
-
-        cursosItem.setBackground(new java.awt.Color(0, 102, 102));
-        cursosItem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
-        cursosItem.setMinimumSize(new java.awt.Dimension(100, 1));
-        cursosItem.setName("Cursos"); // NOI18N
-        cursosItem.setPreferredSize(new java.awt.Dimension(200, 20));
-        cursosItem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cursosItemMouseClicked(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cursos");
-
-        javax.swing.GroupLayout cursosItemLayout = new javax.swing.GroupLayout(cursosItem);
-        cursosItem.setLayout(cursosItemLayout);
-        cursosItemLayout.setHorizontalGroup(
-            cursosItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cursosItemLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-        cursosItemLayout.setVerticalGroup(
-            cursosItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cursosItemLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45))
-        );
-
-        jMenuLateral.add(cursosItem);
-        cursosItem.getAccessibleContext().setAccessibleName("Cursos");
-
-        disciplinasItem.setBackground(new java.awt.Color(0, 102, 102));
-        disciplinasItem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
-        disciplinasItem.setName("Disciplinas"); // NOI18N
-        disciplinasItem.setPreferredSize(new java.awt.Dimension(200, 20));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Disciplinas");
-
-        javax.swing.GroupLayout disciplinasItemLayout = new javax.swing.GroupLayout(disciplinasItem);
-        disciplinasItem.setLayout(disciplinasItemLayout);
-        disciplinasItemLayout.setHorizontalGroup(
-            disciplinasItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(disciplinasItemLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        disciplinasItemLayout.setVerticalGroup(
-            disciplinasItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, disciplinasItemLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(45, 45, 45))
-        );
-
-        jMenuLateral.add(disciplinasItem);
-        disciplinasItem.getAccessibleContext().setAccessibleName("Disciplinas");
-
-        professoresItem.setBackground(new java.awt.Color(0, 102, 102));
-        professoresItem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
-        professoresItem.setName("Professores"); // NOI18N
-        professoresItem.setPreferredSize(new java.awt.Dimension(200, 20));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Professores");
-
-        javax.swing.GroupLayout professoresItemLayout = new javax.swing.GroupLayout(professoresItem);
-        professoresItem.setLayout(professoresItemLayout);
-        professoresItemLayout.setHorizontalGroup(
-            professoresItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(professoresItemLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel3)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        professoresItemLayout.setVerticalGroup(
-            professoresItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, professoresItemLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(46, 46, 46))
-        );
-
-        jMenuLateral.add(professoresItem);
-        professoresItem.getAccessibleContext().setAccessibleName("Professores");
-
-        inscricoesItem.setBackground(new java.awt.Color(0, 102, 102));
-        inscricoesItem.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
-        inscricoesItem.setName("inscricoesItem"); // NOI18N
-        inscricoesItem.setPreferredSize(new java.awt.Dimension(200, 20));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Inscrições");
-
-        javax.swing.GroupLayout inscricoesItemLayout = new javax.swing.GroupLayout(inscricoesItem);
-        inscricoesItem.setLayout(inscricoesItemLayout);
-        inscricoesItemLayout.setHorizontalGroup(
-            inscricoesItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inscricoesItemLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel4)
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        inscricoesItemLayout.setVerticalGroup(
-            inscricoesItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inscricoesItemLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel4)
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-
-        jMenuLateral.add(inscricoesItem);
-        inscricoesItem.getAccessibleContext().setAccessibleName("Inscrições");
-
-        getContentPane().add(jMenuLateral, java.awt.BorderLayout.LINE_START);
-
         jContentPane.setBackground(new java.awt.Color(255, 255, 255));
         jContentPane.setLayout(new java.awt.CardLayout());
 
         consultasPanel.setBackground(new java.awt.Color(255, 255, 255));
+        consultasPanel.setToolTipText("");
 
         btnDisciplinas.setBackground(new java.awt.Color(0, 102, 102));
+        btnDisciplinas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnDisciplinas.setForeground(new java.awt.Color(255, 255, 255));
         btnDisciplinas.setText("Disciplinas");
         btnDisciplinas.setBorder(null);
         btnDisciplinas.setBorderPainted(false);
         btnDisciplinas.setContentAreaFilled(false);
+        btnDisciplinas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDisciplinas.setFocusPainted(false);
         btnDisciplinas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDisciplinas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnDisciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDisciplinasMouseClicked(evt);
-            }
-        });
 
         btnProfessores.setBackground(new java.awt.Color(0, 102, 102));
+        btnProfessores.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnProfessores.setForeground(new java.awt.Color(255, 255, 255));
         btnProfessores.setText("Professores");
         btnProfessores.setBorder(null);
         btnProfessores.setBorderPainted(false);
         btnProfessores.setContentAreaFilled(false);
+        btnProfessores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProfessores.setFocusPainted(false);
         btnProfessores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProfessores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnProfessores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnProfessoresMouseClicked(evt);
-            }
-        });
 
         btnInscricoes.setBackground(new java.awt.Color(0, 102, 102));
+        btnInscricoes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnInscricoes.setForeground(new java.awt.Color(255, 255, 255));
         btnInscricoes.setText("Inscrições");
         btnInscricoes.setBorder(null);
         btnInscricoes.setBorderPainted(false);
         btnInscricoes.setContentAreaFilled(false);
+        btnInscricoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInscricoes.setFocusPainted(false);
         btnInscricoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInscricoes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnInscricoes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnInscricoesMouseClicked(evt);
-            }
-        });
 
         btnCursos.setBackground(new java.awt.Color(0, 102, 102));
+        btnCursos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCursos.setForeground(new java.awt.Color(255, 255, 255));
         btnCursos.setText("Cursos");
         btnCursos.setBorder(null);
         btnCursos.setBorderPainted(false);
         btnCursos.setContentAreaFilled(false);
+        btnCursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCursos.setFocusPainted(false);
         btnCursos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCursos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCursos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCursosMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout consultasPanelLayout = new javax.swing.GroupLayout(consultasPanel);
         consultasPanel.setLayout(consultasPanelLayout);
@@ -408,7 +223,7 @@ public class HomePage extends javax.swing.JFrame {
                             .addComponent(btnInscricoes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(consultasPanelLayout.createSequentialGroup()
                                 .addComponent(btnCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 423, Short.MAX_VALUE)
                                 .addComponent(btnDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(127, 127, 127))))
             .addGroup(consultasPanelLayout.createSequentialGroup()
@@ -446,7 +261,7 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(inscricoesPanelLayout.createSequentialGroup()
                 .addGap(302, 302, 302)
                 .addComponent(jButton2)
-                .addContainerGap(426, Short.MAX_VALUE))
+                .addContainerGap(626, Short.MAX_VALUE))
         );
         inscricoesPanelLayout.setVerticalGroup(
             inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1027,10 +842,6 @@ public class HomePage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cursosItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursosItemMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cursosItemMouseClicked
-
     private void txtCodigoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoCursoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoCursoActionPerformed
@@ -1145,26 +956,6 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPontuacaoActionPerformed
 
-    private void btnDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDisciplinasMouseClicked
-        disciplinasPanel.setVisible(true);
-        consultasPanel.setVisible(false);
-    }//GEN-LAST:event_btnDisciplinasMouseClicked
-
-    private void btnProfessoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfessoresMouseClicked
-        professoresPanel.setVisible(true);
-        consultasPanel.setVisible(false);
-    }//GEN-LAST:event_btnProfessoresMouseClicked
-
-    private void btnInscricoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscricoesMouseClicked
-        inscricoesPanel.setVisible(true);
-        consultasPanel.setVisible(false);
-    }//GEN-LAST:event_btnInscricoesMouseClicked
-
-    private void btnCursosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMouseClicked
-        cursosPanel.setVisible(true);
-        consultasPanel.setVisible(false);
-    }//GEN-LAST:event_btnCursosMouseClicked
-
     private void carregarDadosCursoCSV(){
         String arquivo = "Arquivos/cursos.csv";
         String separador = ";";
@@ -1219,21 +1010,12 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarDis;
     private javax.swing.JButton btnSalvarPro;
     private javax.swing.JComboBox<String> cbxCodigoCurso;
-    private javax.swing.JPanel consultasItem;
     private javax.swing.JPanel consultasPanel;
-    private javax.swing.JPanel cursosItem;
     private javax.swing.JPanel cursosPanel;
-    private javax.swing.JPanel disciplinasItem;
     private javax.swing.JPanel disciplinasPanel;
-    private javax.swing.JPanel inscricoesItem;
     private javax.swing.JPanel inscricoesPanel;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jContentPane;
-    private javax.swing.JLabel jLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelCur1;
     private javax.swing.JLabel jLabelCur2;
     private javax.swing.JLabel jLabelCur3;
@@ -1248,7 +1030,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPro2;
     private javax.swing.JLabel jLabelPro3;
     private javax.swing.JLabel jLabelPro4;
-    private javax.swing.JPanel jMenuLateral;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1256,7 +1037,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lblIcone;
     private javax.swing.JLabel lblIcone1;
     private javax.swing.JLabel lblIcone2;
-    private javax.swing.JPanel professoresItem;
     private javax.swing.JPanel professoresPanel;
     private javax.swing.JTable tabelaCursos;
     private javax.swing.JTable tabelaDisiciplinas;
