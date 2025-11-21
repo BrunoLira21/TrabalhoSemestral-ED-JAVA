@@ -233,6 +233,9 @@ public class cursosPanel extends javax.swing.JPanel {
 
     private void btnLimparCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCurActionPerformed
         // TODO add your handling code here:
+        txtAreaCurso.setText("");
+        txtCodigoCurso.setText("");
+        txtNomeCurso.setText("");
     }//GEN-LAST:event_btnLimparCurActionPerformed
 
     private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCurActionPerformed
@@ -286,6 +289,9 @@ public class cursosPanel extends javax.swing.JPanel {
         }catch(IOException e){
             JOptionPane.showMessageDialog(this, "Erro ao ler arquivo CSV: " + e.getMessage());
         }
+      txtAreaCurso.setText("");
+      txtCodigoCurso.setText("");
+      txtNomeCurso.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
