@@ -1,4 +1,5 @@
 package boundary;
+import javax.swing.border.*;
 import controller.CursoController;
 import entity.Curso;
 import java.io.BufferedReader;
@@ -316,24 +317,36 @@ public class HomePage extends javax.swing.JFrame {
 
         consultasPanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnDisciplinas.setBackground(new java.awt.Color(0, 102, 102));
+        btnDisciplinas.setForeground(new java.awt.Color(255, 255, 255));
         btnDisciplinas.setText("Disciplinas");
         btnDisciplinas.setBorder(null);
+        btnDisciplinas.setBorderPainted(false);
         btnDisciplinas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDisciplinas.setOpaque(true);
         btnDisciplinas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        btnProfessores.setBackground(new java.awt.Color(0, 102, 102));
+        btnProfessores.setForeground(new java.awt.Color(255, 255, 255));
         btnProfessores.setText("Professores");
         btnProfessores.setBorder(null);
+        btnProfessores.setBorderPainted(false);
+        btnProfessores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProfessores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        btnInscricoes.setBackground(new java.awt.Color(0, 102, 102));
+        btnInscricoes.setForeground(new java.awt.Color(255, 255, 255));
         btnInscricoes.setText("Inscrições");
         btnInscricoes.setBorder(null);
-        btnInscricoes.setOpaque(true);
+        btnInscricoes.setBorderPainted(false);
+        btnInscricoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInscricoes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        btnCursos.setBackground(new java.awt.Color(0, 102, 102));
+        btnCursos.setForeground(new java.awt.Color(255, 255, 255));
         btnCursos.setText("Cursos");
         btnCursos.setBorder(null);
-        btnCursos.setOpaque(true);
+        btnCursos.setBorderPainted(false);
+        btnCursos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCursos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout consultasPanelLayout = new javax.swing.GroupLayout(consultasPanel);
@@ -868,11 +881,7 @@ public class HomePage extends javax.swing.JFrame {
         btnAdicionarCur.setText("Adicionar");
         btnAdicionarCur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    btnAdicionarCurActionPerformed(evt);
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
+                btnAdicionarCurActionPerformed(evt);
             }
         });
 
@@ -990,7 +999,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimparCurActionPerformed
 
-    private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) throws Exception {//GEN-FIRST:event_btnAdicionarCurActionPerformed
+    private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCurActionPerformed
         try {
             Curso curso = new Curso();
 
