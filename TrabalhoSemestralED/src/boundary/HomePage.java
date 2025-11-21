@@ -23,7 +23,7 @@ public class HomePage extends javax.swing.JFrame {
         MouseAdapter menuListener = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JPanel source = (JPanel) e.getSource(); // Converte para JPanel
+                JPanel source = (JPanel) e.getSource(); 
                 if (source == cursosItem) {
                     cardLayout.show(jContentPane, "Cursos");
                 } else if (source == professoresItem) {
@@ -53,19 +53,35 @@ public class HomePage extends javax.swing.JFrame {
         lblIcone.setIcon(logoRedimensionado);    // Cursos
         lblIcone1.setIcon(logoRedimensionado);   // Disciplinas
         lblIcone2.setIcon(logoRedimensionado);   // Professores
+        lbIcone3.setIcon(logoRedimensionado);
 
 
 
         //Icones Botões
-        ImageIcon iconeButton = new ImageIcon("src/uteis/login.png");
-        Image imagemIconRedimensionada = iconeButton.getImage().getScaledInstance(80, 30, Image.SCALE_SMOOTH);
-        ImageIcon iconeRedimensionado = new ImageIcon(imagemIconRedimensionada);
+        ImageIcon iconeButtonDisc = new ImageIcon("src/uteis/Disciplinas.jpeg");
+        Image imagemIconDiscRedimensionada = iconeButtonDisc.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon iconeDiscRedimensionado = new ImageIcon(imagemIconDiscRedimensionada);
+        btnDisciplinas.setIcon(iconeDiscRedimensionado);
+        
 
-        btnCursos.setIcon(iconeRedimensionado);
-        btnDisciplinas.setIcon(iconeRedimensionado);
-        btnProfessores.setIcon(iconeRedimensionado);
-        btnInscricoes.setIcon(iconeRedimensionado);
-
+        ImageIcon iconeButtonCur = new ImageIcon("src/uteis/Cursos.png");
+        Image imagemIconCurRedimensionada = iconeButtonCur.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon iconeCurRedimensionado = new ImageIcon(imagemIconCurRedimensionada);
+        btnCursos.setIcon(iconeCurRedimensionado);
+        
+        ImageIcon iconeButtonPro = new ImageIcon("src/uteis/Professor.jpeg");
+        Image imagemIconProRedimensionada = iconeButtonPro.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon iconeProRedimensionado = new ImageIcon(imagemIconProRedimensionada);
+        btnProfessores.setIcon(iconeProRedimensionado);
+        
+        
+        ImageIcon iconeButtonIns = new ImageIcon("src/uteis/Inscricoes.jpeg");
+        Image imagemIconInsRedimensionada = iconeButtonIns.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon iconeInsRedimensionado = new ImageIcon(imagemIconInsRedimensionada);
+        btnInscricoes.setIcon(iconeInsRedimensionado);
+        
+        
+        
         carregarDadosCursoCSV();
 
     }
@@ -322,32 +338,60 @@ public class HomePage extends javax.swing.JFrame {
         btnDisciplinas.setText("Disciplinas");
         btnDisciplinas.setBorder(null);
         btnDisciplinas.setBorderPainted(false);
+        btnDisciplinas.setContentAreaFilled(false);
+        btnDisciplinas.setFocusPainted(false);
         btnDisciplinas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDisciplinas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDisciplinas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDisciplinasMouseClicked(evt);
+            }
+        });
 
         btnProfessores.setBackground(new java.awt.Color(0, 102, 102));
         btnProfessores.setForeground(new java.awt.Color(255, 255, 255));
         btnProfessores.setText("Professores");
         btnProfessores.setBorder(null);
         btnProfessores.setBorderPainted(false);
+        btnProfessores.setContentAreaFilled(false);
+        btnProfessores.setFocusPainted(false);
         btnProfessores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnProfessores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnProfessores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProfessoresMouseClicked(evt);
+            }
+        });
 
         btnInscricoes.setBackground(new java.awt.Color(0, 102, 102));
         btnInscricoes.setForeground(new java.awt.Color(255, 255, 255));
         btnInscricoes.setText("Inscrições");
         btnInscricoes.setBorder(null);
         btnInscricoes.setBorderPainted(false);
+        btnInscricoes.setContentAreaFilled(false);
+        btnInscricoes.setFocusPainted(false);
         btnInscricoes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInscricoes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInscricoes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInscricoesMouseClicked(evt);
+            }
+        });
 
         btnCursos.setBackground(new java.awt.Color(0, 102, 102));
         btnCursos.setForeground(new java.awt.Color(255, 255, 255));
         btnCursos.setText("Cursos");
         btnCursos.setBorder(null);
         btnCursos.setBorderPainted(false);
+        btnCursos.setContentAreaFilled(false);
+        btnCursos.setFocusPainted(false);
         btnCursos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCursos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCursos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCursosMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout consultasPanelLayout = new javax.swing.GroupLayout(consultasPanel);
         consultasPanel.setLayout(consultasPanelLayout);
@@ -1100,6 +1144,26 @@ public class HomePage extends javax.swing.JFrame {
     private void txtPontuacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPontuacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPontuacaoActionPerformed
+
+    private void btnDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDisciplinasMouseClicked
+        disciplinasPanel.setVisible(true);
+        consultasPanel.setVisible(false);
+    }//GEN-LAST:event_btnDisciplinasMouseClicked
+
+    private void btnProfessoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfessoresMouseClicked
+        professoresPanel.setVisible(true);
+        consultasPanel.setVisible(false);
+    }//GEN-LAST:event_btnProfessoresMouseClicked
+
+    private void btnInscricoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscricoesMouseClicked
+        inscricoesPanel.setVisible(true);
+        consultasPanel.setVisible(false);
+    }//GEN-LAST:event_btnInscricoesMouseClicked
+
+    private void btnCursosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMouseClicked
+        cursosPanel.setVisible(true);
+        consultasPanel.setVisible(false);
+    }//GEN-LAST:event_btnCursosMouseClicked
 
     private void carregarDadosCursoCSV(){
         String arquivo = "Arquivos/cursos.csv";
