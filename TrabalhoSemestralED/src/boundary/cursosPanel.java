@@ -37,7 +37,7 @@ public class cursosPanel extends javax.swing.JPanel {
         txtCodigoCurso = new javax.swing.JTextField();
         btnSalvarCur = new javax.swing.JButton();
         btnRemoverCur = new javax.swing.JButton();
-        btnLimparCur = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
         btnAdicionarCur = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCursos = new javax.swing.JTable();
@@ -88,12 +88,12 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
-        btnLimparCur.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnLimparCur.setForeground(new java.awt.Color(255, 102, 102));
-        btnLimparCur.setText("Limpar Campos");
-        btnLimparCur.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(51, 255, 51));
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparCurActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
 
@@ -147,7 +147,7 @@ public class cursosPanel extends javax.swing.JPanel {
                         .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCur2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                         .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAreaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCur1))
@@ -158,10 +158,10 @@ public class cursosPanel extends javax.swing.JPanel {
                         .addComponent(btnSalvarCur)
                         .addGap(96, 96, 96)
                         .addComponent(btnAdicionarCur)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRemoverCur)
-                        .addGap(60, 60, 60)
-                        .addComponent(btnLimparCur)))
+                        .addGap(68, 68, 68)
+                        .addComponent(btnVoltar)))
                 .addGap(56, 56, 56))
         );
         cursosPanelLayout.setVerticalGroup(
@@ -189,7 +189,7 @@ public class cursosPanel extends javax.swing.JPanel {
                     .addComponent(btnSalvarCur)
                     .addComponent(btnAdicionarCur)
                     .addComponent(btnRemoverCur)
-                    .addComponent(btnLimparCur))
+                    .addComponent(btnVoltar))
                 .addGap(389, 389, 389))
         );
 
@@ -216,27 +216,24 @@ public class cursosPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAreaCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAreaCursoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtAreaCursoActionPerformed
 
     private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtNomeCursoActionPerformed
 
     private void txtCodigoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoCursoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtCodigoCursoActionPerformed
 
     private void btnRemoverCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverCurActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnRemoverCurActionPerformed
 
-    private void btnLimparCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCurActionPerformed
-        // TODO add your handling code here:
-        txtAreaCurso.setText("");
-        txtCodigoCurso.setText("");
-        txtNomeCurso.setText("");
-    }//GEN-LAST:event_btnLimparCurActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        homePage.mostrarPainel("Consultas");
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCurActionPerformed
         try {
@@ -261,9 +258,35 @@ public class cursosPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Erro ao adicionar curso: " + ex.getMessage());
             ex.printStackTrace();
         }
+        limparCampos();
     }//GEN-LAST:event_btnAdicionarCurActionPerformed
 
-      private void carregarDadosCursoCSV(){
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionarCur;
+    private javax.swing.JButton btnRemoverCur;
+    private javax.swing.JButton btnSalvarCur;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JPanel cursosPanel;
+    private javax.swing.JLabel jLabelCur1;
+    private javax.swing.JLabel jLabelCur2;
+    private javax.swing.JLabel jLabelCur3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblIcone;
+    private javax.swing.JTable tabelaCursos;
+    private javax.swing.JTextField txtAreaCurso;
+    private javax.swing.JTextField txtCodigoCurso;
+    private javax.swing.JTextField txtNomeCurso;
+    // End of variables declaration//GEN-END:variables
+
+    // Algumas funções
+
+    private void limparCampos(){
+        txtAreaCurso.setText("");
+        txtCodigoCurso.setText("");
+        txtNomeCurso.setText("");
+    }
+
+    private void carregarDadosCursoCSV(){
         String arquivo = "Arquivos/cursos.csv";
         String separador = ";";
         String linha = "";
@@ -289,25 +312,6 @@ public class cursosPanel extends javax.swing.JPanel {
         }catch(IOException e){
             JOptionPane.showMessageDialog(this, "Erro ao ler arquivo CSV: " + e.getMessage());
         }
-      txtAreaCurso.setText("");
-      txtCodigoCurso.setText("");
-      txtNomeCurso.setText("");
+        limparCampos();
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdicionarCur;
-    private javax.swing.JButton btnLimparCur;
-    private javax.swing.JButton btnRemoverCur;
-    private javax.swing.JButton btnSalvarCur;
-    private javax.swing.JPanel cursosPanel;
-    private javax.swing.JLabel jLabelCur1;
-    private javax.swing.JLabel jLabelCur2;
-    private javax.swing.JLabel jLabelCur3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblIcone;
-    private javax.swing.JTable tabelaCursos;
-    private javax.swing.JTextField txtAreaCurso;
-    private javax.swing.JTextField txtCodigoCurso;
-    private javax.swing.JTextField txtNomeCurso;
-    // End of variables declaration//GEN-END:variables
 }
