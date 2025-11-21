@@ -15,8 +15,6 @@ public class CursoController {
 
     public boolean adicionarCurso(Curso curso) throws Exception {
 
-
-
         if (!exists(curso.getNomeCurso())) {
             try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
                 String linha = curso.getCodigoCurso() + separador +
