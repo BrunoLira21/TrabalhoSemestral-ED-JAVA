@@ -1,14 +1,14 @@
 package controller;
 import entity.Disciplina;
-import br.edu.fateczl.fila.Fila;
 import javax.swing.*;
 import java.io.*;
 
 public class DisciplinaController {
-    public void adicionarDisciplina(Disciplina disciplina) throws Exception {
 
-        String caminho = "Arquivos/disciplinas.csv";
-        String separador = ";";
+    private final String caminho = "Arquivos/disciplinas.csv";
+    private final String separador = ";";
+
+    public void adicionarDisciplina(Disciplina disciplina) throws Exception {
 
         if (!exists(disciplina.getNomeDisciplina())) {
             try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
@@ -33,8 +33,13 @@ public class DisciplinaController {
 
     }
 
+    public void consultarDisciplina(Disciplina disciplina) throws Exception {
+
+    }
+
+
     private boolean exists(String nomeDisciplina) throws Exception {
-        BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas.csv"));
+        BufferedReader ler = new BufferedReader(new FileReader(caminho));
         String linha;
         while ((linha = ler.readLine()) != null) {
             String separador = ";";

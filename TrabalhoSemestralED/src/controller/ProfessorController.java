@@ -9,8 +9,9 @@ import entity.Professor;
 import javax.swing.*;
 
 public class ProfessorController {
-    private String separador = ";";
-    private String caminho = "Arquivos/professor.csv";
+
+    private final String separador = ";";
+    private final String caminho = "Arquivos/professor.csv";
 
     public void adicionarProfessor(Professor prof) throws Exception {
 

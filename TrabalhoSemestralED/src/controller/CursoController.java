@@ -9,10 +9,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class CursoController {
+
+    private final String caminho = "Arquivos/cursos.csv";
+    private final String separador = ";";
+
     public boolean adicionarCurso(Curso curso) throws Exception {
 
-        String caminho = "Arquivos/cursos.csv";
-        String separador = ";";
+
 
         if (!exists(curso.getNomeCurso())) {
             try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
@@ -32,8 +35,16 @@ public class CursoController {
         return false;
     }
 
+    public void removerCurso(Curso curso) throws Exception {
+
+    }
+
+    public void consultarCurso() {
+
+    }
+
     private boolean exists(String nomeCurso) throws Exception{
-        BufferedReader ler= new BufferedReader(new FileReader("Arquivos/cursos.csv"));
+        BufferedReader ler= new BufferedReader(new FileReader(caminho));
         String linha;
         while((linha = ler.readLine()) != null){
             String separador = ";";
