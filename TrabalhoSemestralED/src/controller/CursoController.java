@@ -10,6 +10,8 @@ import java.io.FileWriter;
 
 public class CursoController {
 
+    Curso curso = new Curso();
+
     private final String caminho = "Arquivos/cursos.csv";
     private final String separador = ";";
 
