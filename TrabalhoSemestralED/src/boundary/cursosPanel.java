@@ -22,6 +22,7 @@ public class cursosPanel extends javax.swing.JPanel {
     public cursosPanel(HomePage hp){
         this();
         this.homePage = hp;
+        carregarDadosCursoCSV();
     }
 
     @SuppressWarnings("unchecked")
