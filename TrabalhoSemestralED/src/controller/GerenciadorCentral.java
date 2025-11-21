@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 import java.io.IOException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 public class GerenciadorCentral {
     String separador = ";";
@@ -53,15 +54,23 @@ public class GerenciadorCentral {
     
     }
     
-    public boolean validarCadastro(String usuario, String senha1, String senha2){
-        TelaCadastro tc = new TelaCadastro();
-        if (!senha1.equals(senha2)){
+    public boolean validarCadastro(JFrame tp, String usuario, String senha1, String senha2){
+
+        if (usuario == null|| usuario.trim().isEmpty()||
+            senha1 == null|| senha1.trim().isEmpty()||
+            senha2 == null|| senha2.trim().isEmpty()){
+        JOptionPane.showMessageDialog(tp, "Usuario e/ou senha não podem estar vazios",
+                                        "Erro no Cadastro", JOptionPane.ERROR_MESSAGE);
         return false;
+        }
+        
+        if (!senha1.equals(senha2)){
+            JOptionPane.showMessageDialog(tp, "As senhas inseridas não são iguais", "Erro no Cadastro", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         
         adicionarUsuario(usuario, senha1);
         JOptionPane.showMessageDialog(null, "Usuário criado com sucesso", "Criação de Usuário", JOptionPane.INFORMATION_MESSAGE);
-        
         return true;
     }
     
