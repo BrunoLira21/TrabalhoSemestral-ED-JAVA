@@ -150,6 +150,12 @@ GerenciadorCentral gc = new GerenciadorCentral();
         lbprimeiroAcesso.setText("Primeiro Acesso?");
 
         lbCadastro.setText("Clique aqui!");
+        lbCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbCadastroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnDireitaLayout = new javax.swing.GroupLayout(pnDireita);
         pnDireita.setLayout(pnDireitaLayout);
@@ -230,10 +236,18 @@ GerenciadorCentral gc = new GerenciadorCentral();
         HomePage principal = new HomePage();
         principal.setVisible(true);
         this.dispose();
+        } else {
+        JOptionPane.showMessageDialog(this, "Usuario ou senha incorretos", "Dados Incorretos", JOptionPane.ERROR_MESSAGE);
+        txtUsuario.setText("");
+        pswSenha.setText("");
         }
         
         
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void lbCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCadastroMouseClicked
+        novoCadastro();
+    }//GEN-LAST:event_lbCadastroMouseClicked
 
     public void novoCadastro(){
     TelaCadastro tc = new TelaCadastro();

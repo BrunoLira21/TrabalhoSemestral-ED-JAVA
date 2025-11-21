@@ -21,6 +21,7 @@ GerenciadorCentral gc = new GerenciadorCentral();
 
         pnPrincipal = new javax.swing.JPanel();
         pnEsquerda = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         pnDireita = new javax.swing.JPanel();
         lbUsuario = new javax.swing.JLabel();
         pnPreenchimentoVertical = new javax.swing.JPanel();
@@ -43,15 +44,26 @@ GerenciadorCentral gc = new GerenciadorCentral();
 
         pnEsquerda.setBackground(new java.awt.Color(0, 102, 102));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Bem vindo!");
+
         javax.swing.GroupLayout pnEsquerdaLayout = new javax.swing.GroupLayout(pnEsquerda);
         pnEsquerda.setLayout(pnEsquerdaLayout);
         pnEsquerdaLayout.setHorizontalGroup(
             pnEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(pnEsquerdaLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         pnEsquerdaLayout.setVerticalGroup(
             pnEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(pnEsquerdaLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         pnPrincipal.add(pnEsquerda);
@@ -267,7 +279,7 @@ GerenciadorCentral gc = new GerenciadorCentral();
 
         getContentPane().add(pnPrincipal, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(414, 308));
+        setSize(new java.awt.Dimension(701, 423));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -280,13 +292,12 @@ GerenciadorCentral gc = new GerenciadorCentral();
         String usuario = txtUsuario.getText();
         String senha = new String(jPasswordField1.getPassword());
         String senha1 = new String(jPasswordField2.getPassword());
-        boolean dados = gc.validarCadastro(usuario, senha, senha1);
+        boolean dados = gc.validarCadastro(this, usuario, senha, senha1);
         if (dados){
             TelaLogin login = new TelaLogin();
             login.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos", "Login", JOptionPane.ERROR_MESSAGE);
             jPasswordField1.setText("");
             jPasswordField2.setText("");
             txtUsuario.setText("");
@@ -308,6 +319,7 @@ GerenciadorCentral gc = new GerenciadorCentral();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JLabel jLabel1;
     public javax.swing.JPasswordField jPasswordField1;
     public javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JLabel lbLogo;
