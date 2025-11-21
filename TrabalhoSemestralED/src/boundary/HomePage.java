@@ -1,5 +1,4 @@
 package boundary;
-
 import controller.CursoController;
 import entity.Curso;
 import java.io.BufferedReader;
@@ -10,9 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 
 public class HomePage extends javax.swing.JFrame {
@@ -39,53 +35,38 @@ public class HomePage extends javax.swing.JFrame {
                     cardLayout.show(jContentPane, "Consultas");
                 }
             }
-            
+
         };
-        
+
         cursosItem.addMouseListener(menuListener);
         professoresItem.addMouseListener(menuListener);
         disciplinasItem.addMouseListener(menuListener);
         inscricoesItem.addMouseListener(menuListener);
         consultasItem.addMouseListener(menuListener);
-        
+
         //Icones Logo
-        ImageIcon iconeHomePage;
-        String caminho = "src/uteis/logofatec.png";
-        iconeHomePage = new ImageIcon(caminho);
-        
-        try {
-        Image imagemOriginal = iconeHomePage.getImage();
-        Image imagemRedimensionada = imagemOriginal.getScaledInstance(123, 53, Image.SCALE_SMOOTH);
-        
+        ImageIcon iconeHomePage = new ImageIcon("src/uteis/logofatec.png");
+        Image imagemRedimensionada = iconeHomePage.getImage().getScaledInstance(123, 53, Image.SCALE_SMOOTH);
         ImageIcon logoRedimensionado = new ImageIcon(imagemRedimensionada);
-        lblIcone.setIcon(logoRedimensionado);
-        lblIcone1.setIcon(logoRedimensionado);
-        lblIcone2.setIcon(logoRedimensionado);
-        lbIcone3.setIcon(logoRedimensionado);
-        } catch (Exception e) {
-        e.printStackTrace();
-        System.err.println("Erro ao redimensionar o logo dinamicamente.");
-        }
-        
+
+        lblIcone.setIcon(logoRedimensionado);    // Cursos
+        lblIcone1.setIcon(logoRedimensionado);   // Disciplinas
+        lblIcone2.setIcon(logoRedimensionado);   // Professores
+
+
+
         //Icones Botões
-        ImageIcon iconeButton;
-        String caminhoBtnIcon = "src/uteis/login.png";
-        iconeButton = new ImageIcon(caminhoBtnIcon);
-        try {
-        Image imagemOriginal = iconeButton.getImage();
-        Image imagemRedimensionada = imagemOriginal.getScaledInstance(80, 30, Image.SCALE_SMOOTH);
-        
-        ImageIcon logoRedimensionado = new ImageIcon(imagemRedimensionada);
-        btnCursos.setIcon(logoRedimensionado);
-        btnDisciplinas.setIcon(logoRedimensionado);
-        btnProfessores.setIcon(logoRedimensionado);
-        btnInscricoes.setIcon(logoRedimensionado);
-        } catch (Exception e) {
-        e.printStackTrace();
-        System.err.println("Erro ao redimensionar o logo dinamicamente.");
-        }
+        ImageIcon iconeButton = new ImageIcon("src/uteis/login.png");
+        Image imagemIconRedimensionada = iconeButton.getImage().getScaledInstance(80, 30, Image.SCALE_SMOOTH);
+        ImageIcon iconeRedimensionado = new ImageIcon(imagemIconRedimensionada);
+
+        btnCursos.setIcon(iconeRedimensionado);
+        btnDisciplinas.setIcon(iconeRedimensionado);
+        btnProfessores.setIcon(iconeRedimensionado);
+        btnInscricoes.setIcon(iconeRedimensionado);
 
         carregarDadosCursoCSV();
+
     }
 
 
@@ -887,7 +868,11 @@ public class HomePage extends javax.swing.JFrame {
         btnAdicionarCur.setText("Adicionar");
         btnAdicionarCur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarCurActionPerformed(evt);
+                try {
+                    btnAdicionarCurActionPerformed(evt);
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -1006,23 +991,27 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparCurActionPerformed
 
     private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) throws Exception {//GEN-FIRST:event_btnAdicionarCurActionPerformed
-        // TODO add your handling code here:
+        try {
+            Curso curso = new Curso();
 
-        Curso curso = new Curso();
+            curso.setCodigoCurso(Integer.parseInt(txtCodigoCurso.getText()));
+            curso.setNomeCurso(txtNomeCurso.getText());
+            curso.setArea(txtAreaCurso.getText());
 
-        curso.setCodigoCurso(Integer.parseInt(txtCodigoCurso.getText()));
-        curso.setNomeCurso(txtNomeCurso.getText());
-        curso.setArea(txtAreaCurso.getText());
+            CursoController cc = new CursoController();
 
-        CursoController cc = new CursoController();
+            boolean sucesso = cc.adicionarCurso(curso);
 
-        boolean sucesso = cc.adicionarCurso(curso);
-
-        if(sucesso){
-            javax.swing.JOptionPane.showMessageDialog(this, "Curso salvo com sucesso!");
-            btnLimparCurActionPerformed(evt);
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(this, "Curso já existe.");
+            if (sucesso) {
+                JOptionPane.showMessageDialog(this, "Curso salvo com sucesso!");
+                curso.limparCamposCurso();
+                carregarDadosCursoCSV(); // atualiza a tabela
+            } else {
+                JOptionPane.showMessageDialog(this, "Curso já existe ou erro ao salvar.");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar curso: " + ex.getMessage());
+            ex.printStackTrace();
         }
 
     }//GEN-LAST:event_btnAdicionarCurActionPerformed

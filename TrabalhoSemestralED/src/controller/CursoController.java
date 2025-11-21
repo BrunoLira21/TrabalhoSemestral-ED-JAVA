@@ -1,7 +1,5 @@
 package controller;
-
 import entity.Curso;
-
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class CursoController {
+    Curso curso = new Curso();
     public boolean adicionarCurso(Curso curso) throws Exception {
 
         String caminho = "Arquivos/cursos.csv";

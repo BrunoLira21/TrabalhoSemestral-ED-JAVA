@@ -4,49 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="737fd31d-cc42-42dd-afb5-8066e804c846" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/boundary/TelaLogin.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/boundary/TelaLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/Arquivos/cursos.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/Arquivos/cursos.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/Arquivos/disciplinas.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/Arquivos/disciplinas.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/Arquivos/inscricoes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/Arquivos/inscricoes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/Arquivos/professor.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/Arquivos/professor.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/Arquivos/usuarios.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/Arquivos/usuarios.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/lib/ComponentesUIUteis.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/lib/ComponentesUIUteis.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/lib/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/lib/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/lib/FilaGeneric.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/lib/FilaGeneric.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/lib/LibListaGeneric.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/lib/LibListaGeneric.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/lib/LibPilhaInt.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/lib/LibPilhaInt.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/lib/PilhaGeneric.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/lib/PilhaGeneric.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/lib/flatlaf-3.5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/lib/flatlaf-3.5.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/lib/nblibraries.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/lib/nblibraries.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/manifest.mf" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/manifest.mf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/nbproject/build-impl.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/nbproject/genfiles.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/nbproject/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/nbproject/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/TrabalhoSemestalED.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/TrabalhoSemestalED.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/boundary/HomePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/boundary/HomePage.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/boundary/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/boundary/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/boundary/Paineis.form" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/boundary/TelaCadastro.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/boundary/Paineis.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/boundary/TelaCadastro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/controller/CursoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/controller/CursoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/controller/DisciplinaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/controller/DisciplinaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/controller/GerenciadorCentral.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/controller/GerenciadorCentral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/controller/InscricoesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/controller/InscricoesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/controller/ProfessorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/controller/ProfessorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/entity/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/entity/Curso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/entity/Disciplina.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/entity/Disciplina.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/entity/Inscrições.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/entity/Inscrições.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/entity/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/entity/Professor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/uteis/GradientPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/uteis/GradientPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/uteis/RoundedPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/uteis/RoundedPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/uteis/centropaulasouza.png" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/uteis/centropaulasouza.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/uteis/fatec.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/uteis/fatec.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrabalhoSemestalED/src/uteis/logofatec.png" beforeDir="false" afterPath="$PROJECT_DIR$/TrabalhoSemestralED/src/uteis/logofatec.png" afterDir="false" />
-    </list>
+    <list default="true" id="737fd31d-cc42-42dd-afb5-8066e804c846" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,16 +29,28 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Família Lira/Downloads/Fatec/3 Semestre/ED/TrabalhoSemestral-ED-JAVA",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "two.files.diff.last.used.folder": "C:/Users/Família Lira/Downloads/Fatec/3 Semestre/ED/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="TrabalhoSemestral-ED-JAVA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="TrabalhoSemestral-ED-JAVA" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="737fd31d-cc42-42dd-afb5-8066e804c846" name="Changes" comment="" />

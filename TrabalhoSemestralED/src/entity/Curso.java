@@ -24,7 +24,11 @@ public class Curso {
                 ", area='" + area + '\'' +
                 '}';
     }
-
+    public void limparCamposCurso(){
+        this.setArea("");
+        this.setCodigoCurso(0);
+        this.setNomeCurso("");
+    }
     public int getCodigoCurso() {
         return codigoCurso;
     }

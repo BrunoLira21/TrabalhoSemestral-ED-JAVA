@@ -10,5 +10,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="flatlaf-3.5" level="project" />
+    <orderEntry type="library" name="FilaGeneric" level="project" />
   </component>
 </module>
