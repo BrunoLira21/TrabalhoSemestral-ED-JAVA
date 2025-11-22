@@ -5,6 +5,7 @@ import controller.CursoController;
 import entity.Curso;
 import java.awt.Image;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.ImageIcon;
@@ -29,6 +30,7 @@ public class cursosPanel extends javax.swing.JPanel {
         this();
         this.homePage = hp;
         carregarDadosCursoCSV();
+        gerarProximoID();
     }
 
     @SuppressWarnings("unchecked")
@@ -74,6 +76,7 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
+        txtCodigoCurso.setEditable(false);
         txtCodigoCurso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtCodigoCurso.setCaretColor(new java.awt.Color(255, 255, 255));
         txtCodigoCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -298,6 +301,7 @@ public class cursosPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Curso salvo com sucesso!");
                 curso.limparCamposCurso();
                 carregarDadosCursoCSV(); // atualiza a tabela
+                gerarProximoID();
             } else {
                 JOptionPane.showMessageDialog(this, "Curso já existe ou erro ao salvar.");
             }
@@ -326,10 +330,36 @@ public class cursosPanel extends javax.swing.JPanel {
 
     // Algumas funções
 
+    private void gerarProximoID(){
+        int maiorId=0;
+
+        try(BufferedReader ler = new BufferedReader(new FileReader("Arquivos/cursos.csv"))){
+            String linha;
+            while((linha = ler.readLine()) != null){
+                String dados[] = linha.split(";");
+                if(dados.length > 0){
+                    try{
+                        int idAtual = Integer.parseInt(dados[0].trim());
+                        if(idAtual > maiorId){
+                            maiorId = idAtual;
+                        }
+                    }catch (Exception e){
+                        throw new RuntimeException(e); // nunca vai acontecer, mas tem q tratar
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        txtCodigoCurso.setText(Integer.toString(maiorId + 1));
+    }
+
     private void limparCampos(){
         txtAreaCurso.setText("");
-        txtCodigoCurso.setText("");
         txtNomeCurso.setText("");
+        gerarProximoID();
     }
 
     private void carregarDadosCursoCSV(){
