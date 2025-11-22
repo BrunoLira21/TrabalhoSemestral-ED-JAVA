@@ -68,9 +68,9 @@ public class disciplinasPanel extends javax.swing.JPanel {
         txtCodigoProcesso = new javax.swing.JTextField();
         btnRemoverDis = new javax.swing.JButton();
         btnAdicionarDis = new javax.swing.JButton();
+        btnVoltarDis = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaDisiciplinas = new javax.swing.JTable();
-        btnVoltarDis = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1000, 600));
 
@@ -78,7 +78,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
         disciplinasPanel.setForeground(new java.awt.Color(255, 255, 255));
         disciplinasPanel.setToolTipText("");
         disciplinasPanel.setFont(new java.awt.Font("Vivaldi", 1, 36)); // NOI18N
-        disciplinasPanel.setName("SIM"); // NOI18N
+        disciplinasPanel.setName("Disciplinas"); // NOI18N
 
         jLabelDis1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelDis1.setText("Código da Disciplina");
@@ -165,6 +165,15 @@ public class disciplinasPanel extends javax.swing.JPanel {
             }
         });
 
+        btnVoltarDis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVoltarDis.setForeground(new java.awt.Color(0, 51, 255));
+        btnVoltarDis.setText("Voltar");
+        btnVoltarDis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarDisActionPerformed(evt);
+            }
+        });
+
         tabelaDisiciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -199,15 +208,6 @@ public class disciplinasPanel extends javax.swing.JPanel {
             tabelaDisiciplinas.getColumnModel().getColumn(5).setResizable(false);
             tabelaDisiciplinas.getColumnModel().getColumn(6).setResizable(false);
         }
-
-        btnVoltarDis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnVoltarDis.setForeground(new java.awt.Color(0, 51, 255));
-        btnVoltarDis.setText("Voltar");
-        btnVoltarDis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarDisActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout disciplinasPanelLayout = new javax.swing.GroupLayout(disciplinasPanel);
         disciplinasPanel.setLayout(disciplinasPanelLayout);
@@ -326,6 +326,8 @@ public class disciplinasPanel extends javax.swing.JPanel {
                     .addComponent(disciplinasPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        disciplinasPanel.getAccessibleContext().setAccessibleName("Disciplinas");
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCodigoDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoDisciplinaActionPerformed

@@ -35,9 +35,9 @@ public class consultasPanel extends javax.swing.JPanel {
                 } else if(source == btnInscricao){
                     homePage.mostrarPainel("Inscrições");
                 }else if(source == btnListaInscritos){
-                    homePage.mostrarPainel("Inscrições");
+                    homePage.mostrarPainel("listaInscritos");
                 }else if(source == btnConsultaGeral){
-                    homePage.mostrarPainel("Inscrições");
+                    homePage.mostrarPainel("ConsultaGeral");
                 } 
             }
 

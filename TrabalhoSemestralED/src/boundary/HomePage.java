@@ -29,6 +29,8 @@ public class HomePage extends javax.swing.JFrame {
         jContentPane.add(new inscricoesPanel(this), "Inscrições");        
         jContentPane.add(new professoresPanel(this), "Professores"); 
         jContentPane.add(new cursosPanel(this), "Cursos");
+        jContentPane.add(new consultaGeralPanel(this), "ConsultaGeral");
+        jContentPane.add(new listaInscritosPanel(this), "listaInscritos");
     }     
     
     public void mostrarPainel(String nome){
