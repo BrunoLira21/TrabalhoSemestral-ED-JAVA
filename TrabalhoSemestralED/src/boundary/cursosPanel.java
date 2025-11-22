@@ -28,6 +28,7 @@ public class cursosPanel extends javax.swing.JPanel {
     public cursosPanel(HomePage hp){
         this();
         this.homePage = hp;
+        carregarDadosCursoCSV();
     }
 
     @SuppressWarnings("unchecked")
@@ -240,6 +241,40 @@ public class cursosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCodigoCursoActionPerformed
 
     private void btnRemoverCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverCurActionPerformed
+
+// Verificar se o mano realmente clicou em alguma linha...
+        int linhaSelecionada = tabelaCursos.getSelectedRow();
+        if (linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um curso na tabela para remover.");
+            return;
+        }
+// Pega o curso
+        Curso curso = new Curso();
+                curso.setCodigoCurso((int) tabelaCursos.getValueAt(linhaSelecionada,0));
+                curso.setNomeCurso((String) tabelaCursos.getValueAt(linhaSelecionada, 1));
+                curso.setArea((String) tabelaCursos.getValueAt(linhaSelecionada, 2));
+// Confirmação
+        int confirma = JOptionPane.showConfirmDialog(this,
+                "Tem certeza que deseja remover o curso '"+ curso.getNomeCurso() +"'?",
+                "Confirmar Remoção",
+                JOptionPane.YES_NO_OPTION);
+        if(confirma == JOptionPane.YES_OPTION){
+            try{
+                CursoController cc = new CursoController();
+                boolean sucesso = cc.removerCurso(curso);
+
+                if(sucesso){
+                    JOptionPane.showMessageDialog(this, "Curso removido com sucesso!");
+                    carregarDadosCursoCSV();
+                    limparCampos();
+                }else{
+                    JOptionPane.showMessageDialog(this, "Erro ao remover o curso. Tente novamente.");
+                }
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(this, "Erro técnico: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
 
     }//GEN-LAST:event_btnRemoverCurActionPerformed
 
