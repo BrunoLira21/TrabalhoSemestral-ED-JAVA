@@ -45,7 +45,7 @@ public class HomePage extends javax.swing.JFrame {
         }
     } else if ("Inscrições".equals(nome)) {
         try {
-            painelInscricoes.atualizarComboBoxCursos();
+            painelInscricoes.atualizarComboBoxDisciplinas();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar cursos: " + ex.getMessage());
         }

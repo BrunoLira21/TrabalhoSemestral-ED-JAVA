@@ -42,7 +42,7 @@ public class inscricoesPanel extends javax.swing.JPanel {
     
     }
     
-    public void atualizarComboBoxCursos() throws Exception {
+    public void atualizarComboBoxDisciplinas() throws Exception {
         PreencherComboBoxDisciplina();
     }
     @SuppressWarnings("unchecked")
