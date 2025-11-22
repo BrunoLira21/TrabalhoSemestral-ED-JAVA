@@ -48,9 +48,8 @@ public class DisciplinaController {
 
     }
 
-    public void consultarDisciplina() throws Exception {
+    public void carregarHash() throws Exception {
         try (BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas.csv"))) {
-            //int tamanho = archiveSize();
             String linha;
             while ((linha = ler.readLine()) != null) {
                 String[] colunas =  linha.split(separador);
