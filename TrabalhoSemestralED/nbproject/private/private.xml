@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rafin/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/professoresPanel.java</file>
-            <file>file:/C:/Users/rafin/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/disciplinasPanel.java</file>
-            <file>file:/C:/Users/rafin/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/HomePage.java</file>
-            <file>file:/C:/Users/rafin/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/TelaCadastro.java</file>
-            <file>file:/C:/Users/rafin/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/cursosPanel.java</file>
-            <file>file:/C:/Users/rafin/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/consultasPanel.java</file>
-            <file>file:/C:/Users/rafin/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/TelaLogin.java</file>
-            <file>file:/C:/Users/rafin/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/inscricoesPanel.java</file>
+            <file>file:/C:/Users/Família%20Lira/Downloads/Fatec/3%20Semestre/ED/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/entity/Curso.java</file>
+            <file>file:/C:/Users/Família%20Lira/Downloads/Fatec/3%20Semestre/ED/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/entity/Disciplina.java</file>
+            <file>file:/C:/Users/Família%20Lira/Downloads/Fatec/3%20Semestre/ED/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/entity/Professor.java</file>
+            <file>file:/C:/Users/Família%20Lira/Downloads/Fatec/3%20Semestre/ED/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/entity/Inscrições.java</file>
+            <file>file:/C:/Users/Família%20Lira/Downloads/Fatec/3%20Semestre/ED/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/boundary/TelaCadastro.java</file>
+            <file>file:/C:/Users/Família%20Lira/Downloads/Fatec/3%20Semestre/ED/TrabalhoSemestral-ED-JAVA/TrabalhoSemestralED/src/controller/GerenciadorCentral.java</file>
         </group>
     </open-files>
 </project-private>
