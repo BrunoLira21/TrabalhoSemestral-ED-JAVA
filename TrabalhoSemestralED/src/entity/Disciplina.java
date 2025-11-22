@@ -84,12 +84,13 @@ public class Disciplina {
         this.codigoCurso = codigoCurso;
     }
 
-    public Disciplina(int codigoDisciplina, String nomeDisciplina, String diaSemana, String horarioInicial, int quantidadeHoras, int codigoCurso, int codigoProcesso) {
+    public Disciplina(int codigoDisciplina, String nomeDisciplina, String diaSemana, String horarioInicial, int quantidadeHoras, int codigoCurso, boolean status) {
         this.codigoDisciplina = codigoDisciplina;
         this.nomeDisciplina = nomeDisciplina;
         this.diaSemana = diaSemana;
         this.horarioInicial = horarioInicial;
         this.quantidadeHoras = quantidadeHoras;
         this.codigoCurso = codigoCurso;
+        this.status = status;
     }
 }
