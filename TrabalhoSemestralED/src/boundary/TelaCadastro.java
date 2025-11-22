@@ -167,22 +167,12 @@ GerenciadorCentral gc = new GerenciadorCentral();
         );
 
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
 
         lbSenha1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbSenha1.setText("Senha");
         lbSenha1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         jPasswordField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnDireitaLayout = new javax.swing.GroupLayout(pnDireita);
         pnDireita.setLayout(pnDireitaLayout);
@@ -261,10 +251,6 @@ GerenciadorCentral gc = new GerenciadorCentral();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
-
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         
         String usuario = txtUsuario.getText();
@@ -282,18 +268,6 @@ GerenciadorCentral gc = new GerenciadorCentral();
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
-
-    public static void main(String args[]) {
-        FlatLightLaf.setup();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastro().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
