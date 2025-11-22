@@ -123,6 +123,10 @@ public class DisciplinaController {
         return posicao;
     }
 
+    public void atualizarDisciplina(Disciplina disciplina) throws Exception {
+        
+    }
+
 
     private boolean exists(String nomeDisciplina) throws Exception {
         BufferedReader ler = new BufferedReader(new FileReader(caminho));
