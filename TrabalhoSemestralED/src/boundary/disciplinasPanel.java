@@ -51,6 +51,8 @@ public class disciplinasPanel extends javax.swing.JPanel {
         tabelaDisiciplinas = new javax.swing.JTable();
         btnVoltarDis = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1000, 600));
+
         disciplinasPanel.setBackground(new java.awt.Color(255, 255, 255));
         disciplinasPanel.setForeground(new java.awt.Color(255, 255, 255));
         disciplinasPanel.setToolTipText("");
@@ -147,11 +149,11 @@ public class disciplinasPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cód. da Disciplina", "Nome da Disciplina", "Cód. do Curso", "Dia da Semana", "Hora Inicial", "Qtd. de Horas", "Cód. do Processo"
+                "Cód. da Disciplina", "Nome da Disciplina", "Dia da Semana", "Hora Inicial", "Qtd. de Horas", "Cód. do Curso", "Cód. do Processo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -296,7 +298,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 937, Short.MAX_VALUE)
+            .addGap(0, 787, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
