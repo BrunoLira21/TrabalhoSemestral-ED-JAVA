@@ -78,6 +78,8 @@ GerenciadorCentral gc = new GerenciadorCentral();
 
         pnDireita.setBackground(new java.awt.Color(255, 255, 255));
 
+        lbUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbUsuario.setForeground(new java.awt.Color(0, 128, 96));
         lbUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbUsuario.setText("Usuario");
         lbUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -94,14 +96,18 @@ GerenciadorCentral gc = new GerenciadorCentral();
         );
 
         txtUsuario.setColumns(20);
+        txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setMinimumSize(new java.awt.Dimension(100, 22));
 
+        lbSenha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbSenha.setForeground(new java.awt.Color(0, 128, 96));
         lbSenha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbSenha.setText("Confirmar Senha");
 
         lbLogo.setBackground(new java.awt.Color(255, 255, 255));
-        lbLogo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbLogo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbLogo.setForeground(new java.awt.Color(0, 128, 96));
         lbLogo.setText("Cadastro de Usuário");
 
         javax.swing.GroupLayout pnPreenchimentoSuperiorLayout = new javax.swing.GroupLayout(pnPreenchimentoSuperior);
@@ -115,6 +121,8 @@ GerenciadorCentral gc = new GerenciadorCentral();
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        btnCadastrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(0, 128, 96));
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,12 +174,16 @@ GerenciadorCentral gc = new GerenciadorCentral();
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        lbSenha1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbSenha1.setForeground(new java.awt.Color(0, 128, 96));
         lbSenha1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbSenha1.setText("Senha");
         lbSenha1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPasswordField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout pnDireitaLayout = new javax.swing.GroupLayout(pnDireita);
@@ -180,6 +192,16 @@ GerenciadorCentral gc = new GerenciadorCentral();
             pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnDireitaLayout.createSequentialGroup()
                 .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnDireitaLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbSenha1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbUsuario, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(51, 51, 51)
+                        .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1))
                     .addComponent(pnPreenchimentoSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnPreenchimentoVertical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnPreenchimentoVertical1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,29 +209,20 @@ GerenciadorCentral gc = new GerenciadorCentral();
                     .addComponent(pnPreenchimentoVertical2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnPreenchimentoHorizontalInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnDireitaLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbUsuario)
-                            .addComponent(lbSenha1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnDireitaLayout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(lbLogo))
                     .addGroup(pnDireitaLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(lbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(97, 97, 97))
+                .addGap(96, 96, 96))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
             .addGroup(pnDireitaLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(97, 97, 97)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -237,9 +250,9 @@ GerenciadorCentral gc = new GerenciadorCentral();
                     .addComponent(lbSenha1))
                 .addGap(19, 19, 19)
                 .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbSenha)
+                    .addComponent(lbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(42, 42, 42)
                 .addComponent(btnCadastrar)
                 .addContainerGap())
         );

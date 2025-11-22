@@ -81,24 +81,31 @@ public class disciplinasPanel extends javax.swing.JPanel {
         disciplinasPanel.setName("Disciplinas"); // NOI18N
 
         jLabelDis1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelDis1.setForeground(new java.awt.Color(0, 128, 96));
         jLabelDis1.setText("Código da Disciplina");
 
         jLabelDis2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelDis2.setForeground(new java.awt.Color(0, 128, 96));
         jLabelDis2.setText("Nome da Disciplina");
 
         jLabelDis3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelDis3.setForeground(new java.awt.Color(0, 128, 96));
         jLabelDis3.setText("Código do Curso");
 
         jLabelDis5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelDis5.setForeground(new java.awt.Color(0, 128, 96));
         jLabelDis5.setText("Dia da Semana");
 
         jLabelDis6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelDis6.setForeground(new java.awt.Color(0, 128, 96));
         jLabelDis6.setText("Hora Inicial");
 
         jLabelDis7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelDis7.setForeground(new java.awt.Color(0, 128, 96));
         jLabelDis7.setText("Horas Diárias");
 
         jLabelDis8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelDis8.setForeground(new java.awt.Color(0, 128, 96));
         jLabelDis8.setText("Código do Processo");
 
         txtCodigoDisciplina.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -116,6 +123,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
             }
         });
 
+        cbxCodigoCurso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbxCodigoCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxCodigoCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,24 +131,28 @@ public class disciplinasPanel extends javax.swing.JPanel {
             }
         });
 
+        txtDiaSemana.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDiaSemana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDiaSemanaActionPerformed(evt);
             }
         });
 
+        txtHoraInicial.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtHoraInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraInicialActionPerformed(evt);
             }
         });
 
+        txtHorasDiarias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtHorasDiarias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHorasDiariasActionPerformed(evt);
             }
         });
 
+        txtCodigoProcesso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtCodigoProcesso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoProcessoActionPerformed(evt);
@@ -174,6 +186,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
             }
         });
 
+        tabelaDisiciplinas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tabelaDisiciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

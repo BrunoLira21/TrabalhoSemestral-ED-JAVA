@@ -142,10 +142,25 @@ GerenciadorCentral gc = new GerenciadorCentral();
         pnDireita.setBackground(new java.awt.Color(255, 255, 255));
         pnDireita.setPreferredSize(new java.awt.Dimension(200, 300));
 
+        lbUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbUsuario.setForeground(new java.awt.Color(0, 128, 96));
         lbUsuario.setText("Usuário");
 
+        lbSenha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbSenha.setForeground(new java.awt.Color(0, 128, 96));
         lbSenha.setText("Senha");
 
+        txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        pswSenha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        pswSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pswSenhaActionPerformed(evt);
+            }
+        });
+
+        btnLogin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(0, 128, 96));
         btnLogin.setText("Login");
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -153,8 +168,12 @@ GerenciadorCentral gc = new GerenciadorCentral();
             }
         });
 
+        lbprimeiroAcesso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbprimeiroAcesso.setForeground(new java.awt.Color(0, 128, 96));
         lbprimeiroAcesso.setText("Primeiro Acesso?");
 
+        lbCadastro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbCadastro.setForeground(new java.awt.Color(0, 128, 96));
         lbCadastro.setText("Clique aqui!");
         lbCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,29 +186,32 @@ GerenciadorCentral gc = new GerenciadorCentral();
         pnDireita.setLayout(pnDireitaLayout);
         pnDireitaLayout.setHorizontalGroup(
             pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnLogin)
-                .addGap(125, 125, 125))
             .addGroup(pnDireitaLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnDireitaLayout.createSequentialGroup()
-                            .addComponent(lbprimeiroAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(lbCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
-                                .addComponent(lbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pswSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
-                                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnDireitaLayout.createSequentialGroup()
+                        .addComponent(lbprimeiroAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
+                            .addComponent(lbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pswSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
+                            .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
+                        .addComponent(btnLogin)
+                        .addGap(119, 119, 119))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
+                        .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71))))
         );
         pnDireitaLayout.setVerticalGroup(
             pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +232,7 @@ GerenciadorCentral gc = new GerenciadorCentral();
                 .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbprimeiroAcesso)
                     .addComponent(lbCadastro))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -259,6 +281,10 @@ GerenciadorCentral gc = new GerenciadorCentral();
     private void lbCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCadastroMouseClicked
         novoCadastro();
     }//GEN-LAST:event_lbCadastroMouseClicked
+
+    private void pswSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pswSenhaActionPerformed
 
     public void novoCadastro(){
     TelaCadastro tc = new TelaCadastro();

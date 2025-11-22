@@ -47,14 +47,18 @@ public class inscricoesPanel extends javax.swing.JPanel {
         inscricoesPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jLabelIns1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelIns1.setForeground(new java.awt.Color(0, 128, 96));
         jLabelIns1.setText("CPF do Professor");
 
         jLabelIns2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelIns2.setForeground(new java.awt.Color(0, 128, 96));
         jLabelIns2.setText("Código da Disciplina");
 
         jLabelIns3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelIns3.setForeground(new java.awt.Color(0, 128, 96));
         jLabelIns3.setText("Código do Processo");
 
+        cbxDisciplinaIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbxDisciplinaIns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtCodProcessoIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
