@@ -3,9 +3,11 @@ package boundary;
 
 import controller.CursoController;
 import entity.Curso;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,13 +17,19 @@ public class cursosPanel extends javax.swing.JPanel {
 
     public cursosPanel() {
         initComponents();
+        
+        String caminho  = "src/uteis/logofatec.png";
+        ImageIcon logofatec = new ImageIcon(caminho);
+        Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
+        ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
+        lbLogoFatec.setIcon(logofatecRedimensionado);
     }
     
     public cursosPanel(HomePage hp){
         this();
         this.homePage = hp;
+        carregarDadosCursoCSV();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,16 +39,15 @@ public class cursosPanel extends javax.swing.JPanel {
         jLabelCur1 = new javax.swing.JLabel();
         jLabelCur2 = new javax.swing.JLabel();
         jLabelCur3 = new javax.swing.JLabel();
-        lblIcone = new javax.swing.JLabel();
         txtAreaCurso = new javax.swing.JTextField();
         txtNomeCurso = new javax.swing.JTextField();
         txtCodigoCurso = new javax.swing.JTextField();
-        btnSalvarCur = new javax.swing.JButton();
         btnRemoverCur = new javax.swing.JButton();
-        btnLimparCur = new javax.swing.JButton();
+        btnVoltarCur = new javax.swing.JButton();
         btnAdicionarCur = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaCursos = new javax.swing.JTable();
+        lbLogoFatec = new javax.swing.JLabel();
 
         cursosPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -75,10 +82,6 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSalvarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnSalvarCur.setForeground(new java.awt.Color(51, 102, 0));
-        btnSalvarCur.setText("Salvar");
-
         btnRemoverCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnRemoverCur.setForeground(new java.awt.Color(255, 51, 51));
         btnRemoverCur.setText("Remover");
@@ -88,17 +91,17 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
-        btnLimparCur.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnLimparCur.setForeground(new java.awt.Color(255, 102, 102));
-        btnLimparCur.setText("Limpar Campos");
-        btnLimparCur.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVoltarCur.setForeground(new java.awt.Color(0, 51, 255));
+        btnVoltarCur.setText("Voltar");
+        btnVoltarCur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparCurActionPerformed(evt);
+                btnVoltarCurActionPerformed(evt);
             }
         });
 
-        btnAdicionarCur.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnAdicionarCur.setForeground(new java.awt.Color(0, 51, 255));
+        btnAdicionarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAdicionarCur.setForeground(new java.awt.Color(0, 153, 0));
         btnAdicionarCur.setText("Adicionar");
         btnAdicionarCur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +134,11 @@ public class cursosPanel extends javax.swing.JPanel {
         });
         tabelaCursos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelaCursos);
+        if (tabelaCursos.getColumnModel().getColumnCount() > 0) {
+            tabelaCursos.getColumnModel().getColumn(0).setResizable(false);
+            tabelaCursos.getColumnModel().getColumn(1).setResizable(false);
+            tabelaCursos.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         javax.swing.GroupLayout cursosPanelLayout = new javax.swing.GroupLayout(cursosPanel);
         cursosPanel.setLayout(cursosPanelLayout);
@@ -138,58 +146,63 @@ public class cursosPanel extends javax.swing.JPanel {
             cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cursosPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cursosPanelLayout.createSequentialGroup()
+                        .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+                            .addGroup(cursosPanelLayout.createSequentialGroup()
+                                .addComponent(btnAdicionarCur)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRemoverCur)
+                                .addGap(68, 68, 68)
+                                .addComponent(btnVoltarCur)))
+                        .addGap(56, 56, 56))
                     .addGroup(cursosPanelLayout.createSequentialGroup()
                         .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelCur3)
                             .addComponent(txtCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53)
+                        .addGap(43, 43, 43)
                         .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCur2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAreaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCur1))
-                        .addGap(46, 46, 46)
-                        .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cursosPanelLayout.createSequentialGroup()
-                        .addComponent(btnSalvarCur)
-                        .addGap(96, 96, 96)
-                        .addComponent(btnAdicionarCur)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
-                        .addComponent(btnRemoverCur)
-                        .addGap(60, 60, 60)
-                        .addComponent(btnLimparCur)))
-                .addGap(56, 56, 56))
+                        .addGap(27, 27, 27)
+                        .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))))
         );
         cursosPanelLayout.setVerticalGroup(
             cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cursosPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cursosPanelLayout.createSequentialGroup()
-                        .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCur3)
-                            .addComponent(jLabelCur2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(cursosPanelLayout.createSequentialGroup()
-                        .addComponent(jLabelCur1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAreaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(19, 19, 19)
+                        .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cursosPanelLayout.createSequentialGroup()
+                                .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelCur3)
+                                    .addComponent(jLabelCur2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(cursosPanelLayout.createSequentialGroup()
+                                .addComponent(jLabelCur1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtAreaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cursosPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarCur)
                     .addComponent(btnAdicionarCur)
                     .addComponent(btnRemoverCur)
-                    .addComponent(btnLimparCur))
+                    .addComponent(btnVoltarCur))
                 .addGap(389, 389, 389))
         );
 
@@ -216,24 +229,58 @@ public class cursosPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAreaCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAreaCursoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtAreaCursoActionPerformed
 
     private void txtNomeCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCursoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtNomeCursoActionPerformed
 
     private void txtCodigoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoCursoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtCodigoCursoActionPerformed
 
     private void btnRemoverCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverCurActionPerformed
-        // TODO add your handling code here:
+
+// Verificar se o mano realmente clicou em alguma linha...
+        int linhaSelecionada = tabelaCursos.getSelectedRow();
+        if (linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um curso na tabela para remover.");
+            return;
+        }
+// Pega o curso
+        Curso curso = new Curso();
+                curso.setCodigoCurso((int) tabelaCursos.getValueAt(linhaSelecionada,0));
+                curso.setNomeCurso((String) tabelaCursos.getValueAt(linhaSelecionada, 1));
+                curso.setArea((String) tabelaCursos.getValueAt(linhaSelecionada, 2));
+// Confirmação
+        int confirma = JOptionPane.showConfirmDialog(this,
+                "Tem certeza que deseja remover o curso '"+ curso.getNomeCurso() +"'?",
+                "Confirmar Remoção",
+                JOptionPane.YES_NO_OPTION);
+        if(confirma == JOptionPane.YES_OPTION){
+            try{
+                CursoController cc = new CursoController();
+                boolean sucesso = cc.removerCurso(curso);
+
+                if(sucesso){
+                    JOptionPane.showMessageDialog(this, "Curso removido com sucesso!");
+                    carregarDadosCursoCSV();
+                    limparCampos();
+                }else{
+                    JOptionPane.showMessageDialog(this, "Erro ao remover o curso. Tente novamente.");
+                }
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(this, "Erro técnico: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+
     }//GEN-LAST:event_btnRemoverCurActionPerformed
 
-    private void btnLimparCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCurActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLimparCurActionPerformed
+    private void btnVoltarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCurActionPerformed
+        homePage.mostrarPainel("Consultas");
+    }//GEN-LAST:event_btnVoltarCurActionPerformed
 
     private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCurActionPerformed
         try {
@@ -258,9 +305,34 @@ public class cursosPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Erro ao adicionar curso: " + ex.getMessage());
             ex.printStackTrace();
         }
+        limparCampos();
     }//GEN-LAST:event_btnAdicionarCurActionPerformed
 
-      private void carregarDadosCursoCSV(){
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionarCur;
+    private javax.swing.JButton btnRemoverCur;
+    private javax.swing.JButton btnVoltarCur;
+    private javax.swing.JPanel cursosPanel;
+    private javax.swing.JLabel jLabelCur1;
+    private javax.swing.JLabel jLabelCur2;
+    private javax.swing.JLabel jLabelCur3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbLogoFatec;
+    private javax.swing.JTable tabelaCursos;
+    private javax.swing.JTextField txtAreaCurso;
+    private javax.swing.JTextField txtCodigoCurso;
+    private javax.swing.JTextField txtNomeCurso;
+    // End of variables declaration//GEN-END:variables
+
+    // Algumas funções
+
+    private void limparCampos(){
+        txtAreaCurso.setText("");
+        txtCodigoCurso.setText("");
+        txtNomeCurso.setText("");
+    }
+
+    private void carregarDadosCursoCSV(){
         String arquivo = "Arquivos/cursos.csv";
         String separador = ";";
         String linha = "";
@@ -286,22 +358,6 @@ public class cursosPanel extends javax.swing.JPanel {
         }catch(IOException e){
             JOptionPane.showMessageDialog(this, "Erro ao ler arquivo CSV: " + e.getMessage());
         }
+        limparCampos();
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdicionarCur;
-    private javax.swing.JButton btnLimparCur;
-    private javax.swing.JButton btnRemoverCur;
-    private javax.swing.JButton btnSalvarCur;
-    private javax.swing.JPanel cursosPanel;
-    private javax.swing.JLabel jLabelCur1;
-    private javax.swing.JLabel jLabelCur2;
-    private javax.swing.JLabel jLabelCur3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblIcone;
-    private javax.swing.JTable tabelaCursos;
-    private javax.swing.JTextField txtAreaCurso;
-    private javax.swing.JTextField txtCodigoCurso;
-    private javax.swing.JTextField txtNomeCurso;
-    // End of variables declaration//GEN-END:variables
 }

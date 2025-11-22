@@ -1,5 +1,10 @@
 package entity;
 
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+
 public class Inscrições {
     private String cpf;
     private int codigoDisciplina;

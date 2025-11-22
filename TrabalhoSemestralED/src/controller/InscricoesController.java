@@ -4,14 +4,15 @@
  */
 package controller;
 
+import entity.Inscrições;
+import entity.Curso;
 import entity.Disciplina;
-
+import br.edu.fateczl.Lista;
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import entity.Inscrições;
 
 /**
  *
@@ -19,11 +20,15 @@ import entity.Inscrições;
  */
 public class InscricoesController {
 
+    Lista[] tabelaHash;
+
     private final String caminho = "Arquivos/incrições.csv";
     private final String separador = ";";
+    Curso curso;
 
     public void adicionarInscricao(Inscrições inscricao) throws Exception {
 
+        // Valida se o professor já está inscrito a partir do seu cpf
         if (!exists(inscricao.getCpf())) {
             try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
                 String linha = inscricao.getCpf() + separador +
@@ -52,7 +57,6 @@ public class InscricoesController {
         BufferedReader ler = new BufferedReader(new FileReader(caminho));
         String linha;
         while ((linha = ler.readLine()) != null) {
-            String separador = ";";
             String[] colunas = linha.split(separador);
 
             if (colunas.length == 3) {
