@@ -29,10 +29,10 @@ public class professoresPanel extends javax.swing.JPanel {
         txtPontuacao = new javax.swing.JTextField();
         btnSalvarPro = new javax.swing.JButton();
         btnRemoverPro = new javax.swing.JButton();
-        btnLimparPro = new javax.swing.JButton();
         btnAdicionarPro = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaProfessores = new javax.swing.JTable();
+        btnVoltarCur = new javax.swing.JButton();
 
         professoresPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -89,15 +89,6 @@ public class professoresPanel extends javax.swing.JPanel {
             }
         });
 
-        btnLimparPro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnLimparPro.setForeground(new java.awt.Color(255, 102, 102));
-        btnLimparPro.setText("Limpar Campos");
-        btnLimparPro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparProActionPerformed(evt);
-            }
-        });
-
         btnAdicionarPro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnAdicionarPro.setForeground(new java.awt.Color(0, 51, 255));
         btnAdicionarPro.setText("Adicionar");
@@ -139,6 +130,15 @@ public class professoresPanel extends javax.swing.JPanel {
             tabelaProfessores.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        btnVoltarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVoltarCur.setForeground(new java.awt.Color(0, 153, 0));
+        btnVoltarCur.setText("Voltar");
+        btnVoltarCur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarCurActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout professoresPanelLayout = new javax.swing.GroupLayout(professoresPanel);
         professoresPanel.setLayout(professoresPanelLayout);
         professoresPanelLayout.setHorizontalGroup(
@@ -173,8 +173,8 @@ public class professoresPanel extends javax.swing.JPanel {
                         .addComponent(btnAdicionarPro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRemoverPro)
-                        .addGap(60, 60, 60)
-                        .addComponent(btnLimparPro)))
+                        .addGap(95, 95, 95)
+                        .addComponent(btnVoltarCur)))
                 .addGap(56, 56, 56))
         );
         professoresPanelLayout.setVerticalGroup(
@@ -204,7 +204,7 @@ public class professoresPanel extends javax.swing.JPanel {
                     .addComponent(btnSalvarPro)
                     .addComponent(btnAdicionarPro)
                     .addComponent(btnRemoverPro)
-                    .addComponent(btnLimparPro))
+                    .addComponent(btnVoltarCur))
                 .addGap(389, 389, 389))
         );
 
@@ -224,9 +224,9 @@ public class professoresPanel extends javax.swing.JPanel {
             .addGap(0, 937, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 3, Short.MAX_VALUE)
                     .addComponent(professoresPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 4, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -250,20 +250,20 @@ public class professoresPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRemoverProActionPerformed
 
-    private void btnLimparProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparProActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLimparProActionPerformed
-
     private void btnAdicionarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarProActionPerformed
 
+    private void btnVoltarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCurActionPerformed
+        homePage.mostrarPainel("Consultas");
+    }//GEN-LAST:event_btnVoltarCurActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarPro;
-    private javax.swing.JButton btnLimparPro;
     private javax.swing.JButton btnRemoverPro;
     private javax.swing.JButton btnSalvarPro;
+    private javax.swing.JButton btnVoltarCur;
     private javax.swing.JLabel jLabelPro1;
     private javax.swing.JLabel jLabelPro2;
     private javax.swing.JLabel jLabelPro3;
