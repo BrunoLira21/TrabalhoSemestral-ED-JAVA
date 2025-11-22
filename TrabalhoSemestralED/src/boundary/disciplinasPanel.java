@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package boundary;
 
+import controller.CursoController;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -23,6 +21,11 @@ public class disciplinasPanel extends javax.swing.JPanel {
     public disciplinasPanel(HomePage hp){
         this();
         this.homePage = hp;
+    }
+    
+    public void PreencherComboBox(){
+    CursoController cc = new CursoController();
+    
     }
     
     @SuppressWarnings("unchecked")
