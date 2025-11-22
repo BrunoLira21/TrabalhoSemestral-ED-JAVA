@@ -9,17 +9,18 @@ public class DisciplinaController {
     private final String caminho = "Arquivos/disciplinas.csv";
     private final String separador = ";";
     private final int tamanho = 101;
-    Lista[] tabelaHashDisciplinas;
+    Lista<Disciplina>[] tabelaHashDisciplinas;
 
-    public DisciplinaController() {
+    public DisciplinaController() throws Exception {
         //int tamanho = archiveSize();
         tabelaHashDisciplinas = new Lista[tamanho];
         inicializarTabelaHash();
+        carregarHash();
     }
 
     public void inicializarTabelaHash() {
         for (int i = 0; i < tabelaHashDisciplinas.length; i++) {
-            tabelaHashDisciplinas[i] = new Lista<Disciplina>();
+            tabelaHashDisciplinas[i] = new Lista<>();
         }
     }
 
@@ -32,7 +33,8 @@ public class DisciplinaController {
                         disciplina.getDiaSemana() + separador +
                         disciplina.getHorarioInicial() + separador +
                         disciplina.getQuantidadeHoras() + separador +
-                        disciplina.getCodigoCurso();
+                        disciplina.getCodigoCurso() + separador +
+                        disciplina.isStatus();
                 escrever.write(linha);
                 escrever.newLine();
             } catch (Exception e) {
@@ -42,12 +44,16 @@ public class DisciplinaController {
             JOptionPane.showMessageDialog(null, "Disciplina '" + disciplina.getNomeDisciplina() + "' já cadastrada!",
                     "Cadastro da Disciplina", JOptionPane.INFORMATION_MESSAGE);
         }
+        if (disciplina.isStatus()) {
+            inserirNaHash(disciplina);
+        }
     }
 
     public void removerDisciplina() {
 
     }
 
+    //Carrega todas as disciplinas do arquivo para a hash
     public void carregarHash() throws Exception {
         try (BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas.csv"))) {
             String linha;
@@ -56,19 +62,33 @@ public class DisciplinaController {
                 // precisa verificar o status usando .equals(true) para disciplinas em aberto, depois realizar o hash code
                 if (colunas.length == 7) {
                     String status = colunas[6].trim();
-                    int codigoCurso = Integer.parseInt(colunas[5]);
-                    if (status.equalsIgnoreCase("true")) {
-                        //int id = codigoHash(codigoCurso, tamanho);
-                        int id = codigoHash(codigoCurso);
-                        tabelaHashDisciplinas[id].addFirst(new Disciplina(
-                                Integer.parseInt(colunas[0].trim()),
-                                colunas[1].trim(),
-                                colunas[2].trim(),
-                                colunas[3].trim(),
-                                Integer.parseInt(colunas[4].trim()),
-                                Integer.parseInt(colunas[5].trim()),
-                                true));
+                    Disciplina d = new Disciplina(
+                            Integer.parseInt(colunas[0].trim()),
+                            colunas[1].trim(),
+                            colunas[2].trim(),
+                            colunas[3].trim(),
+                            Integer.parseInt(colunas[4].trim()),
+                            Integer.parseInt(colunas[5].trim()),
+                            Boolean.parseBoolean(colunas[6].trim())
+                    );
+
+                    if (d.isStatus()) {
+                        inserirNaHash(d);
                     }
+
+//                    int codigoCurso = Integer.parseInt(colunas[5]);
+//                    if (status.equalsIgnoreCase("true")) {
+//                        //int id = codigoHash(codigoCurso, tamanho);
+//                        int id = codigoHash(codigoCurso);
+//                        tabelaHashDisciplinas[id].addFirst(new Disciplina(
+//                                Integer.parseInt(colunas[0].trim()),
+//                                colunas[1].trim(),
+//                                colunas[2].trim(),
+//                                colunas[3].trim(),
+//                                Integer.parseInt(colunas[4].trim()),
+//                                Integer.parseInt(colunas[5].trim()),
+//                                true));
+//                    }
                 }
             }
         } catch (Exception e) {
@@ -76,19 +96,25 @@ public class DisciplinaController {
         }
     }
 
-    public int archiveSize() {
-        String linha;
-        int ctd = 0;
-        try (BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas.csv"))) {
-            // conta a quantidade de linhas
-            while ((linha = ler.readLine()) != null) {
-                ctd++;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ctd;
+    public void inserirNaHash(Disciplina disciplina) throws Exception {
+        int codigo =  disciplina.getCodigoCurso();
+        int posicao = codigoHash(codigo);
+        tabelaHashDisciplinas[posicao].addFirst(disciplina);
     }
+
+//    public int archiveSize() {
+//        String linha;
+//        int ctd = 0;
+//        try (BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas.csv"))) {
+//            // conta a quantidade de linhas
+//            while ((linha = ler.readLine()) != null) {
+//                ctd++;
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return ctd;
+//    }
 
     public int codigoHash (int codigo) {
         //int posicao = Math.abs(codigo % tamanho);

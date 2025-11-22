@@ -32,7 +32,6 @@ public class Disciplina {
                 '}';
     }
 
-    public boolean getStatus() {return status;}
 
     public void setStatus(boolean status) {this.status = status;}
 
@@ -83,6 +82,8 @@ public class Disciplina {
     public void setCodigoCurso(int codigoCurso) {
         this.codigoCurso = codigoCurso;
     }
+
+    public boolean isStatus() { return status; }
 
     public Disciplina(int codigoDisciplina, String nomeDisciplina, String diaSemana, String horarioInicial, int quantidadeHoras, int codigoCurso, boolean status) {
         this.codigoDisciplina = codigoDisciplina;
