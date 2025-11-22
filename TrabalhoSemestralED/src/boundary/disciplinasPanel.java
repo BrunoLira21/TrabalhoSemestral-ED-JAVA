@@ -45,7 +45,6 @@ public class disciplinasPanel extends javax.swing.JPanel {
         txtHoraInicial = new javax.swing.JTextField();
         txtHorasDiarias = new javax.swing.JTextField();
         txtCodigoProcesso = new javax.swing.JTextField();
-        btnSalvarDis = new javax.swing.JButton();
         btnRemoverDis = new javax.swing.JButton();
         btnAdicionarDis = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -125,10 +124,6 @@ public class disciplinasPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSalvarDis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnSalvarDis.setForeground(new java.awt.Color(51, 102, 0));
-        btnSalvarDis.setText("Salvar");
-
         btnRemoverDis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnRemoverDis.setForeground(new java.awt.Color(255, 51, 51));
         btnRemoverDis.setText("Remover");
@@ -139,7 +134,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
         });
 
         btnAdicionarDis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnAdicionarDis.setForeground(new java.awt.Color(0, 51, 255));
+        btnAdicionarDis.setForeground(new java.awt.Color(0, 153, 0));
         btnAdicionarDis.setText("Adicionar");
         btnAdicionarDis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +178,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
         }
 
         btnVoltarDis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnVoltarDis.setForeground(new java.awt.Color(0, 153, 0));
+        btnVoltarDis.setForeground(new java.awt.Color(0, 51, 255));
         btnVoltarDis.setText("Voltar");
         btnVoltarDis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,13 +209,17 @@ public class disciplinasPanel extends javax.swing.JPanel {
                                     .addComponent(jLabelDis3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(disciplinasPanelLayout.createSequentialGroup()
                                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtDiaSemana)
-                                    .addComponent(jLabelDis5))
-                                .addGap(53, 53, 53)
-                                .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtHoraInicial)
+                                    .addGroup(disciplinasPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabelDis5)
+                                        .addGap(53, 53, 53))
+                                    .addGroup(disciplinasPanelLayout.createSequentialGroup()
+                                        .addComponent(txtDiaSemana)
+                                        .addGap(8, 8, 8)))
+                                .addGap(21, 21, 21)
+                                .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabelDis6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(53, 53, 53)
+                                .addGap(32, 32, 32)
                                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtHorasDiarias)
                                     .addComponent(jLabelDis7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,8 +230,6 @@ public class disciplinasPanel extends javax.swing.JPanel {
                         .addGap(38, 38, 38)
                         .addComponent(lblIcone1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(disciplinasPanelLayout.createSequentialGroup()
-                        .addComponent(btnSalvarDis)
-                        .addGap(96, 96, 96)
                         .addComponent(btnAdicionarDis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRemoverDis)
@@ -261,13 +258,13 @@ public class disciplinasPanel extends javax.swing.JPanel {
                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(disciplinasPanelLayout.createSequentialGroup()
-                            .addComponent(jLabelDis5)
+                            .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabelDis5)
+                                .addComponent(jLabelDis6))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtDiaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(disciplinasPanelLayout.createSequentialGroup()
-                            .addComponent(jLabelDis6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtDiaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, disciplinasPanelLayout.createSequentialGroup()
                             .addComponent(jLabelDis7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -280,7 +277,6 @@ public class disciplinasPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarDis)
                     .addComponent(btnAdicionarDis)
                     .addComponent(btnRemoverDis)
                     .addComponent(btnVoltarDis))
@@ -353,7 +349,6 @@ public class disciplinasPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarDis;
     private javax.swing.JButton btnRemoverDis;
-    private javax.swing.JButton btnSalvarDis;
     private javax.swing.JButton btnVoltarDis;
     private javax.swing.JComboBox<String> cbxCodigoCurso;
     private javax.swing.JPanel disciplinasPanel;

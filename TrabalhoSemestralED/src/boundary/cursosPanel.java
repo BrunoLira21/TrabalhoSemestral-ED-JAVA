@@ -41,7 +41,6 @@ public class cursosPanel extends javax.swing.JPanel {
         txtAreaCurso = new javax.swing.JTextField();
         txtNomeCurso = new javax.swing.JTextField();
         txtCodigoCurso = new javax.swing.JTextField();
-        btnSalvarCur = new javax.swing.JButton();
         btnRemoverCur = new javax.swing.JButton();
         btnVoltarCur = new javax.swing.JButton();
         btnAdicionarCur = new javax.swing.JButton();
@@ -82,10 +81,6 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSalvarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnSalvarCur.setForeground(new java.awt.Color(51, 102, 0));
-        btnSalvarCur.setText("Salvar");
-
         btnRemoverCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnRemoverCur.setForeground(new java.awt.Color(255, 51, 51));
         btnRemoverCur.setText("Remover");
@@ -96,7 +91,7 @@ public class cursosPanel extends javax.swing.JPanel {
         });
 
         btnVoltarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnVoltarCur.setForeground(new java.awt.Color(0, 153, 0));
+        btnVoltarCur.setForeground(new java.awt.Color(0, 51, 255));
         btnVoltarCur.setText("Voltar");
         btnVoltarCur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +100,7 @@ public class cursosPanel extends javax.swing.JPanel {
         });
 
         btnAdicionarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnAdicionarCur.setForeground(new java.awt.Color(0, 51, 255));
+        btnAdicionarCur.setForeground(new java.awt.Color(0, 153, 0));
         btnAdicionarCur.setText("Adicionar");
         btnAdicionarCur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,9 +149,7 @@ public class cursosPanel extends javax.swing.JPanel {
                     .addGroup(cursosPanelLayout.createSequentialGroup()
                         .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cursosPanelLayout.createSequentialGroup()
-                                .addComponent(btnSalvarCur)
-                                .addGap(96, 96, 96)
+                            .addGroup(cursosPanelLayout.createSequentialGroup()
                                 .addComponent(btnAdicionarCur)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnRemoverCur)
@@ -206,7 +199,6 @@ public class cursosPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarCur)
                     .addComponent(btnAdicionarCur)
                     .addComponent(btnRemoverCur)
                     .addComponent(btnVoltarCur))
@@ -284,7 +276,6 @@ public class cursosPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarCur;
     private javax.swing.JButton btnRemoverCur;
-    private javax.swing.JButton btnSalvarCur;
     private javax.swing.JButton btnVoltarCur;
     private javax.swing.JPanel cursosPanel;
     private javax.swing.JLabel jLabelCur1;

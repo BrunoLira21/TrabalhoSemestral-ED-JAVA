@@ -31,15 +31,16 @@ public class inscricoesPanel extends javax.swing.JPanel {
         jLabelIns2 = new javax.swing.JLabel();
         jLabelIns3 = new javax.swing.JLabel();
         lblIcone = new javax.swing.JLabel();
-        cbxCPFProfessorIns = new javax.swing.JComboBox<>();
         cbxDisciplinaIns = new javax.swing.JComboBox<>();
         txtCodProcessoIns = new javax.swing.JTextField();
-        btnSalvarIns = new javax.swing.JButton();
         btnInscreverIns = new javax.swing.JButton();
         btnRemoverIns = new javax.swing.JButton();
+        btnVoltarCur = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaInscricoes = new javax.swing.JTable();
-        btnVoltarCur = new javax.swing.JButton();
+        txtCPFProfessorIns = new javax.swing.JTextField();
+
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         inscricoesPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -52,8 +53,6 @@ public class inscricoesPanel extends javax.swing.JPanel {
         jLabelIns3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelIns3.setText("Código do Processo");
 
-        cbxCPFProfessorIns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         cbxDisciplinaIns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtCodProcessoIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -63,12 +62,8 @@ public class inscricoesPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSalvarIns.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnSalvarIns.setForeground(new java.awt.Color(51, 102, 0));
-        btnSalvarIns.setText("Salvar");
-
-        btnInscreverIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnInscreverIns.setForeground(new java.awt.Color(0, 51, 255));
+        btnInscreverIns.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnInscreverIns.setForeground(new java.awt.Color(0, 153, 0));
         btnInscreverIns.setText("Inscrever");
         btnInscreverIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +77,15 @@ public class inscricoesPanel extends javax.swing.JPanel {
         btnRemoverIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoverInsActionPerformed(evt);
+            }
+        });
+
+        btnVoltarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVoltarCur.setForeground(new java.awt.Color(0, 51, 255));
+        btnVoltarCur.setText("Voltar");
+        btnVoltarCur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarCurActionPerformed(evt);
             }
         });
 
@@ -116,12 +120,10 @@ public class inscricoesPanel extends javax.swing.JPanel {
             tabelaInscricoes.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        btnVoltarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnVoltarCur.setForeground(new java.awt.Color(0, 153, 0));
-        btnVoltarCur.setText("Voltar");
-        btnVoltarCur.addActionListener(new java.awt.event.ActionListener() {
+        txtCPFProfessorIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCPFProfessorIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarCurActionPerformed(evt);
+                txtCPFProfessorInsActionPerformed(evt);
             }
         });
 
@@ -134,9 +136,9 @@ public class inscricoesPanel extends javax.swing.JPanel {
                 .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(inscricoesPanelLayout.createSequentialGroup()
                         .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbxCPFProfessorIns, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelIns1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
-                        .addGap(53, 53, 53)
+                            .addComponent(jLabelIns1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                            .addComponent(txtCPFProfessorIns))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbxDisciplinaIns, 0, 152, Short.MAX_VALUE)
                             .addComponent(jLabelIns2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -148,8 +150,6 @@ public class inscricoesPanel extends javax.swing.JPanel {
                         .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inscricoesPanelLayout.createSequentialGroup()
-                        .addComponent(btnSalvarIns)
-                        .addGap(81, 81, 81)
                         .addComponent(btnInscreverIns)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRemoverIns)
@@ -168,8 +168,8 @@ public class inscricoesPanel extends javax.swing.JPanel {
                             .addComponent(jLabelIns2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxCPFProfessorIns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxDisciplinaIns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbxDisciplinaIns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCPFProfessorIns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(inscricoesPanelLayout.createSequentialGroup()
                         .addComponent(jLabelIns3)
@@ -179,32 +179,29 @@ public class inscricoesPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarIns)
                     .addComponent(btnRemoverIns)
                     .addComponent(btnInscreverIns)
                     .addComponent(btnVoltarCur))
                 .addGap(389, 389, 389))
         );
 
+        txtCPFProfessorIns.getAccessibleContext().setAccessibleName("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(inscricoesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(inscricoesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 937, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(inscricoesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(inscricoesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -224,13 +221,15 @@ public class inscricoesPanel extends javax.swing.JPanel {
         homePage.mostrarPainel("Consultas");
     }//GEN-LAST:event_btnVoltarCurActionPerformed
 
+    private void txtCPFProfessorInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFProfessorInsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFProfessorInsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInscreverIns;
     private javax.swing.JButton btnRemoverIns;
-    private javax.swing.JButton btnSalvarIns;
     private javax.swing.JButton btnVoltarCur;
-    private javax.swing.JComboBox<String> cbxCPFProfessorIns;
     private javax.swing.JComboBox<String> cbxDisciplinaIns;
     private javax.swing.JPanel inscricoesPanel;
     private javax.swing.JLabel jLabelIns1;
@@ -239,6 +238,7 @@ public class inscricoesPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblIcone;
     private javax.swing.JTable tabelaInscricoes;
+    private javax.swing.JTextField txtCPFProfessorIns;
     private javax.swing.JTextField txtCodProcessoIns;
     // End of variables declaration//GEN-END:variables
 }

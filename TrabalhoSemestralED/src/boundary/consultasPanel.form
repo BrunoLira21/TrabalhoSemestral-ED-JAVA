@@ -34,7 +34,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnCurso" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnProcessosAbertos" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="btnConsultaGeral" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -59,14 +59,12 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnDisciplina" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnCurso" alignment="3" min="-2" pref="130" max="-2" attributes="0"/>
-                              <Component id="btnInscricao" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="btnInscricao" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="btnCurso" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnProcessosAbertos" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="btnConsultaGeral" min="-2" pref="130" max="-2" attributes="0"/>
                           <Component id="btnListaInscritos" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -87,6 +85,7 @@
           <Border info="null"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
@@ -102,6 +101,7 @@
           <Border info="null"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
@@ -116,6 +116,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
@@ -130,6 +131,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
@@ -146,13 +148,14 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="btnProcessosAbertos">
+    <Component class="javax.swing.JToggleButton" name="btnConsultaGeral">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="0" type="rgb"/>
@@ -161,6 +164,7 @@
           <Border info="null"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Hand Cursor"/>
         </Property>
