@@ -239,21 +239,22 @@ GerenciadorCentral gc = new GerenciadorCentral();
         
         boolean acesso = gc.validarLogin(usuario, senha);
         if(acesso){
-        HomePage principal = null;
             try {
-                principal = new HomePage();
+                HomePage principal = new HomePage();
+                principal.setVisible(true);
+                this.dispose();
             } catch (Exception ex) {
-                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(this, 
+                "Erro ao abrir o sistema principal.\n" + ex.getMessage(), 
+                "Erro Crítico", 
+                JOptionPane.ERROR_MESSAGE);
             }
-        principal.setVisible(true);
-        this.dispose();
         } else {
         JOptionPane.showMessageDialog(this, "Usuario ou senha incorretos", "Dados Incorretos", JOptionPane.ERROR_MESSAGE);
         txtUsuario.setText("");
         pswSenha.setText("");
         }
-        
-        
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void lbCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCadastroMouseClicked

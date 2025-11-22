@@ -23,6 +23,7 @@ public class HomePage extends javax.swing.JFrame {
     public HomePage() throws Exception {
         initComponents();
         painelDisciplinas = new disciplinasPanel(this);
+        painelInscricoes = new inscricoesPanel(this);
 
         cardLayout = (CardLayout) jContentPane.getLayout();
         jContentPane.add(new consultasPanel(this), "Consultas");        
