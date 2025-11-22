@@ -39,7 +39,9 @@ public class HomePage extends javax.swing.JFrame {
         jContentPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Avante");
         setResizable(false);
+        setSize(new java.awt.Dimension(1000, 600));
 
         jContentPane.setBackground(new java.awt.Color(255, 255, 255));
         jContentPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

@@ -1,6 +1,8 @@
 package boundary;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import controller.GerenciadorCentral;
+import java.awt.Font;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.net.URL;
@@ -12,6 +14,8 @@ import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 public class TelaLogin extends javax.swing.JFrame {
 GerenciadorCentral gc = new GerenciadorCentral();
@@ -166,24 +170,24 @@ GerenciadorCentral gc = new GerenciadorCentral();
                 .addComponent(btnLogin)
                 .addGap(125, 125, 125))
             .addGroup(pnDireitaLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(44, 44, 44)
                 .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnDireitaLayout.createSequentialGroup()
-                            .addComponent(lbprimeiroAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbprimeiroAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
                             .addComponent(lbCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnDireitaLayout.createSequentialGroup()
-                                .addComponent(lbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
+                                .addComponent(lbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(pswSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnDireitaLayout.createSequentialGroup()
-                                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDireitaLayout.createSequentialGroup()
+                                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         pnDireitaLayout.setVerticalGroup(
             pnDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,11 +261,19 @@ GerenciadorCentral gc = new GerenciadorCentral();
     
     public static void main(String args[]) {
         FlatLightLaf.setup();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaLogin().setVisible(true);
-            }
+        UIManager.put("defaultFont", new Font("Segoe UI", Font.PLAIN, 16));
+        UIManager.put("Button.arc", 14);
+        UIManager.put("TextField.arc", 10);
+        UIManager.put("PasswordField.arc", 10);
+        UIManager.put("ComboBox.arc", 10);
+        UIManager.put("Component.arc", 12);
+        UIManager.put("ScrollBar.showButtons", false);
+        UIManager.put("ScrollBar.width", 12);
+        
+        SwingUtilities.invokeLater(() -> {
+            new TelaLogin().setVisible(true);
         });
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import entity.Inscrições;
@@ -14,12 +11,8 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-/**
- *
- * @author Família Lira
- */
-public class InscricoesController {
 
+public class InscricoesController { 
     Lista[] tabelaHash;
 
     private final String caminho = "Arquivos/incrições.csv";
