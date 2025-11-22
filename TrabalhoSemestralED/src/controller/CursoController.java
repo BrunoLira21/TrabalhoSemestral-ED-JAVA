@@ -109,20 +109,20 @@ public class CursoController {
         return false;
     }
     
-    public Lista<String> buscarNomesCursos(){
-        Lista<String> nomesCursos = new Lista<>();
+    public Lista<String> buscarCodigosCursos(){
+        Lista<String> CodigosCursos = new Lista<>();
         try(BufferedReader ler= new BufferedReader(new FileReader(caminho))){
             String linha;
             while((linha = ler.readLine()) != null){
             String[] colunas = linha.split(separador);
-            String nome = colunas[1].trim();
-            if(nomesCursos.isEmpty()){
-                nomesCursos.addFirst(nome);
+            String codigo = colunas[0].trim() + " - " + colunas[1].trim();
+            if(CodigosCursos.isEmpty()){
+                CodigosCursos.addFirst(codigo);
             } else {
-                nomesCursos.addLast(nome);
+                CodigosCursos.addLast(codigo);
             }
         }
-            return nomesCursos;
+            return CodigosCursos;
     } catch(Exception e){
         e.printStackTrace();
         return new Lista<>();   

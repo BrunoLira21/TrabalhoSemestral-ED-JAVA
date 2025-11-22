@@ -31,7 +31,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
     
     public void PreencherComboBox() throws Exception{
     CursoController cc = new CursoController();
-    Lista<String> nomesCursos = cc.buscarNomesCursos();
+    Lista<String> nomesCursos = cc.buscarCodigosCursos();
     DefaultComboBoxModel<String> Cursomodel = (DefaultComboBoxModel<String>) cbxCodigoCurso.getModel();
     Cursomodel.removeAllElements();
     

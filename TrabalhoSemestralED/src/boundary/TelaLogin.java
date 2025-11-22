@@ -13,6 +13,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -237,7 +239,12 @@ GerenciadorCentral gc = new GerenciadorCentral();
         
         boolean acesso = gc.validarLogin(usuario, senha);
         if(acesso){
-        HomePage principal = new HomePage();
+        HomePage principal = null;
+            try {
+                principal = new HomePage();
+            } catch (Exception ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         principal.setVisible(true);
         this.dispose();
         } else {
