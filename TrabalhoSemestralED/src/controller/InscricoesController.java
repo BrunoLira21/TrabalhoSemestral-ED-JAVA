@@ -24,8 +24,6 @@ public class InscricoesController {
 
     public void adicionarInscricao(Inscrições inscricao) throws Exception {
 
-
-
         if (!exists(inscricao.getCpf())) {
             try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
                 String linha = inscricao.getCpf() + separador +
@@ -42,7 +40,11 @@ public class InscricoesController {
         }
     }
 
-    public void removerDisciplina() {
+    public void removerInscricao() {
+
+    }
+
+    public void consultarInscricao() {
 
     }
 
