@@ -45,6 +45,7 @@ public class listaInscritosPanel extends javax.swing.JPanel {
         listaInscritosPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jLabelLis1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelLis1.setForeground(new java.awt.Color(0, 128, 96));
         jLabelLis1.setText("Código da Disciplina");
 
         txtDisciplinaBuscaLista.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -76,6 +77,7 @@ public class listaInscritosPanel extends javax.swing.JPanel {
             }
         });
 
+        tabelaRankingLista.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tabelaRankingLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -114,7 +116,7 @@ public class listaInscritosPanel extends javax.swing.JPanel {
         listaInscritosPanelLayout.setHorizontalGroup(
             listaInscritosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listaInscritosPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(67, 67, 67)
                 .addGroup(listaInscritosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(listaInscritosPanelLayout.createSequentialGroup()
                         .addGroup(listaInscritosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +130,7 @@ public class listaInscritosPanel extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnVoltarLis))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         listaInscritosPanelLayout.setVerticalGroup(
             listaInscritosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,8 +152,6 @@ public class listaInscritosPanel extends javax.swing.JPanel {
                     .addComponent(btnBuscarRanking))
                 .addGap(389, 389, 389))
         );
-
-        btnBuscarRanking.getAccessibleContext().setAccessibleName("Buscar Ranking");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -57,12 +57,15 @@ public class cursosPanel extends javax.swing.JPanel {
         cursosPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jLabelCur1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelCur1.setForeground(new java.awt.Color(0, 128, 96));
         jLabelCur1.setText("Área de Conhecimento");
 
         jLabelCur2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelCur2.setForeground(new java.awt.Color(0, 128, 96));
         jLabelCur2.setText("Nome");
 
         jLabelCur3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelCur3.setForeground(new java.awt.Color(0, 128, 96));
         jLabelCur3.setText("Código do Curso");
 
         txtAreaCurso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -114,6 +117,7 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
+        tabelaCursos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tabelaCursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -229,7 +233,7 @@ public class cursosPanel extends javax.swing.JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(cursosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 600, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

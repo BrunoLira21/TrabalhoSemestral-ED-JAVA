@@ -51,7 +51,8 @@ public class consultaGeralPanel extends javax.swing.JPanel {
         consultaGeralPanel.setBackground(new java.awt.Color(255, 255, 255));
         consultaGeralPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
 
-        jLabelCon1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelCon1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabelCon1.setForeground(new java.awt.Color(0, 128, 96));
         jLabelCon1.setText("Visão Geral de Processos Seletivos");
 
         btnVoltarLis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -72,6 +73,7 @@ public class consultaGeralPanel extends javax.swing.JPanel {
             }
         });
 
+        tabelaProcessos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tabelaProcessos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -109,19 +111,18 @@ public class consultaGeralPanel extends javax.swing.JPanel {
         consultaGeralPanelLayout.setHorizontalGroup(
             consultaGeralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(consultaGeralPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(consultaGeralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(66, 66, 66)
+                .addGroup(consultaGeralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(consultaGeralPanelLayout.createSequentialGroup()
                         .addComponent(jLabelCon1)
-                        .addGap(338, 338, 338)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(consultaGeralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(consultaGeralPanelLayout.createSequentialGroup()
-                            .addComponent(btnListarProcessos, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVoltarLis))))
-                .addContainerGap(118, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, consultaGeralPanelLayout.createSequentialGroup()
+                        .addComponent(btnListarProcessos, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltarLis)))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         consultaGeralPanelLayout.setVerticalGroup(
             consultaGeralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,8 +139,6 @@ public class consultaGeralPanel extends javax.swing.JPanel {
                     .addComponent(btnListarProcessos))
                 .addGap(389, 389, 389))
         );
-
-        btnListarProcessos.getAccessibleContext().setAccessibleName("Atualizar Lista");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
