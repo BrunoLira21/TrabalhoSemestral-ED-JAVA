@@ -79,7 +79,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnRemoverCur" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVoltarCur" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
@@ -116,7 +116,7 @@
                       <Component id="btnSalvarCur" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAdicionarCur" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnRemoverCur" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVoltarCur" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="389" max="-2" attributes="0"/>
               </Group>
@@ -208,24 +208,24 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoverCurActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnVoltar">
+        <Component class="javax.swing.JButton" name="btnVoltarCur">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="ff" red="33" type="rgb"/>
+              <Color blue="0" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarCurActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAdicionarCur">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="33" red="0" type="rgb"/>

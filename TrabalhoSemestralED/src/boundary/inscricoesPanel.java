@@ -28,9 +28,9 @@ public class inscricoesPanel extends javax.swing.JPanel {
         btnSalvarIns = new javax.swing.JButton();
         btnInscreverIns = new javax.swing.JButton();
         btnRemoverIns = new javax.swing.JButton();
-        btnLimparIns = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaInscricoes = new javax.swing.JTable();
+        btnVoltarCur = new javax.swing.JButton();
 
         inscricoesPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,15 +76,6 @@ public class inscricoesPanel extends javax.swing.JPanel {
             }
         });
 
-        btnLimparIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnLimparIns.setForeground(new java.awt.Color(255, 102, 102));
-        btnLimparIns.setText("Limpar Campos");
-        btnLimparIns.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparInsActionPerformed(evt);
-            }
-        });
-
         tabelaInscricoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -116,6 +107,15 @@ public class inscricoesPanel extends javax.swing.JPanel {
             tabelaInscricoes.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        btnVoltarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVoltarCur.setForeground(new java.awt.Color(0, 153, 0));
+        btnVoltarCur.setText("Voltar");
+        btnVoltarCur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarCurActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout inscricoesPanelLayout = new javax.swing.GroupLayout(inscricoesPanel);
         inscricoesPanel.setLayout(inscricoesPanelLayout);
         inscricoesPanelLayout.setHorizontalGroup(
@@ -144,8 +144,8 @@ public class inscricoesPanel extends javax.swing.JPanel {
                         .addComponent(btnInscreverIns)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRemoverIns)
-                        .addGap(60, 60, 60)
-                        .addComponent(btnLimparIns)))
+                        .addGap(89, 89, 89)
+                        .addComponent(btnVoltarCur)))
                 .addGap(56, 56, 56))
         );
         inscricoesPanelLayout.setVerticalGroup(
@@ -172,8 +172,8 @@ public class inscricoesPanel extends javax.swing.JPanel {
                 .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarIns)
                     .addComponent(btnRemoverIns)
-                    .addComponent(btnLimparIns)
-                    .addComponent(btnInscreverIns))
+                    .addComponent(btnInscreverIns)
+                    .addComponent(btnVoltarCur))
                 .addGap(389, 389, 389))
         );
 
@@ -203,10 +203,6 @@ public class inscricoesPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRemoverInsActionPerformed
 
-    private void btnLimparInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparInsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLimparInsActionPerformed
-
     private void txtCodProcessoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProcessoInsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodProcessoInsActionPerformed
@@ -215,12 +211,16 @@ public class inscricoesPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnInscreverInsActionPerformed
 
+    private void btnVoltarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCurActionPerformed
+        homePage.mostrarPainel("Consultas");
+    }//GEN-LAST:event_btnVoltarCurActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInscreverIns;
-    private javax.swing.JButton btnLimparIns;
     private javax.swing.JButton btnRemoverIns;
     private javax.swing.JButton btnSalvarIns;
+    private javax.swing.JButton btnVoltarCur;
     private javax.swing.JComboBox<String> cbxCPFProfessorIns;
     private javax.swing.JComboBox<String> cbxDisciplinaIns;
     private javax.swing.JPanel inscricoesPanel;
