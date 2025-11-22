@@ -1,5 +1,6 @@
 package controller;
 
+import boundary.disciplinasPanel;
 import entity.Curso;
 import br.edu.fateczl.Lista;
 import javax.swing.*;
@@ -107,4 +108,26 @@ public class CursoController {
         }
         return false;
     }
+    
+    public Lista<String> buscarCodigosCursos(){
+        Lista<String> CodigosCursos = new Lista<>();
+        try(BufferedReader ler= new BufferedReader(new FileReader(caminho))){
+            String linha;
+            while((linha = ler.readLine()) != null){
+            String[] colunas = linha.split(separador);
+            String codigo = colunas[0].trim() + " - " + colunas[1].trim();
+            if(CodigosCursos.isEmpty()){
+                CodigosCursos.addFirst(codigo);
+            } else {
+                CodigosCursos.addLast(codigo);
+            }
+        }
+            return CodigosCursos;
+    } catch(Exception e){
+        e.printStackTrace();
+        return new Lista<>();   
+    }
+ }
+    
+    
 }

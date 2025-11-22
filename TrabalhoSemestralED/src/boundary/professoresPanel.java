@@ -58,6 +58,7 @@ public class professoresPanel extends javax.swing.JPanel {
         jLabelPro4.setText("Pontuação");
 
         txtCPF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCPF.setToolTipText("");
         txtCPF.setCaretColor(new java.awt.Color(255, 255, 255));
         txtCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
