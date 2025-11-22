@@ -1,14 +1,18 @@
 
 package boundary;
 
+import br.edu.fateczl.Lista;
+import controller.CursoController;
+import controller.DisciplinaController;
 import java.awt.Image;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
 
 public class inscricoesPanel extends javax.swing.JPanel {
     private HomePage homePage;
     
-    public inscricoesPanel() {
+    public inscricoesPanel() throws Exception {
         initComponents();
         
         String caminho  = "src/uteis/logofatec.png";
@@ -16,11 +20,30 @@ public class inscricoesPanel extends javax.swing.JPanel {
         Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
         ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
         lblIcone.setIcon(logofatecRedimensionado);
+        
+        PreencherComboBoxDisciplina();
     }
 
-    public inscricoesPanel(HomePage hp){
+    public inscricoesPanel(HomePage hp) throws Exception{
         this();
         this.homePage = hp;
+    }
+    
+    public void PreencherComboBoxDisciplina() throws Exception{
+    DisciplinaController dc = new DisciplinaController();
+    Lista<String> nomesDisciplinas = dc.buscarCodigosDisciplinas();
+    DefaultComboBoxModel<String> Disciplinamodel = (DefaultComboBoxModel<String>) cbxDisciplinaIns.getModel();
+    Disciplinamodel.removeAllElements();
+    
+    for (int i = 0; i < nomesDisciplinas.size(); i++){
+        String nome = nomesDisciplinas.get(i);
+        Disciplinamodel.addElement(nome);
+    }
+    
+    }
+    
+    public void atualizarComboBoxCursos() throws Exception {
+        PreencherComboBoxDisciplina();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

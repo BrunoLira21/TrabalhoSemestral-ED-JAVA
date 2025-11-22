@@ -102,4 +102,24 @@ public class DisciplinaController {
         }
         return false;
     }
+    
+    public Lista<String> buscarCodigosDisciplinas(){
+        Lista<String> CodigosDisciplinas = new Lista<>();
+        try(BufferedReader ler= new BufferedReader(new FileReader(caminho))){
+            String linha;
+            while((linha = ler.readLine()) != null){
+            String[] colunas = linha.split(separador);
+            String codigo = colunas[0].trim() + " - " + colunas[1].trim();
+            if(CodigosDisciplinas.isEmpty()){
+                CodigosDisciplinas.addFirst(codigo);
+            } else {
+                CodigosDisciplinas.addLast(codigo);
+            }
+        }
+            return CodigosDisciplinas;
+    } catch(Exception e){
+        e.printStackTrace();
+        return new Lista<>();   
+    }
+   } 
 }

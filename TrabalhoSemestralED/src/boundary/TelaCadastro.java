@@ -102,6 +102,7 @@ GerenciadorCentral gc = new GerenciadorCentral();
 
         lbLogo.setBackground(new java.awt.Color(255, 255, 255));
         lbLogo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbLogo.setForeground(new java.awt.Color(0, 128, 96));
         lbLogo.setText("Cadastro de Usuário");
 
         javax.swing.GroupLayout pnPreenchimentoSuperiorLayout = new javax.swing.GroupLayout(pnPreenchimentoSuperior);

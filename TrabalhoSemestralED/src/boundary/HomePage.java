@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 public class HomePage extends javax.swing.JFrame {
     public CardLayout cardLayout;
     private disciplinasPanel painelDisciplinas;
+    private inscricoesPanel painelInscricoes;
 
     public HomePage() throws Exception {
         initComponents();
@@ -26,7 +27,7 @@ public class HomePage extends javax.swing.JFrame {
         cardLayout = (CardLayout) jContentPane.getLayout();
         jContentPane.add(new consultasPanel(this), "Consultas");        
         jContentPane.add(painelDisciplinas, "Disciplinas");        
-        jContentPane.add(new inscricoesPanel(this), "Inscrições");        
+        jContentPane.add(painelInscricoes, "Inscrições");        
         jContentPane.add(new professoresPanel(this), "Professores"); 
         jContentPane.add(new cursosPanel(this), "Cursos");
         jContentPane.add(new consultaGeralPanel(this), "ConsultaGeral");
@@ -42,9 +43,15 @@ public class HomePage extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar cursos: " + ex.getMessage());
         }
-    }
+    } else if ("Inscrições".equals(nome)) {
+        try {
+            painelInscricoes.atualizarComboBoxCursos();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar cursos: " + ex.getMessage());
+        }
 }
-    
+
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
