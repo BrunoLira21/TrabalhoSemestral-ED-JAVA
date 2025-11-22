@@ -247,7 +247,6 @@ public class cursosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCodigoCursoActionPerformed
 
     private void btnRemoverCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverCurActionPerformed
-
 // Verificar se o mano realmente clicou em alguma linha...
         int linhaSelecionada = tabelaCursos.getSelectedRow();
         if (linhaSelecionada == -1){
@@ -291,7 +290,6 @@ public class cursosPanel extends javax.swing.JPanel {
     private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCurActionPerformed
         try {
             Curso curso = new Curso();
-
             curso.setCodigoCurso(Integer.parseInt(txtCodigoCurso.getText()));
             curso.setNomeCurso(txtNomeCurso.getText());
             curso.setArea(txtAreaCurso.getText());

@@ -1,5 +1,6 @@
 package controller;
 
+import boundary.disciplinasPanel;
 import entity.Curso;
 import br.edu.fateczl.Lista;
 import javax.swing.*;
@@ -114,7 +115,7 @@ public class CursoController {
             String linha;
             while((linha = ler.readLine()) != null){
             String[] colunas = linha.split(separador);
-            String nome = colunas[3].trim();
+            String nome = colunas[1].trim();
             if(nomesCursos.isEmpty()){
                 nomesCursos.addFirst(nome);
             } else {

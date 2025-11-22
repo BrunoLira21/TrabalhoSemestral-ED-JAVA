@@ -1,14 +1,16 @@
 
 package boundary;
 
+import br.edu.fateczl.Lista;
 import controller.CursoController;
 import java.awt.Image;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
 public class disciplinasPanel extends javax.swing.JPanel {
     private HomePage homePage;
     
-    public disciplinasPanel() {
+    public disciplinasPanel() throws Exception {
         initComponents();
         
         String caminho  = "src/uteis/logofatec.png";
@@ -16,16 +18,32 @@ public class disciplinasPanel extends javax.swing.JPanel {
         Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
         ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
         lblIcone1.setIcon(logofatecRedimensionado);
+        
+        PreencherComboBox();
     }
 
-    public disciplinasPanel(HomePage hp){
+    public disciplinasPanel(HomePage hp) throws Exception{
         this();
         this.homePage = hp;
+        
+        
     }
     
-    public void PreencherComboBox(){
+    public void PreencherComboBox() throws Exception{
     CursoController cc = new CursoController();
+    Lista<String> nomesCursos = cc.buscarNomesCursos();
+    DefaultComboBoxModel<String> Cursomodel = (DefaultComboBoxModel<String>) cbxCodigoCurso.getModel();
+    Cursomodel.removeAllElements();
     
+    for (int i = 0; i < nomesCursos.size(); i++){
+        String nome = nomesCursos.get(i);
+        Cursomodel.addElement(nome);
+    }
+    
+    }
+    
+    public void atualizarComboBoxCursos() throws Exception {
+        PreencherComboBox();
     }
     
     @SuppressWarnings("unchecked")
