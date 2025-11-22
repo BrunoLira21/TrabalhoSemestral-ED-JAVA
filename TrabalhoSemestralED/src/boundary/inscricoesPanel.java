@@ -1,12 +1,21 @@
 
 package boundary;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 
 public class inscricoesPanel extends javax.swing.JPanel {
     private HomePage homePage;
     
     public inscricoesPanel() {
         initComponents();
+        
+        String caminho  = "src/uteis/logofatec.png";
+        ImageIcon logofatec = new ImageIcon(caminho);
+        Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
+        ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
+        lblIcone.setIcon(logofatecRedimensionado);
     }
 
     public inscricoesPanel(HomePage hp){
@@ -135,8 +144,8 @@ public class inscricoesPanel extends javax.swing.JPanel {
                         .addGroup(inscricoesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCodProcessoIns, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelIns3))
-                        .addGap(46, 46, 46)
-                        .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inscricoesPanelLayout.createSequentialGroup()
                         .addComponent(btnSalvarIns)

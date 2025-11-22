@@ -4,11 +4,20 @@
  */
 package boundary;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 public class disciplinasPanel extends javax.swing.JPanel {
     private HomePage homePage;
     
     public disciplinasPanel() {
         initComponents();
+        
+        String caminho  = "src/uteis/logofatec.png";
+        ImageIcon logofatec = new ImageIcon(caminho);
+        Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
+        ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
+        lblIcone1.setIcon(logofatecRedimensionado);
     }
 
     public disciplinasPanel(HomePage hp){
@@ -219,8 +228,8 @@ public class disciplinasPanel extends javax.swing.JPanel {
                                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCodigoProcesso)
                                     .addComponent(jLabelDis8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(74, 74, 74)
-                        .addComponent(lblIcone1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addComponent(lblIcone1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(disciplinasPanelLayout.createSequentialGroup()
                         .addComponent(btnSalvarDis)
                         .addGap(96, 96, 96)

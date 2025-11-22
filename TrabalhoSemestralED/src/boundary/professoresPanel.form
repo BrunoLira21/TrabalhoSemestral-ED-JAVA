@@ -76,8 +76,8 @@
                                   <Component id="jLabelPro4" min="-2" pref="102" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblIcone2" min="-2" pref="123" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblIcone2" min="-2" pref="136" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane3" alignment="0" pref="727" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">

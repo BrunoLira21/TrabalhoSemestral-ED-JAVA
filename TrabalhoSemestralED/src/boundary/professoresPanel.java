@@ -1,12 +1,21 @@
 
 package boundary;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 
 public class professoresPanel extends javax.swing.JPanel {
     private HomePage homePage;
     
     public professoresPanel() {
         initComponents();
+        
+        String caminho  = "src/uteis/logofatec.png";
+        ImageIcon logofatec = new ImageIcon(caminho);
+        Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
+        ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
+        lblIcone2.setIcon(logofatecRedimensionado);
     }
 
     public professoresPanel(HomePage hp){
@@ -164,8 +173,8 @@ public class professoresPanel extends javax.swing.JPanel {
                                 .addComponent(jLabelPro3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelPro4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblIcone2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblIcone2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, professoresPanelLayout.createSequentialGroup()
                         .addComponent(btnSalvarPro)

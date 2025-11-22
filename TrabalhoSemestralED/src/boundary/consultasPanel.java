@@ -87,50 +87,68 @@ public class consultasPanel extends javax.swing.JPanel {
         btnProfessor = new javax.swing.JToggleButton();
         btnInscricao = new javax.swing.JToggleButton();
         lbLogoFatec = new javax.swing.JLabel();
+        btnListaInscritos = new javax.swing.JToggleButton();
+        btnProcessosAbertos = new javax.swing.JToggleButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        btnCurso.setBackground(new java.awt.Color(0, 102, 102));
         btnCurso.setBorder(null);
         btnCurso.setBorderPainted(false);
-        btnCurso.setContentAreaFilled(false);
         btnCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCurso.setFocusable(false);
 
+        btnDisciplina.setBackground(new java.awt.Color(0, 102, 102));
         btnDisciplina.setBorder(null);
         btnDisciplina.setBorderPainted(false);
-        btnDisciplina.setContentAreaFilled(false);
         btnDisciplina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDisciplina.setFocusable(false);
 
+        btnProfessor.setBackground(new java.awt.Color(0, 102, 102));
         btnProfessor.setBorder(null);
-        btnProfessor.setContentAreaFilled(false);
         btnProfessor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProfessor.setFocusable(false);
 
+        btnInscricao.setBackground(new java.awt.Color(0, 102, 102));
         btnInscricao.setBorder(null);
-        btnInscricao.setContentAreaFilled(false);
         btnInscricao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInscricao.setFocusable(false);
+
+        btnListaInscritos.setBackground(new java.awt.Color(0, 153, 153));
+        btnListaInscritos.setBorder(null);
+        btnListaInscritos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnListaInscritos.setFocusable(false);
+
+        btnProcessosAbertos.setBackground(new java.awt.Color(0, 102, 102));
+        btnProcessosAbertos.setBorder(null);
+        btnProcessosAbertos.setBorderPainted(false);
+        btnProcessosAbertos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProcessosAbertos.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnInscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(btnDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(409, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnInscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnProcessosAbertos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnListaInscritos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,12 +156,18 @@ public class consultasPanel extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnInscricao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnProcessosAbertos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnListaInscritos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(608, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -153,6 +177,8 @@ public class consultasPanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnCurso;
     private javax.swing.JToggleButton btnDisciplina;
     private javax.swing.JToggleButton btnInscricao;
+    private javax.swing.JToggleButton btnListaInscritos;
+    private javax.swing.JToggleButton btnProcessosAbertos;
     private javax.swing.JToggleButton btnProfessor;
     private javax.swing.JLabel lbLogoFatec;
     // End of variables declaration//GEN-END:variables
