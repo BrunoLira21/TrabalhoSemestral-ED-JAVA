@@ -131,4 +131,15 @@ public class ProfessorController {
         }
         return false;
     }
+    
+    public Professor buscarPorCpf(String cpf) throws Exception {
+    Lista<Professor> lista = listarProfessores();
+    for (int i = 0; i < lista.size(); i++) {
+        Professor p = lista.get(i);
+        if (p.getCpf().equals(cpf)) {
+            return p;
+        }
+    }
+    return null;
+}
 }

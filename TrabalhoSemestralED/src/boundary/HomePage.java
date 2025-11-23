@@ -19,12 +19,15 @@ public class HomePage extends javax.swing.JFrame {
     public CardLayout cardLayout;
     private disciplinasPanel painelDisciplinas;
     inscricoesPanel painelInscricoes;
+    private listaInscritosPanel painelInscritos;
 
     public HomePage() throws Exception {
         initComponents();
         painelDisciplinas = new disciplinasPanel(this);
         painelInscricoes = new inscricoesPanel(this);
-
+        painelInscritos = new listaInscritosPanel(this);
+        
+        
         cardLayout = (CardLayout) jContentPane.getLayout();
         jContentPane.add(new consultasPanel(this), "Consultas");        
         jContentPane.add(painelDisciplinas, "Disciplinas");        
@@ -32,7 +35,7 @@ public class HomePage extends javax.swing.JFrame {
         jContentPane.add(new professoresPanel(this), "Professores"); 
         jContentPane.add(new cursosPanel(this), "Cursos");
         jContentPane.add(new consultaGeralPanel(this), "ConsultaGeral");
-        jContentPane.add(new listaInscritosPanel(this), "listaInscritos");
+        jContentPane.add(painelInscritos, "listaInscritos");
     }     
     
     public void mostrarPainel(String nome){
@@ -50,7 +53,13 @@ public class HomePage extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar cursos: " + ex.getMessage());
         }
-}
+    } else if ("listaInscritos".equals(nome)){
+        try{    
+        painelInscritos.atualizarComboBoxDisciplinas();
+        } catch (Exception e){
+        JOptionPane.showMessageDialog(this, "Erro ao carregar disciplinas: " + e.getMessage());
+        }
+    }
 
     }
     @SuppressWarnings("unchecked")
