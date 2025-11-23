@@ -27,7 +27,7 @@ public class DisciplinaController {
     }
     
      public void carregarHash() throws Exception {
-        try (BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas"))) {
+        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
             String linha;
             while ((linha = ler.readLine()) != null) {
                 String[] colunas = linha.split(separador);

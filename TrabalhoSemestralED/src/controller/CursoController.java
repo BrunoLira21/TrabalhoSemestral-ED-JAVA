@@ -62,7 +62,6 @@ public class CursoController {
         }catch(IOException e){
             throw new Exception("Erro ao ler o banco de dados: "+e.getMessage());
         }
-        // Com a disciplina na mão, vamo escrever no arquivo
         if(encontrou){
             reescreverArquivo(linhas);
             return true;
@@ -75,7 +74,6 @@ public class CursoController {
         try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, false))) {
             int tamanho = lista.size();
 
-            // escrevendo... escrevendo...
             for (int i = 0; i < tamanho; i++) {
                 String linha = lista.get(i);
                 escrever.write(linha);
@@ -165,6 +163,23 @@ public class CursoController {
             System.err.println("Erro na fila: " + e.getMessage());
         }
     }
+    
+   public String buscarNomesCursos(int codigoCurso){
+        try(BufferedReader ler = new BufferedReader(new FileReader(caminho))){
+            String linha;
+            while((linha = ler.readLine()) != null){
+                String[] colunas = linha.split(separador);
+                if (colunas[0].trim().equals(codigoCurso)) {
+                    String nome = colunas[1].trim();
+                    return nome;
+                }
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return "";
+    }
+ 
     
     
 }

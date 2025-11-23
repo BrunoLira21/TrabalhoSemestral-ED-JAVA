@@ -31,21 +31,22 @@
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnCurso" min="-2" pref="162" max="-2" attributes="0"/>
-                  <Component id="btnConsultaGeral" min="-2" pref="162" max="-2" attributes="0"/>
+                  <Component id="btnConsultaGeral" alignment="1" min="-2" pref="162" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="13" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnListaInscritos" min="-2" pref="162" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                       <Component id="btnProfessor" min="-2" pref="162" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="btnDisciplina" min="-2" pref="162" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnListaInscritos" min="-2" pref="162" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <Component id="btnDisciplina" min="-2" pref="162" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
@@ -64,22 +65,24 @@
           <Group type="102" alignment="1" attributes="0">
               <Component id="pncabecalho" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="lbLogoFatec" min="-2" pref="70" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="lbTitulo" min="-2" pref="74" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnProfessor" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="btnCurso" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="btnInscricao" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="btnDisciplina" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lbLogoFatec" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lbTitulo" min="-2" pref="74" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnProfessor" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="btnCurso" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="btnInscricao" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="btnDisciplina" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="btnListaInscritos" min="-2" pref="130" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnConsultaGeral" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnConsultaGeral" min="-2" pref="130" max="-2" attributes="0"/>
-                  <Component id="btnListaInscritos" min="-2" pref="130" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -195,7 +198,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="60" green="80" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Consulta Disciplina&lt;br&gt;por Curso&lt;center&gt;&lt;html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Consulta&lt;br&gt;Disciplina por Curso&lt;center&gt;&lt;html&gt;"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -221,7 +224,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="60" green="80" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Consulta Lista de Inscritos"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Consulta&lt;br&gt; Lista de Inscritos"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
