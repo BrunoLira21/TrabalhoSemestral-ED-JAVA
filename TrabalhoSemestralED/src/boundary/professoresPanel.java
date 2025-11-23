@@ -8,6 +8,9 @@ import entity.Professor;
 import java.awt.Image;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.KeyEvent.*;
+import static java.awt.event.KeyEvent.VK_BACK_SPACE;
+import static java.awt.event.KeyEvent.VK_DELETE;
 
 
 public class professoresPanel extends javax.swing.JPanel {
@@ -75,6 +78,11 @@ public class professoresPanel extends javax.swing.JPanel {
                 txtCPFActionPerformed(evt);
             }
         });
+        txtCPF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCPFKeyTyped(evt);
+            }
+        });
 
         txtNomeProfessor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNomeProfessor.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -94,8 +102,6 @@ public class professoresPanel extends javax.swing.JPanel {
         });
 
         txtPontuacao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtPontuacao.setMinimumSize(new java.awt.Dimension(64, 21));
-        txtPontuacao.setPreferredSize(new java.awt.Dimension(64, 21));
         txtPontuacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPontuacaoActionPerformed(evt);
@@ -348,6 +354,14 @@ public class professoresPanel extends javax.swing.JPanel {
     private void btnVoltarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCurActionPerformed
         homePage.mostrarPainel("Consultas");
     }//GEN-LAST:event_btnVoltarCurActionPerformed
+
+    private void txtCPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCPFKeyTyped
+// bloqueia o caractere que não é letra, espaço e nem delete
+char c = evt.getKeyChar();
+if (!Character.isDigit(c) && c != VK_BACK_SPACE && c != VK_DELETE) {
+    evt.consume();  
+}
+    }//GEN-LAST:event_txtCPFKeyTyped
 
     // Funções
 
