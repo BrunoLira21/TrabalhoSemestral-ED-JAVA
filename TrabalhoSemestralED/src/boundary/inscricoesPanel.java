@@ -4,9 +4,14 @@ package boundary;
 import br.edu.fateczl.Lista;
 import controller.CursoController;
 import controller.DisciplinaController;
+import controller.InscricoesController;
+import entity.Inscrições;
+
 import java.awt.Image;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class inscricoesPanel extends javax.swing.JPanel {
@@ -14,37 +19,36 @@ public class inscricoesPanel extends javax.swing.JPanel {
     
     public inscricoesPanel() throws Exception {
         initComponents();
-        
         String caminho  = "src/uteis/logofatec.png";
         ImageIcon logofatec = new ImageIcon(caminho);
         Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
         ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
         lblIcone.setIcon(logofatecRedimensionado);
-        
-        PreencherComboBoxDisciplina();
+
+        txtCodProcessoIns.setEditable(false);
+
+        // pra preencher o cod qnd seleciona um curso no combobox
+        cbxDisciplinaIns.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                preencherProcessoAutomaticamente();
+            }
+        });
+// carrega os dados qnd abre
+        try {
+            PreencherComboBoxDisciplina();
+            carregarTabelaInscricoes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public inscricoesPanel(HomePage hp) throws Exception{
         this();
         this.homePage = hp;
     }
-    
-    public void PreencherComboBoxDisciplina() throws Exception{
-    DisciplinaController dc = new DisciplinaController();
-    Lista<String> nomesDisciplinas = dc.buscarCodigosDisciplinas();
-    DefaultComboBoxModel<String> Disciplinamodel = (DefaultComboBoxModel<String>) cbxDisciplinaIns.getModel();
-    Disciplinamodel.removeAllElements();
-    
-    for (int i = 0; i < nomesDisciplinas.size(); i++){
-        String nome = nomesDisciplinas.get(i);
-        Disciplinamodel.addElement(nome);
-    }
-    
-    }
-    
-    public void atualizarComboBoxDisciplinas() throws Exception {
-        PreencherComboBoxDisciplina();
-    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,6 +88,7 @@ public class inscricoesPanel extends javax.swing.JPanel {
         cbxDisciplinaIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbxDisciplinaIns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        txtCodProcessoIns.setEditable(false);
         txtCodProcessoIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtCodProcessoIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +241,29 @@ public class inscricoesPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRemoverInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverInsActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = tabelaInscricoes.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione uma inscrição na tabela.");
+            return;
+        }
+
+        String cpf = (String) tabelaInscricoes.getValueAt(linhaSelecionada, 0);
+        int disciplina = (int) tabelaInscricoes.getValueAt(linhaSelecionada, 1);
+
+        int confirma = JOptionPane.showConfirmDialog(this, "Deseja remover a inscrição do prof. " + cpf + "?", "Remover", JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION) {
+            try {
+                InscricoesController ic = new InscricoesController();
+                if (ic.removerInscricao(cpf, disciplina)) {
+                    JOptionPane.showMessageDialog(this, "Removido com sucesso!");
+                    carregarTabelaInscricoes();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao remover.");
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_btnRemoverInsActionPerformed
 
     private void txtCodProcessoInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProcessoInsActionPerformed
@@ -244,7 +271,36 @@ public class inscricoesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCodProcessoInsActionPerformed
 
     private void btnInscreverInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscreverInsActionPerformed
-        // TODO add your handling code here:
+        String cpf = txtCPFProfessorIns.getText().trim();
+        String processo = txtCodProcessoIns.getText().trim();
+
+        if (cpf.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o CPF do professor.");
+            return;
+        }
+        if (processo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Selecione uma disciplina válida para carregar o processo.");
+            return;
+        }
+
+        String disciplinaStr = (String) cbxDisciplinaIns.getSelectedItem();
+        int codDisciplina = Integer.parseInt(disciplinaStr.split(" - ")[0]);
+
+        try {
+            Inscrições inscricao = new Inscrições();
+            inscricao.setCpf(cpf);
+            inscricao.setCodigoDisciplina(codDisciplina);
+            inscricao.setCodigoProcesso(Integer.parseInt(processo));
+
+            InscricoesController ic = new InscricoesController();
+            if (ic.adicionarInscricao(inscricao)) {
+                JOptionPane.showMessageDialog(this, "Inscrição realizada com sucesso!");
+                carregarTabelaInscricoes();
+                txtCPFProfessorIns.setText("");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnInscreverInsActionPerformed
 
     private void btnVoltarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCurActionPerformed
@@ -254,6 +310,75 @@ public class inscricoesPanel extends javax.swing.JPanel {
     private void txtCPFProfessorInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFProfessorInsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCPFProfessorInsActionPerformed
+
+    // umas funções
+
+    private void preencherProcessoAutomaticamente() {
+        String itemSelecionado = (String) cbxDisciplinaIns.getSelectedItem();
+        if (itemSelecionado != null && !itemSelecionado.isEmpty()) {
+            // O formato esperado no Combo é "1 - NomeDisciplina"
+            String[] partes = itemSelecionado.split(" - ");
+            if (partes.length >= 1) {
+                try {
+                    int idDisciplina = Integer.parseInt(partes[0].trim());
+
+                    InscricoesController ic = new InscricoesController();
+                    int idProcesso = ic.buscarProcessoDaDisciplina(idDisciplina);
+
+                    if (idProcesso != -1) {
+                        txtCodProcessoIns.setText(String.valueOf(idProcesso));
+                    } else {
+                        txtCodProcessoIns.setText("");
+                    }
+                } catch (NumberFormatException ex) {
+                    txtCodProcessoIns.setText("");
+                }
+            }
+        }
+    }
+
+    public void PreencherComboBoxDisciplina() throws Exception{
+        DisciplinaController dc = new DisciplinaController();
+        // A função buscarCodigosDisciplinas retorna Strings no formato "ID - Nome"
+        Lista<String> nomesDisciplinas = dc.buscarCodigosDisciplinas();
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) cbxDisciplinaIns.getModel();
+        model.removeAllElements();
+
+        // Adicionar item vazio para resetar
+        model.addElement("");
+
+        int tamanho = nomesDisciplinas.size();
+        for (int i = 0; i < tamanho; i++){
+            model.addElement(nomesDisciplinas.get(i));
+        }
+    }
+
+    public void atualizarComboBoxDisciplinas() throws Exception {
+        PreencherComboBoxDisciplina();
+        carregarTabelaInscricoes();
+    }
+
+    private void carregarTabelaInscricoes() {
+        DefaultTableModel model = (DefaultTableModel) tabelaInscricoes.getModel();
+        model.setRowCount(0);
+
+        try {
+            InscricoesController ic = new InscricoesController();
+            Lista<Inscrições> lista = ic.listarInscricoes();
+            int tamanho = lista.size();
+
+            for(int i = 0; i < tamanho; i++) {
+                Inscrições ins = lista.get(i);
+                model.addRow(new Object[]{
+                        ins.getCpf(),
+                        ins.getCodigoDisciplina(), // Poderia buscar o nome para exibir bonito
+                        ins.getCodigoProcesso()
+                });
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao listar inscrições: " + e.getMessage());
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
