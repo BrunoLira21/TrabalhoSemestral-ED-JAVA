@@ -30,15 +30,19 @@ public class consultaGeralPanel extends javax.swing.JPanel {
         Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
         ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
         lbLogoFatec.setIcon(logofatecRedimensionado);
+
+
+    }
+    public consultaGeralPanel(HomePage hp) throws Exception {
+        this();
+        this.homePage = hp;
+        controller = new DisciplinaController();
+
         try {
             controller.mostrarTabelaHash((javax.swing.table.DefaultTableModel) tabelaProcessos.getModel());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao iniciar sistema: " + e.getMessage());
         }
-    }
-    public consultaGeralPanel(HomePage hp) throws Exception {
-        this();
-        this.homePage = hp;
     }
 
     /**

@@ -9,7 +9,6 @@ import br.edu.fateczl.fila.Fila;
 import controller.DisciplinaController;
 
 public class DisciplinaController {
-
     private final String caminho = "Arquivos/disciplinas.csv";
     private final String separador = ";";    
     private final int tamanho = 23;
@@ -17,6 +16,7 @@ public class DisciplinaController {
     private CursoController cc;
 
     public DisciplinaController() throws Exception {
+        cc = new CursoController();
         tabelaHashDisciplinas = new Lista[tamanho];
         inicializarTabelaHash();
         carregarHash();
@@ -54,6 +54,7 @@ public class DisciplinaController {
         int codigo = disciplina.getCodigoCurso(); 
         int posicao = codigoHash(codigo);
         tabelaHashDisciplinas[posicao].addFirst(disciplina);
+
     }
 
     public int codigoHash (int codigo) {
