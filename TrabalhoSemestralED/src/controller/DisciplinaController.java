@@ -231,4 +231,54 @@ public class DisciplinaController {
         } catch (Exception e) {
         }
     }
+    public int gerarProximoCodigoDisciplina() {
+        int maiorId = 0;
+        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
+            String linha;
+            while ((linha = ler.readLine()) != null) {
+                String[] dados = linha.split(separador);
+                if (dados.length >= 1) {
+                    try {
+                        int idAtual = Integer.parseInt(dados[0].trim());
+                        if (idAtual > maiorId) {
+                            maiorId = idAtual;
+                        }
+                    } catch (NumberFormatException e) {
+                        // ignora cabeçalho ou linhas inválidas
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            return 1; // Se o arquivo não existe, começa do 1
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return maiorId + 1;
+    }
+
+    public int gerarProximoCodigoProcesso() {
+        int maiorProcesso = 5000; // valor base inicial (5000)
+        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
+            String linha;
+            while ((linha = ler.readLine()) != null) {
+                String[] dados = linha.split(separador);
+                // O Processo é a 7ª coluna (índice 6)
+                if (dados.length >= 7) {
+                    try {
+                        int procAtual = Integer.parseInt(dados[6].trim());
+                        if (procAtual > maiorProcesso) {
+                            maiorProcesso = procAtual;
+                        }
+                    } catch (NumberFormatException e) {
+                        // ignora
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            return 5001; // Se arquivo não existe
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return maiorProcesso + 1;
+    }
 }

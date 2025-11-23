@@ -364,9 +364,9 @@ public class disciplinasPanel extends javax.swing.JPanel {
     private void btnRemoverDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverDisActionPerformed
         try {
             String codigoStr = "";
-            
+
             int linhaSelecionada = tabelaDisiciplinas.getSelectedRow();
-            
+
             if (linhaSelecionada != -1) {
                 Object valorCelula = tabelaDisiciplinas.getValueAt(linhaSelecionada, 0);
                 codigoStr = valorCelula.toString();
@@ -381,33 +381,19 @@ public class disciplinasPanel extends javax.swing.JPanel {
 
             int confirmacao = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja remover a disciplina " + codigoStr + "?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
             if (confirmacao != JOptionPane.YES_OPTION) {
-                return; 
+                return;
             }
 
             controller.removerDisciplina(Integer.parseInt(codigoStr));
             
             controller.preencherTabela((javax.swing.table.DefaultTableModel) tabelaDisiciplinas.getModel());
-            
+
             limparCampos();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao remover: " + e.getMessage());
         }
     }
-    private void limparCampos() {
-        txtCodigoDisciplina.setText("");
-        txtNomeDisciplina.setText("");
-        if (cbxDiaSemana.getItemCount() > 0) {
-            cbxDiaSemana.setSelectedIndex(0);
-        }        
-        if (cbxCodigoCurso.getItemCount() > 0) {
-            cbxCodigoCurso.setSelectedIndex(0);
-        }
-        txtHoraInicial.setText(""); 
-        txtHoraInicial.setValue(null); 
-        txtHorasDiarias.setText("");
-        txtCodigoProcesso.setText("");
-    }//GEN-LAST:event_btnRemoverDisActionPerformed
 
     private void btnAdicionarDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarDisActionPerformed
         try {
@@ -457,6 +443,43 @@ public class disciplinasPanel extends javax.swing.JPanel {
     private void txtHorasDiariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHorasDiariasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHorasDiariasActionPerformed
+
+    //Funções
+
+    private void configurarIdsAutomaticos() {
+        try {
+            if (controller == null) controller = new DisciplinaController();
+
+            // Gera os próximos IDs
+            int proxCod = controller.gerarProximoCodigoDisciplina();
+            int proxProc = controller.gerarProximoCodigoProcesso();
+
+            // Preenche os campos
+            txtCodigoDisciplina.setText(String.valueOf(proxCod));
+            txtCodigoProcesso.setText(String.valueOf(proxProc));
+
+            // Bloqueia edição para evitar erro de consistência
+            txtCodigoDisciplina.setEditable(false);
+            txtCodigoProcesso.setEditable(false);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void limparCampos() {
+        txtNomeDisciplina.setText("");
+        if (cbxDiaSemana.getItemCount() > 0) {
+            cbxDiaSemana.setSelectedIndex(0);
+        }
+        if (cbxCodigoCurso.getItemCount() > 0) {
+            cbxCodigoCurso.setSelectedIndex(0);
+        }
+        txtHoraInicial.setText("");
+        txtHoraInicial.setValue(null);
+        txtHorasDiarias.setText("");
+        configurarIdsAutomaticos();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

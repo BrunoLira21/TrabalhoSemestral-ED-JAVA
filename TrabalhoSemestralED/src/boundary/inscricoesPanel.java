@@ -247,8 +247,9 @@ public class inscricoesPanel extends javax.swing.JPanel {
             return;
         }
 
-        String cpf = (String) tabelaInscricoes.getValueAt(linhaSelecionada, 0);
-        int disciplina = (int) tabelaInscricoes.getValueAt(linhaSelecionada, 1);
+        String cpf = (String) tabelaInscricoes.getValueAt(linhaSelecionada, 0).toString();
+        String disciplinaStr = tabelaInscricoes.getValueAt(linhaSelecionada, 1).toString();
+        int disciplina = Integer.parseInt(disciplinaStr);
 
         int confirma = JOptionPane.showConfirmDialog(this, "Deseja remover a inscrição do prof. " + cpf + "?", "Remover", JOptionPane.YES_NO_OPTION);
         if (confirma == JOptionPane.YES_OPTION) {

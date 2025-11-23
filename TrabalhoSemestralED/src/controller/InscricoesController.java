@@ -80,7 +80,7 @@ public class InscricoesController {
             while ((linha = ler.readLine()) != null) {
                 String[] dados = linha.split(separador);
                 if (dados.length >= 3) {
-                    String cpfAtual = dados[0].trim();
+                    String cpfAtual = dados[0].replace("/uFEFF", "").trim();
                     int codDiscAtual = Integer.parseInt(dados[1].trim());
                 // se cpf e disciplina forem iguais, não adiciona na lista (remove)
                     if (cpfAtual.equals(cpf) && codDiscAtual == codDisciplina) {
