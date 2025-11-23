@@ -60,7 +60,7 @@ public class CursoController {
         }catch(IOException e){
             throw new Exception("Erro ao ler o banco de dados: "+e.getMessage());
         }
-        // Com o curso na mão, vamo escrever no arquivo
+        // Com a disciplina na mão, vamo escrever no arquivo
         if(encontrou){
             reescreverArquivo(linhas);
             return true;
