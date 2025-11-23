@@ -169,15 +169,17 @@ public class CursoController {
             String linha;
             while((linha = ler.readLine()) != null){
                 String[] colunas = linha.split(separador);
-                if (colunas[0].trim().equals(codigoCurso)) {
-                    String nome = colunas[1].trim();
-                    return nome;
+                if (colunas.length >= 2) {
+                    if (Integer.parseInt(colunas[0].trim()) == codigoCurso) {
+                        String nome = colunas[1].trim();
+                        return nome;
+                    }
                 }
             }
         } catch(Exception e){
             e.printStackTrace();
         }
-        return "";
+        return "Curso não encontrado";
     }
  
     

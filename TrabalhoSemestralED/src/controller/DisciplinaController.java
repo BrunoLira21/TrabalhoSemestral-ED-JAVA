@@ -328,18 +328,32 @@ public class DisciplinaController {
         modelo.setRowCount(0);
         Lista<Disciplina> todasDisciplinas = consultarHash();
 
+        if (todasDisciplinas.isEmpty()) {
+            return;
+        }
+
         int tamanho = todasDisciplinas.size();
         for (int i = 0; i < tamanho; i++) {
-            int codCurso = todasDisciplinas.get(i).getCodigoCurso();
-            String nomeCurso = cc.buscarNomesCursos(codCurso);
-            String nomeDisciplina = todasDisciplinas.get(i).getNomeDisciplina();
-            String codigoProcesso = todasDisciplinas.get(i).getCodigoProcesso();
-            modelo.addRow(new Object[]{
-                    codCurso,
-                    nomeCurso,
-                    nomeDisciplina,
-                    codigoProcesso,
-            });
+            try {
+                Disciplina d = todasDisciplinas.get(i);
+                int codCurso = d.getCodigoCurso();
+                String nomeCurso = cc.buscarNomesCursos(codCurso);
+                String nomeDisciplina = d.getNomeDisciplina();
+                Object codigoProcessoObj;
+                try {
+                    codigoProcessoObj = Integer.parseInt(d.getCodigoProcesso());
+                } catch (NumberFormatException e) {
+                    codigoProcessoObj = d.getCodigoProcesso(); // Mantém como string se falhar
+                }
+                modelo.addRow(new Object[]{
+                        codCurso,
+                        nomeCurso,
+                        nomeDisciplina,
+                        codigoProcessoObj,
+                });
+            } catch (Exception e) {
+                System.err.println("Erro ao iterar disciplina no índice: " + i + ": " + e.getMessage());
+            }
         }
     }
 }
