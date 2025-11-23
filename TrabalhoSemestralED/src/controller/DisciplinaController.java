@@ -56,7 +56,7 @@ public class DisciplinaController {
         // inserirNaHash(disciplina);
     }
 
-public void removerDisciplina(int codigoParaRemover) throws Exception {
+    public void removerDisciplina(int codigoParaRemover) throws Exception {
 
         Lista<String> linhasParaManter = new Lista<>();
         boolean encontrou = false;
