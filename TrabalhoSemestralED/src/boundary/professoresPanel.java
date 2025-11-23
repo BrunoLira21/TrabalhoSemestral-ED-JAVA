@@ -1,8 +1,13 @@
 
 package boundary;
 
+import br.edu.fateczl.Lista;
+import controller.ProfessorController;
+import entity.Professor;
+
 import java.awt.Image;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class professoresPanel extends javax.swing.JPanel {
@@ -21,6 +26,7 @@ public class professoresPanel extends javax.swing.JPanel {
     public professoresPanel(HomePage hp){
         this();
         this.homePage = hp;
+        carregarDadosProfessor();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -267,17 +273,117 @@ public class professoresPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPontuacaoActionPerformed
 
     private void btnRemoverProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverProActionPerformed
-        // TODO add your handling code here:
+
+        int linhaSelecionada = tabelaProfessores.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um professor na tabela para remover.");
+            return;
+        }
+
+        Professor prof = new Professor();
+        prof.setCpf((String) tabelaProfessores.getValueAt(linhaSelecionada, 0));
+        prof.setNome((String) tabelaProfessores.getValueAt(linhaSelecionada, 1));
+        prof.setArea((String) tabelaProfessores.getValueAt(linhaSelecionada, 2));
+        prof.setPonto((float) tabelaProfessores.getValueAt(linhaSelecionada, 3));
+
+        int confirma = JOptionPane.showConfirmDialog(this,
+                "Tem certeza que deseja remover o professor " + prof.getNome() + "?",
+                "Confirmar Remoção",
+                JOptionPane.YES_NO_OPTION);
+
+        if (confirma == JOptionPane.YES_OPTION) {
+            try {
+                ProfessorController pc = new ProfessorController();
+                boolean sucesso = pc.removerProfessor(prof);
+
+                if (sucesso) {
+                    JOptionPane.showMessageDialog(this, "Professor removido com sucesso!");
+                    carregarDadosProfessor();
+                    limparCampos();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao remover: Professor não encontrado no arquivo.");
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro técnico ao remover: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+
     }//GEN-LAST:event_btnRemoverProActionPerformed
 
     private void btnAdicionarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProActionPerformed
-        // TODO add your handling code here:
+        if (txtCPF.getText().trim().isEmpty() || txtNomeProfessor.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "CPF e Nome são obrigatórios.");
+            return;
+        }
+
+        try {
+            Professor prof = new Professor();
+            prof.setCpf(txtCPF.getText().trim());
+            prof.setNome(txtNomeProfessor.getText().trim());
+            prof.setArea(txtAreaProfessor.getText().trim());
+
+            try {
+                prof.setPonto(Float.parseFloat(txtPontuacao.getText().replace(",", ".")));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "A pontuação deve ser um número válido.");
+                return;
+            }
+
+            ProfessorController pc = new ProfessorController();
+            boolean sucesso = pc.adicionarProfessor(prof);
+
+            if (sucesso) {
+                JOptionPane.showMessageDialog(this, "Professor cadastrado com sucesso!");
+                carregarDadosProfessor();
+                limparCampos();
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar professor: " + ex.getMessage());
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnAdicionarProActionPerformed
 
     private void btnVoltarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCurActionPerformed
         homePage.mostrarPainel("Consultas");
     }//GEN-LAST:event_btnVoltarCurActionPerformed
 
+    // Funções
+
+    private void limparCampos() {
+        txtCPF.setText("");
+        txtNomeProfessor.setText("");
+        txtAreaProfessor.setText("");
+        txtPontuacao.setText("");
+    }
+
+    private void carregarDadosProfessor() {
+        DefaultTableModel model = (DefaultTableModel) tabelaProfessores.getModel();
+        model.setRowCount(0); // Limpa a tabela
+
+        try {
+            ProfessorController pc = new ProfessorController();
+            // Lista Encadaeda da lib fateczl retornada pelo Controller
+            Lista<Professor> lista = pc.listarProfessores();
+            int tamanho = lista.size();
+
+            for (int i = 0; i < tamanho; i++) {
+                Professor p = lista.get(i);
+                model.addRow(new Object[]{
+                        p.getCpf(),
+                        p.getNome(),
+                        p.getArea(),
+                        p.getPonto()
+                });
+            }
+        } catch (Exception ex) {
+            // Se for erro de arquivo não encontrado na primeira execução, é normal
+            if (!ex.getMessage().contains("arquivo")) {
+                JOptionPane.showMessageDialog(this, "Erro ao carregar dados: " + ex.getMessage());
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarPro;
