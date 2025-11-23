@@ -5,6 +5,7 @@ import controller.CursoController;
 import entity.Curso;
 import java.awt.Image;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.ImageIcon;
@@ -29,6 +30,7 @@ public class cursosPanel extends javax.swing.JPanel {
         this();
         this.homePage = hp;
         carregarDadosCursoCSV();
+        gerarProximoID();
     }
 
     @SuppressWarnings("unchecked")
@@ -49,15 +51,21 @@ public class cursosPanel extends javax.swing.JPanel {
         tabelaCursos = new javax.swing.JTable();
         lbLogoFatec = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1000, 600));
+
         cursosPanel.setBackground(new java.awt.Color(255, 255, 255));
+        cursosPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jLabelCur1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelCur1.setForeground(new java.awt.Color(0, 128, 96));
         jLabelCur1.setText("Área de Conhecimento");
 
         jLabelCur2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelCur2.setForeground(new java.awt.Color(0, 128, 96));
         jLabelCur2.setText("Nome");
 
         jLabelCur3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelCur3.setForeground(new java.awt.Color(0, 128, 96));
         jLabelCur3.setText("Código do Curso");
 
         txtAreaCurso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -74,6 +82,7 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
+        txtCodigoCurso.setEditable(false);
         txtCodigoCurso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtCodigoCurso.setCaretColor(new java.awt.Color(255, 255, 255));
         txtCodigoCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +118,7 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
+        tabelaCursos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tabelaCursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -165,11 +175,11 @@ public class cursosPanel extends javax.swing.JPanel {
                         .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNomeCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCur2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                         .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAreaCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCur1))
-                        .addGap(27, 27, 27)
+                        .addGap(20, 20, 20)
                         .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53))))
         );
@@ -198,7 +208,7 @@ public class cursosPanel extends javax.swing.JPanel {
                         .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(cursosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionarCur)
                     .addComponent(btnRemoverCur)
@@ -219,7 +229,7 @@ public class cursosPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 937, Short.MAX_VALUE)
+            .addGap(0, 1200, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -241,7 +251,6 @@ public class cursosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCodigoCursoActionPerformed
 
     private void btnRemoverCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverCurActionPerformed
-
 // Verificar se o mano realmente clicou em alguma linha...
         int linhaSelecionada = tabelaCursos.getSelectedRow();
         if (linhaSelecionada == -1){
@@ -285,7 +294,6 @@ public class cursosPanel extends javax.swing.JPanel {
     private void btnAdicionarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarCurActionPerformed
         try {
             Curso curso = new Curso();
-
             curso.setCodigoCurso(Integer.parseInt(txtCodigoCurso.getText()));
             curso.setNomeCurso(txtNomeCurso.getText());
             curso.setArea(txtAreaCurso.getText());
@@ -298,6 +306,7 @@ public class cursosPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Curso salvo com sucesso!");
                 curso.limparCamposCurso();
                 carregarDadosCursoCSV(); // atualiza a tabela
+                gerarProximoID();
             } else {
                 JOptionPane.showMessageDialog(this, "Curso já existe ou erro ao salvar.");
             }
@@ -326,10 +335,36 @@ public class cursosPanel extends javax.swing.JPanel {
 
     // Algumas funções
 
+    private void gerarProximoID(){
+        int maiorId=0;
+
+        try(BufferedReader ler = new BufferedReader(new FileReader("Arquivos/cursos.csv"))){
+            String linha;
+            while((linha = ler.readLine()) != null){
+                String dados[] = linha.split(";");
+                if(dados.length > 0){
+                    try{
+                        int idAtual = Integer.parseInt(dados[0].trim());
+                        if(idAtual > maiorId){
+                            maiorId = idAtual;
+                        }
+                    }catch (Exception e){
+                        throw new RuntimeException(e); // nunca vai acontecer, mas tem q tratar
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        txtCodigoCurso.setText(Integer.toString(maiorId + 1));
+    }
+
     private void limparCampos(){
         txtAreaCurso.setText("");
-        txtCodigoCurso.setText("");
         txtNomeCurso.setText("");
+        gerarProximoID();
     }
 
     private void carregarDadosCursoCSV(){

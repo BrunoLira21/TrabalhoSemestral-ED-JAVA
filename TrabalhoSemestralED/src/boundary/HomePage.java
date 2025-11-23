@@ -11,27 +11,57 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import boundary.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class HomePage extends javax.swing.JFrame {
     public CardLayout cardLayout;
+    private disciplinasPanel painelDisciplinas;
+    inscricoesPanel painelInscricoes;
+    private listaInscritosPanel painelInscritos;
 
-    public HomePage() {
+    public HomePage() throws Exception {
         initComponents();
-
+        painelDisciplinas = new disciplinasPanel(this);
+        painelInscricoes = new inscricoesPanel(this);
+        painelInscritos = new listaInscritosPanel(this);
+        
+        
         cardLayout = (CardLayout) jContentPane.getLayout();
         jContentPane.add(new consultasPanel(this), "Consultas");        
-        jContentPane.add(new disciplinasPanel(this), "Disciplinas");        
-        jContentPane.add(new inscricoesPanel(this), "Inscrições");        
+        jContentPane.add(painelDisciplinas, "Disciplinas");        
+        jContentPane.add(painelInscricoes, "Inscrições");        
         jContentPane.add(new professoresPanel(this), "Professores"); 
         jContentPane.add(new cursosPanel(this), "Cursos");
+        jContentPane.add(new consultaGeralPanel(this), "ConsultaGeral");
+        jContentPane.add(painelInscritos, "listaInscritos");
     }     
     
     public void mostrarPainel(String nome){
-        cardLayout = (CardLayout) jContentPane.getLayout();
-        cardLayout.show(jContentPane, nome);
-    }
+    cardLayout.show(jContentPane, nome);
     
+    if ("Disciplinas".equals(nome)) {
+        try {
+            painelDisciplinas.atualizarComboBoxCursos();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar cursos: " + ex.getMessage());
+        }
+    } else if ("Inscrições".equals(nome)) {
+        try {
+            painelInscricoes.atualizarComboBoxDisciplinas();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar cursos: " + ex.getMessage());
+        }
+    } else if ("listaInscritos".equals(nome)){
+        try{    
+        painelInscritos.atualizarComboBoxDisciplinas();
+        } catch (Exception e){
+        JOptionPane.showMessageDialog(this, "Erro ao carregar disciplinas: " + e.getMessage());
+        }
+    }
+
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,7 +69,9 @@ public class HomePage extends javax.swing.JFrame {
         jContentPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Avante");
         setResizable(false);
+        setSize(new java.awt.Dimension(1000, 600));
 
         jContentPane.setBackground(new java.awt.Color(255, 255, 255));
         jContentPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -55,7 +87,11 @@ public class HomePage extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomePage().setVisible(true);
+                try {
+                    new HomePage().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

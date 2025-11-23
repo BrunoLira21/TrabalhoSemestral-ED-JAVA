@@ -1,8 +1,16 @@
 
 package boundary;
 
+import br.edu.fateczl.Lista;
+import controller.ProfessorController;
+import entity.Professor;
+
 import java.awt.Image;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.KeyEvent.*;
+import static java.awt.event.KeyEvent.VK_BACK_SPACE;
+import static java.awt.event.KeyEvent.VK_DELETE;
 
 
 public class professoresPanel extends javax.swing.JPanel {
@@ -21,6 +29,7 @@ public class professoresPanel extends javax.swing.JPanel {
     public professoresPanel(HomePage hp){
         this();
         this.homePage = hp;
+        carregarDadosProfessor();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,40 +40,52 @@ public class professoresPanel extends javax.swing.JPanel {
         jLabelPro2 = new javax.swing.JLabel();
         jLabelPro3 = new javax.swing.JLabel();
         jLabelPro4 = new javax.swing.JLabel();
-        lblIcone2 = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
         txtNomeProfessor = new javax.swing.JTextField();
         txtAreaProfessor = new javax.swing.JTextField();
         txtPontuacao = new javax.swing.JTextField();
         btnRemoverPro = new javax.swing.JButton();
         btnAdicionarPro = new javax.swing.JButton();
+        btnVoltarCur = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaProfessores = new javax.swing.JTable();
-        btnVoltarCur = new javax.swing.JButton();
+        lblIcone2 = new javax.swing.JLabel();
 
         professoresPanel.setBackground(new java.awt.Color(255, 255, 255));
+        professoresPanel.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jLabelPro1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelPro1.setForeground(new java.awt.Color(0, 128, 96));
         jLabelPro1.setText("CPF");
 
         jLabelPro2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelPro2.setForeground(new java.awt.Color(0, 128, 96));
         jLabelPro2.setText("Nome");
 
         jLabelPro3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelPro3.setForeground(new java.awt.Color(0, 128, 96));
         jLabelPro3.setText("Área de Interesse");
 
         jLabelPro4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelPro4.setForeground(new java.awt.Color(0, 128, 96));
         jLabelPro4.setText("Pontuação");
 
         txtCPF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCPF.setToolTipText("");
         txtCPF.setCaretColor(new java.awt.Color(255, 255, 255));
         txtCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCPFActionPerformed(evt);
             }
         });
+        txtCPF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCPFKeyTyped(evt);
+            }
+        });
 
         txtNomeProfessor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNomeProfessor.setMargin(new java.awt.Insets(0, 0, 0, 0));
         txtNomeProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeProfessorActionPerformed(evt);
@@ -72,12 +93,15 @@ public class professoresPanel extends javax.swing.JPanel {
         });
 
         txtAreaProfessor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtAreaProfessor.setAutoscrolls(false);
+        txtAreaProfessor.setMargin(new java.awt.Insets(0, 0, 0, 0));
         txtAreaProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAreaProfessorActionPerformed(evt);
             }
         });
 
+        txtPontuacao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtPontuacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPontuacaoActionPerformed(evt);
@@ -102,6 +126,16 @@ public class professoresPanel extends javax.swing.JPanel {
             }
         });
 
+        btnVoltarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnVoltarCur.setForeground(new java.awt.Color(0, 51, 255));
+        btnVoltarCur.setText("Voltar");
+        btnVoltarCur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarCurActionPerformed(evt);
+            }
+        });
+
+        tabelaProfessores.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tabelaProfessores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -134,98 +168,97 @@ public class professoresPanel extends javax.swing.JPanel {
             tabelaProfessores.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        btnVoltarCur.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnVoltarCur.setForeground(new java.awt.Color(0, 51, 255));
-        btnVoltarCur.setText("Voltar");
-        btnVoltarCur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarCurActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout professoresPanelLayout = new javax.swing.GroupLayout(professoresPanel);
         professoresPanel.setLayout(professoresPanelLayout);
         professoresPanelLayout.setHorizontalGroup(
             professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(professoresPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(professoresPanelLayout.createSequentialGroup()
+                        .addComponent(btnAdicionarPro)
+                        .addGap(351, 351, 351)
+                        .addComponent(btnRemoverPro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltarCur))
+                    .addGroup(professoresPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(professoresPanelLayout.createSequentialGroup()
                         .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                             .addComponent(jLabelPro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(27, 27, 27)
                         .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelPro2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNomeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
+                            .addComponent(txtNomeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelPro3)
-                            .addComponent(txtAreaProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPontuacao, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                            .addComponent(jLabelPro4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(10, 10, 10)
-                        .addComponent(lblIcone2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, professoresPanelLayout.createSequentialGroup()
-                        .addComponent(btnAdicionarPro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRemoverPro)
-                        .addGap(95, 95, 95)
-                        .addComponent(btnVoltarCur)))
-                .addGap(56, 56, 56))
+                            .addComponent(txtAreaProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPro3))
+                        .addGap(28, 28, 28)
+                        .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPontuacao, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPro4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         professoresPanelLayout.setVerticalGroup(
             professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(professoresPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(professoresPanelLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelPro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelPro4)
-                            .addComponent(jLabelPro2)
-                            .addComponent(jLabelPro3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelPro2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(professoresPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPro3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPro4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtNomeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtAreaProfessor)
-                                .addComponent(txtPontuacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, professoresPanelLayout.createSequentialGroup()
-                                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))))
-                    .addComponent(lblIcone2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtAreaProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPontuacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(professoresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionarPro)
-                    .addComponent(btnRemoverPro)
-                    .addComponent(btnVoltarCur))
-                .addGap(389, 389, 389))
+                    .addComponent(btnVoltarCur)
+                    .addComponent(btnRemoverPro))
+                .addGap(398, 398, 398))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(798, Short.MAX_VALUE)
+                .addComponent(lblIcone2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 89, Short.MAX_VALUE)
+                    .addGap(0, 3, Short.MAX_VALUE)
                     .addComponent(professoresPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 90, Short.MAX_VALUE)))
+                    .addGap(0, 2, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 937, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblIcone2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(537, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 4, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(professoresPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 4, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -246,17 +279,129 @@ public class professoresPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPontuacaoActionPerformed
 
     private void btnRemoverProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverProActionPerformed
-        // TODO add your handling code here:
+
+        int linhaSelecionada = tabelaProfessores.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um professor na tabela para remover.");
+            return;
+        }
+
+        Professor prof = new Professor();
+        prof.setCpf((String) tabelaProfessores.getValueAt(linhaSelecionada, 0));
+        prof.setNome((String) tabelaProfessores.getValueAt(linhaSelecionada, 1));
+        prof.setArea((String) tabelaProfessores.getValueAt(linhaSelecionada, 2));
+        prof.setPonto((float) tabelaProfessores.getValueAt(linhaSelecionada, 3));
+
+        int confirma = JOptionPane.showConfirmDialog(this,
+                "Tem certeza que deseja remover o professor " + prof.getNome() + "?",
+                "Confirmar Remoção",
+                JOptionPane.YES_NO_OPTION);
+
+        if (confirma == JOptionPane.YES_OPTION) {
+            try {
+                ProfessorController pc = new ProfessorController();
+                boolean sucesso = pc.removerProfessor(prof);
+
+                if (sucesso) {
+                    JOptionPane.showMessageDialog(this, "Professor removido com sucesso!");
+                    carregarDadosProfessor();
+                    limparCampos();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao remover: Professor não encontrado no arquivo.");
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Erro técnico ao remover: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+
     }//GEN-LAST:event_btnRemoverProActionPerformed
 
     private void btnAdicionarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProActionPerformed
-        // TODO add your handling code here:
+        if (txtCPF.getText().trim().isEmpty() || txtNomeProfessor.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "CPF e Nome são obrigatórios.");
+            return;
+        }
+
+        try {
+            Professor prof = new Professor();
+            prof.setCpf(txtCPF.getText().trim());
+            prof.setNome(txtNomeProfessor.getText().trim());
+            prof.setArea(txtAreaProfessor.getText().trim());
+
+            try {
+                prof.setPonto(Float.parseFloat(txtPontuacao.getText().replace(",", ".")));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "A pontuação deve ser um número válido.");
+                return;
+            }
+
+            ProfessorController pc = new ProfessorController();
+            boolean sucesso = pc.adicionarProfessor(prof);
+
+            if (sucesso) {
+                JOptionPane.showMessageDialog(this, "Professor cadastrado com sucesso!");
+                carregarDadosProfessor();
+                limparCampos();
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar professor: " + ex.getMessage());
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnAdicionarProActionPerformed
 
     private void btnVoltarCurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarCurActionPerformed
         homePage.mostrarPainel("Consultas");
     }//GEN-LAST:event_btnVoltarCurActionPerformed
 
+    private void txtCPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCPFKeyTyped
+  //bloqueia qualquer coisa que não seja número e limite a 11 dígitos
+    txtCPF.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyTyped(java.awt.event.KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) || txtCPF.getText().length() >= 11) {
+            evt.consume(); 
+        }
+    }
+});
+    }//GEN-LAST:event_txtCPFKeyTyped
+
+    // Funções
+
+    private void limparCampos() {
+        txtCPF.setText("");
+        txtNomeProfessor.setText("");
+        txtAreaProfessor.setText("");
+        txtPontuacao.setText("");
+    }
+
+    private void carregarDadosProfessor() {
+        DefaultTableModel model = (DefaultTableModel) tabelaProfessores.getModel();
+        model.setRowCount(0); // Limpa a tabela
+
+        try {
+            ProfessorController pc = new ProfessorController();
+            // Lista Encadaeda da lib fateczl retornada pelo Controller
+            Lista<Professor> lista = pc.listarProfessores();
+            int tamanho = lista.size();
+
+            for (int i = 0; i < tamanho; i++) {
+                Professor p = lista.get(i);
+                model.addRow(new Object[]{
+                        p.getCpf(),
+                        p.getNome(),
+                        p.getArea(),
+                        p.getPonto()
+                });
+            }
+        } catch (Exception ex) {
+            // Se for erro de arquivo não encontrado na primeira execução, é normal
+            if (!ex.getMessage().contains("arquivo")) {
+                JOptionPane.showMessageDialog(this, "Erro ao carregar dados: " + ex.getMessage());
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarPro;

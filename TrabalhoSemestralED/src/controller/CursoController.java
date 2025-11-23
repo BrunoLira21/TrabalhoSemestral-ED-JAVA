@@ -1,9 +1,12 @@
 package controller;
 
+import boundary.disciplinasPanel;
 import entity.Curso;
 import br.edu.fateczl.Lista;
 import javax.swing.*;
 import java.io.*;
+import javax.swing.table.DefaultTableModel;
+import br.edu.fateczl.fila.Fila;
 
 public class CursoController {
 
@@ -59,7 +62,6 @@ public class CursoController {
         }catch(IOException e){
             throw new Exception("Erro ao ler o banco de dados: "+e.getMessage());
         }
-        // Com o curso na mão, vamo escrever no arquivo
         if(encontrou){
             reescreverArquivo(linhas);
             return true;
@@ -72,7 +74,6 @@ public class CursoController {
         try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, false))) {
             int tamanho = lista.size();
 
-            // escrevendo... escrevendo...
             for (int i = 0; i < tamanho; i++) {
                 String linha = lista.get(i);
                 escrever.write(linha);
@@ -107,4 +108,80 @@ public class CursoController {
         }
         return false;
     }
+    
+    public Lista<String> buscarCodigosCursos(){
+        Lista<String> CodigosCursos = new Lista<>();
+        try(BufferedReader ler= new BufferedReader(new FileReader(caminho))){
+            String linha;
+            while((linha = ler.readLine()) != null){
+            String[] colunas = linha.split(separador);
+            String codigo = colunas[0].trim() + " - " + colunas[1].trim();
+            if(CodigosCursos.isEmpty()){
+                CodigosCursos.addFirst(codigo);
+            } else {
+                CodigosCursos.addLast(codigo);
+            }
+        }
+            return CodigosCursos;
+    } catch(Exception e){
+        e.printStackTrace();
+        return new Lista<>();   
+      }
+    }
+    public void preencherTabela(DefaultTableModel modelo) {
+        modelo.setRowCount(0);
+        Fila<Curso> fila = new Fila<>();
+
+        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
+            String linha;
+            while ((linha = ler.readLine()) != null) {
+                String[] dados = linha.split(separador);
+                if (dados.length >= 3) {
+                    Curso c = new Curso(
+                       
+                        Integer.parseInt(dados[0].trim()), 
+                        dados[1].trim(),
+                        dados[2].trim()
+                    );
+                    fila.insert(c); 
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            while (!fila.isEmpty()) {
+                Curso c = (Curso) fila.remove(); 
+                modelo.addRow(new Object[]{
+                    c.getCodigoCurso(),
+                    c.getNomeCurso(),
+                    c.getAreaConhecimento()
+                });
+            }
+        } catch (Exception e) {
+            System.err.println("Erro na fila: " + e.getMessage());
+        }
+    }
+    
+   public String buscarNomesCursos(int codigoCurso){
+        try(BufferedReader ler = new BufferedReader(new FileReader(caminho))){
+            String linha;
+            while((linha = ler.readLine()) != null){
+                String[] colunas = linha.split(separador);
+                if (colunas.length >= 2) {
+                    if (Integer.parseInt(colunas[0].trim()) == codigoCurso) {
+                        String nome = colunas[1].trim();
+                        return nome;
+                    }
+                }
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return "Curso não encontrado";
+    }
+ 
+    
+    
 }
