@@ -5,7 +5,8 @@ import javax.swing.*;
 import java.io.*;
 import javax.swing.table.DefaultTableModel;
 import br.edu.fateczl.Lista;
-import br.edu.fateczl.fila.Fila; 
+import br.edu.fateczl.fila.Fila;
+import controller.DisciplinaController;
 
 public class DisciplinaController {
 
@@ -13,6 +14,7 @@ public class DisciplinaController {
     private final String separador = ";";    
     private final int tamanho = 23;
     Lista<Disciplina>[] tabelaHashDisciplinas;
+    private CursoController cc;
 
     public DisciplinaController() throws Exception {
         tabelaHashDisciplinas = new Lista[tamanho];
@@ -31,7 +33,7 @@ public class DisciplinaController {
             String linha;
             while ((linha = ler.readLine()) != null) {
                 String[] colunas = linha.split(separador);
-                if (colunas.length == 6) {
+                if (colunas.length == 7) {
                      Disciplina d = new Disciplina(
                         Integer.parseInt(colunas[0].trim()),
                         colunas[1].trim(),
@@ -101,18 +103,10 @@ public class DisciplinaController {
                         if (codAtual == codigoParaRemover) {
                             encontrou = true;
                         } else {
-                            if (linhasParaManter.isEmpty()) {
-                                linhasParaManter.addFirst(linha);
-                            } else {
-                                linhasParaManter.addLast(linha);
-                            }
+                            adicionarNaLista(linhasParaManter, linha);
                         }
                     } catch (NumberFormatException e) {
-                        if (linhasParaManter.isEmpty()) {
-                            linhasParaManter.addFirst(linha);
-                        } else {
-                            linhasParaManter.addLast(linha);
-                        }
+                        adicionarNaLista(linhasParaManter, linha);
                     }
                 }
             }
@@ -122,21 +116,10 @@ public class DisciplinaController {
         }
 
         if (encontrou) {
-            try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho))) { // false = apaga tudo e escreve de novo
-                if (!linhasParaManter.isEmpty()) {
-                    int tamanho = linhasParaManter.size();
-                    for (int i = 0; i < tamanho; i++) {
-                        String texto = linhasParaManter.get(i);
-                        escrever.write(texto);
-                        escrever.newLine();
-                    }
-                }
-            } catch (Exception e) {
-                throw new Exception("Erro ao gravar arquivo: " + e.getMessage());
-            }
+            reescreverArquivo(linhasParaManter);
+            removerDaHash(codigoParaRemover);
             InscricoesController ic = new InscricoesController();
             ic.excluirPorDisciplina(codigoParaRemover);
-            
             JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso!");
         } else {
             JOptionPane.showMessageDialog(null, "Disciplina não encontrada (Código: " + codigoParaRemover + ")");
@@ -144,15 +127,16 @@ public class DisciplinaController {
         
     }
     
-    private void reescreverArquivo(Lista<String> lista) throws Exception{
+    private void reescreverArquivo(Lista<String> linhasParaManter) throws Exception{
         try(BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, false))){
-        int tamanho = lista.size();
-        
-        for(int i = 0; i < tamanho; i++){
-            String linha = lista.get(i);
-            escrever.write(linha);
-            escrever.newLine();
-        }
+            if (!linhasParaManter.isEmpty()) {
+                int tamanho = linhasParaManter.size();
+                for(int i = 0; i < tamanho; i++){
+                    String linha = linhasParaManter.get(i);
+                    escrever.write(linha);
+                    escrever.newLine();
+                }
+            }
         } catch (IOException e){
             throw new Exception ("Erro ao gravar no arquivo: " + e.getMessage());
         }
@@ -160,13 +144,13 @@ public class DisciplinaController {
 
     private void adicionarNaLista(Lista<String> lista, String conteudo) throws Exception{
         if(lista.isEmpty()){
-        lista.addFirst(conteudo);
+            lista.addFirst(conteudo);
         } else{
-        lista.addLast(conteudo);
+            lista.addLast(conteudo);
         }
     }    
 
-    private void removerDaHash(int codigoCurso) throws Exception{
+    private void removerDaHash(int codDisciplinaRemover) throws Exception{
         for (int i = 0; i < tamanho; i++){
         Lista<Disciplina> lista = tabelaHashDisciplinas[i];
         int qtd = lista.size();
@@ -174,7 +158,7 @@ public class DisciplinaController {
         for(int j = 0; j < qtd; j++){
             Disciplina d = lista.get(j);
             
-            if(d.getCodigoDisciplina() == codigoCurso){
+            if(d.getCodigoDisciplina() == codDisciplinaRemover){
                 lista.remove(j);
                 return;
             }
@@ -192,8 +176,8 @@ public class DisciplinaController {
                 int tamanhoAuxiliar = auxiliar.size();
                         
                 for (int j = 0; j < tamanhoAuxiliar; j++){
-                Disciplina d = auxiliar.get(j);
-                resultado.addLast(d);
+                    Disciplina d = auxiliar.get(j);
+                    resultado.addLast(d);
                 }
             }
         }
@@ -337,5 +321,24 @@ public class DisciplinaController {
             e.printStackTrace();
         }
         return maiorProcesso + 1;
+    }
+
+    public void mostrarTabelaHash(DefaultTableModel modelo) throws Exception {
+        modelo.setRowCount(0);
+        Lista<Disciplina> todasDisciplinas = consultarHash();
+
+        int tamanho = todasDisciplinas.size();
+        for (int i = 0; i < tamanho; i++) {
+            int codCurso = todasDisciplinas.get(i).getCodigoCurso();
+            String nomeCurso = cc.buscarNomesCursos(codCurso);
+            String nomeDisciplina = todasDisciplinas.get(i).getNomeDisciplina();
+            String codigoProcesso = todasDisciplinas.get(i).getCodigoProcesso();
+            modelo.addRow(new Object[]{
+                    codCurso,
+                    nomeCurso,
+                    nomeDisciplina,
+                    codigoProcesso,
+            });
+        }
     }
 }

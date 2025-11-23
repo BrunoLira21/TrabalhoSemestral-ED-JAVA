@@ -5,7 +5,12 @@
 package boundary;
 
 import java.awt.Image;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+import br.edu.fateczl.Lista;
+import controller.DisciplinaController;
+import entity.Disciplina;
 
 /**
  *
@@ -13,11 +18,11 @@ import javax.swing.ImageIcon;
  */
 public class consultaGeralPanel extends javax.swing.JPanel {
     private HomePage homePage;
-
+    private DisciplinaController controller;
     /**
      * Creates new form consultaGeralPanel
      */
-    public consultaGeralPanel() {
+    public consultaGeralPanel() throws Exception {
         initComponents();
         
         String caminho  = "src/uteis/logofatec.png";
@@ -25,8 +30,13 @@ public class consultaGeralPanel extends javax.swing.JPanel {
         Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
         ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
         lbLogoFatec.setIcon(logofatecRedimensionado);
+        try {
+            controller.mostrarTabelaHash((javax.swing.table.DefaultTableModel) tabelaProcessos.getModel());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao iniciar sistema: " + e.getMessage());
+        }
     }
-    public consultaGeralPanel(HomePage hp){
+    public consultaGeralPanel(HomePage hp) throws Exception {
         this();
         this.homePage = hp;
     }
