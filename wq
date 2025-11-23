@@ -1,0 +1,31 @@
+* [33mf76cee5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mSecundaria[m[33m, [m[1;31morigin/Secundaria[m[33m)[m Implementação da tela de Lista de Inscritos.
+* [33m98d78f4[m Ajustes nos controllers e adição do carregamento da tabela hash na tela
+*   [33mb43d50f[m Atualização dos controllers, da entidade Disciplina e de disciplinasPanel
+[32m|[m[33m\[m  
+[32m|[m * [33mc88747e[m Validações dos campos de CPF e de preenchimentos automáticos
+[32m|[m * [33mb184cda[m Ajuste de bugs
+[32m|[m *   [33m9566ff6[m Merge remote-tracking branch 'origin/Secundaria' into Secundaria
+[32m|[m [34m|[m[35m\[m  
+[32m|[m [34m|[m * [33m643eb13[m Correção do controller da disciplina, funçaõ de remover funcionando.
+[32m|[m [34m|[m * [33ma3ab1a6[m Correção do controller da disciplina, funçaõ de remover funcionando.
+[32m|[m * [35m|[m [33m5d08272[m Retorno de lista populada em buscarCodigosDisciplinas
+[32m|[m * [35m|[m [33mc55a23d[m Merge remote-tracking branch 'origin/Secundaria' into Secundaria
+[32m|[m [36m|[m[35m\[m[35m|[m 
+[32m|[m [36m|[m *   [33me6776ca[m Correção dos Controllers e Telas
+[32m|[m [36m|[m [1;32m|[m[1;33m\[m  
+[32m|[m [36m|[m * [1;33m|[m [33m4bb9cc9[m Adição de funcionalidades para o cadastro de disciplinas.
+[32m|[m * [1;33m|[m [1;33m|[m [33mc18bbc2[m Funcionalidades do painel de inscrições (InscriçõesController e inscricoesPanel)
+* [1;33m|[m [1;33m|[m [1;33m|[m [33m0c2f182[m Ajustes nos controllers e adição do carregamento da tabela hash na tela
+* [1;33m|[m [1;33m|[m [1;33m|[m [33m4b49eb4[m Ajustes nos controllers e adição do carregamento da tabela hash na tela
+[1;33m|[m [1;33m|[m[1;33m_[m[1;33m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;33m|[m [1;33m|[m   
+* [1;33m|[m [1;33m|[m   [33mf17c160[m Ajustes na DisciplinaController
+[1;34m|[m[1;35m\[m [1;33m\[m [1;33m\[m  
+[1;34m|[m * [1;33m|[m [1;33m|[m [33me9e2c6a[m Bloqueio de caracteres =! de números no CPF.
+[1;34m|[m [1;33m|[m[1;33m/[m [1;33m/[m  
+[1;34m|[m * [1;33m|[m [33m1fbd50f[m Tirando bug de Cursos
+[1;34m|[m * [1;33m|[m   [33m11744a2[m Merge remote-tracking branch 'origin/Secundaria' into Secundaria
+[1;34m|[m [1;36m|[m[31m\[m [1;33m\[m  
+[1;34m|[m * [31m|[m [1;33m|[m [33m0b114fa[m Funcionalidades em professores
+[1;34m|[m [1;33m|[m [31m|[m[1;33m/[m  
+[1;34m|[m [1;33m|[m[1;33m/[m[31m|[m   

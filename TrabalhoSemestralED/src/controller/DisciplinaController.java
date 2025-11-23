@@ -11,20 +11,47 @@ public class DisciplinaController {
 
     private final String caminho = "Arquivos/disciplinas.csv";
     private final String separador = ";";    
-    private final int tamanho = 101;
-    
+    private final int tamanho = 23;
     Lista<Disciplina>[] tabelaHashDisciplinas;
 
     public DisciplinaController() throws Exception {
         tabelaHashDisciplinas = new Lista[tamanho];
         inicializarTabelaHash();
-        // carregarHash();     }
+        carregarHash();
     }
-    
+
     public void inicializarTabelaHash() {
         for (int i = 0; i < tabelaHashDisciplinas.length; i++) {
             tabelaHashDisciplinas[i] = new Lista<>();
         }
+    }
+    
+     public void carregarHash() throws Exception {
+        try (BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas"))) {
+            String linha;
+            while ((linha = ler.readLine()) != null) {
+                String[] colunas = linha.split(separador);
+                if (colunas.length == 6) {
+                     Disciplina d = new Disciplina(
+                        Integer.parseInt(colunas[0].trim()),
+                        colunas[1].trim(),
+                        colunas[2].trim(),
+                        colunas[3].trim(),
+                        Integer.parseInt(colunas[4].trim()),
+                        Integer.parseInt(colunas[5].trim()),
+                        colunas[6].trim());
+                    inserirNaHash(d);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+     public void inserirNaHash(Disciplina disciplina) throws Exception {
+        int codigo = disciplina.getCodigoCurso(); 
+        int posicao = codigoHash(codigo);
+        tabelaHashDisciplinas[posicao].addFirst(disciplina);
     }
 
     public int codigoHash (int codigo) {
@@ -32,66 +59,44 @@ public class DisciplinaController {
         int posicao = (int) (tamanho * a);
         return posicao;
     }
-
-    public void inserirNaHash(Disciplina disciplina) throws Exception {
-        int codigo = disciplina.getCodigoCurso(); // Hash baseado no Curso
-        int posicao = codigoHash(codigo);
-        tabelaHashDisciplinas[posicao].addFirst(disciplina);
-    }
     
-    public void adicionarDisciplina(Disciplina disciplina) throws Exception {
-        if (exists(disciplina.getNomeDisciplina())) {
-            JOptionPane.showMessageDialog(null, "Disciplina '" + disciplina.getNomeDisciplina() + "' já cadastrada!", "Aviso", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
+    public boolean adicionarDisciplina(Disciplina disciplina) throws Exception {
+        if (!exists(disciplina.getNomeDisciplina())) {
         try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
             escrever.write(disciplina.toString());
             escrever.newLine();
+            inserirNaHash(disciplina);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new Exception("Erro ao escrever no arquivo.");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "Disciplina" + disciplina.getNomeDisciplina() + "já cadastrada!", "Cadastro Disciplina", JOptionPane.INFORMATION_MESSAGE);
         }
         
-        // inserirNaHash(disciplina);
+        return false;
     }
 
-    public void removerDisciplina(int codigoParaRemover) throws Exception {
-
-        Lista<String> linhasParaManter = new Lista<>();
+    public boolean removerDisciplina(Disciplina disciplinaParaRemover) throws Exception {
+        // Lista de linhas que vão ficar...
+        Lista<String> linhas = new Lista<>();
         boolean encontrou = false;
 
-        File arquivo = new File(caminho);
-        if (!arquivo.exists()) {
-            throw new Exception("Arquivo não encontrado!");
-        }
-
-        try (BufferedReader ler = new BufferedReader(new FileReader(arquivo))) {
+        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
             String linha;
             while ((linha = ler.readLine()) != null) {
-                if (linha.trim().isEmpty()) continue; // Pula linha vazia
-
-                String[] dados = linha.split(separador, -1);
-                
-                if (dados.length > 0 && !dados[0].trim().isEmpty()) {
+                String[] dados = linha.split(separador);
+                if (dados.length > 0) {
                     try {
-                        int codAtual = Integer.parseInt(dados[0].trim());
+                        int codigoAtual = Integer.parseInt(dados[0].trim());
                         
-                        if (codAtual == codigoParaRemover) {
+                        if (codigoAtual == disciplinaParaRemover.getCodigoDisciplina()) {
                             encontrou = true;
                         } else {
-                            if (linhasParaManter.isEmpty()) {
-                                linhasParaManter.addFirst(linha);
-                            } else {
-                                linhasParaManter.addLast(linha);
-                            }
-                        }
+                            adicionarNaLista(linhas, linha);
+                            } 
                     } catch (NumberFormatException e) {
-                        if (linhasParaManter.isEmpty()) {
-                            linhasParaManter.addFirst(linha);
-                        } else {
-                            linhasParaManter.addLast(linha);
-                        }
+                        adicionarNaLista(linhas, linha);
                     }
                 }
             }
@@ -101,28 +106,109 @@ public class DisciplinaController {
         }
 
         if (encontrou) {
-            try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho))) { // false = apaga tudo e escreve de novo
-                if (!linhasParaManter.isEmpty()) {
-                    int tamanho = linhasParaManter.size();
-                    for (int i = 0; i < tamanho; i++) {
-                        String texto = linhasParaManter.get(i);
-                        escrever.write(texto);
-                        escrever.newLine();
+            reescreverArquivo(linhas);
+            removerDaHash(disciplinaParaRemover.getCodigoCurso());
+            return true;
+        } else{
+            return false; //nunca vai acontecer, mas vai que né
+        }    
+    }
+    
+    private void reescreverArquivo(Lista<String> lista) throws Exception{
+        try(BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, false))){
+        int tamanho = lista.size();
+        
+        for(int i = 0; i < tamanho; i++){
+            String linha = lista.get(i);
+            escrever.write(linha);
+            escrever.newLine();
+        }
+        } catch (IOException e){
+            throw new Exception ("Erro ao gravar no arquivo: " + e.getMessage());
+        }
+    }    
+
+    private void adicionarNaLista(Lista<String> lista, String conteudo) throws Exception{
+        if(lista.isEmpty()){
+        lista.addFirst(conteudo);
+        } else{
+        lista.addLast(conteudo);
+        }
+    }    
+
+    private void removerDaHash(int codigoCurso) throws Exception{
+        for (int i = 0; i < tamanho; i++){
+        Lista<Disciplina> lista = tabelaHashDisciplinas[i];
+        int qtd = lista.size();
+        
+        for(int j = 0; j < qtd; j++){
+            Disciplina d = lista.get(j);
+            
+            if(d.getCodigoDisciplina() == codigoCurso){
+                lista.remove(j);
+                return;
+            }
+        }
+     }
+   }
+
+    public Lista<Disciplina> consultarHash() throws Exception{
+        Lista<Disciplina> resultado = new Lista<>();
+        
+        for (int i = 0; i < tamanho; i++){
+            Lista<Disciplina> auxiliar = tabelaHashDisciplinas[i];
+            
+            if(!auxiliar.isEmpty()){
+                int tamanhoAuxiliar = auxiliar.size();
+                        
+                for (int j = 0; j < tamanhoAuxiliar; j++){
+                Disciplina d = auxiliar.get(j);
+                resultado.addLast(d);
+                }
+            }
+        }
+            return resultado;
+    }
+    
+    private boolean exists(String nomeDisciplina) throws Exception {
+        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
+            String linha;
+            while ((linha = ler.readLine()) != null) {
+                String[] colunas = linha.split(separador);
+                if (colunas.length == 6) {
+                    String nome = colunas[1].trim();
+
+                    if (nome.equals(nomeDisciplina)){
+                            return true;
+                        }
                     }
                 }
-            } catch (Exception e) {
-                throw new Exception("Erro ao gravar arquivo: " + e.getMessage());
-            }
-            InscricoesController ic = new InscricoesController();
-            ic.excluirPorDisciplina(codigoParaRemover);
-            
-            JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Disciplina não encontrada (Código: " + codigoParaRemover + ")");
+            } catch (FileNotFoundException e) {
+            return false; 
         }
-        
+        return false;
     }
-
+    
+    public Lista<String> buscarCodigosDisciplinas() {
+        Lista<String> CodigosDisciplinas = new Lista<>();
+        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
+            String linha;
+            while ((linha = ler.readLine()) != null) {
+                String[] colunas = linha.split(separador);
+                String codigo = colunas[0].trim() + " - " + colunas[1].trim();
+                if (CodigosDisciplinas.isEmpty()){
+                    CodigosDisciplinas.addFirst(codigo);
+                } else {
+                    CodigosDisciplinas.addLast(codigo);
+                }
+            }
+                return CodigosDisciplinas;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Lista<>();
+        }
+    }
+    
     public void preencherTabela(DefaultTableModel modelo) {
         modelo.setRowCount(0);
         Fila<Disciplina> filaDisciplinas = new Fila<>();
@@ -172,68 +258,6 @@ public class DisciplinaController {
         }
     }
     
-    private boolean exists(String nomeDisciplina) throws Exception {
-        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
-            String linha;
-            while ((linha = ler.readLine()) != null) {
-                String[] colunas = linha.split(separador);
-                if (colunas.length >= 2) {
-                    if (colunas[1].trim().equalsIgnoreCase(nomeDisciplina.trim())) {
-                        return true;
-                    }
-                }
-            }
-        } catch (FileNotFoundException e) {
-            return false; 
-        }
-        return false;
-    }
-
-    public Lista<String> buscarCodigosDisciplinas() {
-        Lista<String> lista = new Lista<>();
-        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
-            String linha;
-            while ((linha = ler.readLine()) != null) {
-                String[] dados = linha.split(separador);
-                // Verifica se tem pelo menos Código e Nome (indices 0 e 1)
-                if (dados.length >= 2) {
-                    // Formata para "1 - Estrutura de Dados"
-                    String item = dados[0].trim() + " - " + dados[1].trim();
-
-                    if (lista.isEmpty()) {
-                        lista.addFirst(item);
-                    } else {
-                        lista.addLast(item);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return lista;
-    }
-
-    public void carregarHash() throws Exception {
-        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
-            String linha;
-            while ((linha = ler.readLine()) != null) {
-                String[] dados = linha.split(separador, -1);
-                if (dados.length >= 7) {
-                     Disciplina d = new Disciplina(
-                        Integer.parseInt(dados[0].trim()),
-                        dados[1].trim(),
-                        dados[2].trim(),
-                        dados[3].trim(),
-                        Integer.parseInt(dados[4].trim()),
-                        Integer.parseInt(dados[5].trim()),
-                        dados[6].trim()
-                    );
-                    inserirNaHash(d);
-                }
-            }
-        } catch (Exception e) {
-        }
-    }
     public int gerarProximoCodigoDisciplina() {
         int maiorId = 0;
         try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
