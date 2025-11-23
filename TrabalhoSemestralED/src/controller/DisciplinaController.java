@@ -10,9 +10,9 @@ import br.edu.fateczl.fila.Fila;
 public class DisciplinaController {
 
     private final String caminho = "Arquivos/disciplinas.csv";
-    private final String separador = ";";
-    
+    private final String separador = ";";    
     private final int tamanho = 101;
+    
     Lista<Disciplina>[] tabelaHashDisciplinas;
 
     public DisciplinaController() throws Exception {
@@ -20,13 +20,14 @@ public class DisciplinaController {
         inicializarTabelaHash();
         // carregarHash();     }
     }
+    
     public void inicializarTabelaHash() {
         for (int i = 0; i < tabelaHashDisciplinas.length; i++) {
             tabelaHashDisciplinas[i] = new Lista<>();
         }
     }
-    
-    public int codigoHash(int codigo) {
+
+    public int codigoHash (int codigo) {
         double a = ((codigo * (Math.sqrt(5) - 1) / 2) % 1);
         int posicao = (int) (tamanho * a);
         return posicao;
@@ -37,7 +38,7 @@ public class DisciplinaController {
         int posicao = codigoHash(codigo);
         tabelaHashDisciplinas[posicao].addFirst(disciplina);
     }
-
+    
     public void adicionarDisciplina(Disciplina disciplina) throws Exception {
         if (exists(disciplina.getNomeDisciplina())) {
             JOptionPane.showMessageDialog(null, "Disciplina '" + disciplina.getNomeDisciplina() + "' já cadastrada!", "Aviso", JOptionPane.WARNING_MESSAGE);

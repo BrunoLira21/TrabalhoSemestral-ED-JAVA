@@ -416,7 +416,7 @@ try {
             
             String horaIni = txtHoraInicial.getText();
             if (horaIni.trim().equals(":")) {
-                horaIni = "00:00"; // Ou lance um erro pedindo hora
+                horaIni = "00:00";
             }
 
             int horas = Integer.parseInt(txtHorasDiarias.getText());

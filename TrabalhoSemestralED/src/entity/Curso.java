@@ -52,4 +52,8 @@ public class Curso {
     public void setArea(String area) {
         this.area = area;
     }
+
+    public Object getAreaConhecimento() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
