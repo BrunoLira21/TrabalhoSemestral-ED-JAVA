@@ -180,8 +180,13 @@ public class consultaGeralPanel extends javax.swing.JPanel {
         homePage.mostrarPainel("Consultas");
     }//GEN-LAST:event_btnVoltarLisActionPerformed
 
-    private void btnListarProcessosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarProcessosActionPerformed
-
+    private void btnListarProcessosActionPerformed(java.awt.event.ActionEvent evt){//GEN-FIRST:event_btnListarProcessosActionPerformed
+        try {
+            controller = new DisciplinaController();
+            controller.mostrarTabelaHash((javax.swing.table.DefaultTableModel) tabelaProcessos.getModel());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "DEU ERRADAO HAHAHAHHA" + e.getMessage());
+        }
     }//GEN-LAST:event_btnListarProcessosActionPerformed
 
 
