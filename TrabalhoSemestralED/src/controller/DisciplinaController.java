@@ -178,7 +178,11 @@ public class DisciplinaController {
                         
                 for (int j = 0; j < tamanhoAuxiliar; j++){
                     Disciplina d = auxiliar.get(j);
-                    resultado.addLast(d);
+                    if (resultado.isEmpty()) {
+                        resultado.addFirst(d);
+                    } else {
+                        resultado.addLast(d);
+                    }
                 }
             }
         }
