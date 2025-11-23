@@ -7,7 +7,8 @@ public class Disciplina {
     private String horarioInicial;
     private int quantidadeHoras;
     private int codigoCurso;
-    private boolean status;
+    private String codigoProcesso;
+    // private boolean status; // Não usado
 
     public Disciplina() {
         this.codigoDisciplina = 0;
@@ -16,24 +17,21 @@ public class Disciplina {
         this.horarioInicial = "";
         this.quantidadeHoras = 0;
         this.codigoCurso = 0;
-        this.status = true;
+        this.codigoProcesso = "";
+        // this.status = true; // Não usado
     }
 
     @Override
     public String toString() {
-        return "Disciplina{" +
-                "codigoDisciplina=" + codigoDisciplina +
-                ", nomeDisciplina='" + nomeDisciplina + '\'' +
-                ", diaSemana='" + diaSemana + '\'' +
-                ", horarioInicial='" + horarioInicial + '\'' +
-                ", quantidadeHoras=" + quantidadeHoras +
-                ", codigoCurso=" + codigoCurso +
-                "status=" + status +
-                '}';
+        return codigoDisciplina + ";" + 
+               nomeDisciplina + ";" + 
+               diaSemana + ";" + 
+               horarioInicial + ";" + 
+               quantidadeHoras + ";" + 
+               codigoCurso + ";" + 
+               codigoProcesso;
     }
 
-
-    public void setStatus(boolean status) {this.status = status;}
 
     public int getCodigoDisciplina() {
         return codigoDisciplina;
@@ -82,16 +80,21 @@ public class Disciplina {
     public void setCodigoCurso(int codigoCurso) {
         this.codigoCurso = codigoCurso;
     }
+    
+    public String getCodigoProcesso() { return codigoProcesso; }
+    
+    public void setCodigoProcesso(String codigoProcesso) {
+        this.codigoProcesso = codigoProcesso;
+    }
 
-    public boolean isStatus() { return status; }
-
-    public Disciplina(int codigoDisciplina, String nomeDisciplina, String diaSemana, String horarioInicial, int quantidadeHoras, int codigoCurso, boolean status) {
+    public Disciplina(int codigoDisciplina, String nomeDisciplina, String diaSemana, String horarioInicial, int quantidadeHoras, int codigoCurso, String codigoProcesso) {
         this.codigoDisciplina = codigoDisciplina;
         this.nomeDisciplina = nomeDisciplina;
         this.diaSemana = diaSemana;
         this.horarioInicial = horarioInicial;
         this.quantidadeHoras = quantidadeHoras;
         this.codigoCurso = codigoCurso;
-        this.status = status;
+        this.codigoProcesso = codigoProcesso;
     }
+
 }

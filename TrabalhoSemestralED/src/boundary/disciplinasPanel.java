@@ -1,14 +1,17 @@
-
 package boundary;
 
 import br.edu.fateczl.Lista;
 import controller.CursoController;
+import controller.DisciplinaController;
+import entity.Disciplina;
 import java.awt.Image;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class disciplinasPanel extends javax.swing.JPanel {
     private HomePage homePage;
+    private DisciplinaController controller;
     
     public disciplinasPanel() throws Exception {
         initComponents();
@@ -18,6 +21,13 @@ public class disciplinasPanel extends javax.swing.JPanel {
         Image ImagemLogoRedimensionada = logofatec.getImage().getScaledInstance(130, 50, Image.SCALE_SMOOTH);
         ImageIcon logofatecRedimensionado = new ImageIcon(ImagemLogoRedimensionada);
         lblIcone1.setIcon(logofatecRedimensionado);
+        
+        try {
+            controller = new DisciplinaController();
+            controller.preencherTabela((javax.swing.table.DefaultTableModel) tabelaDisiciplinas.getModel());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao iniciar sistema: " + e.getMessage());
+        }
         
         PreencherComboBox();
     }
@@ -62,15 +72,15 @@ public class disciplinasPanel extends javax.swing.JPanel {
         txtCodigoDisciplina = new javax.swing.JTextField();
         txtNomeDisciplina = new javax.swing.JTextField();
         cbxCodigoCurso = new javax.swing.JComboBox<>();
-        txtDiaSemana = new javax.swing.JTextField();
-        txtHoraInicial = new javax.swing.JTextField();
-        txtHorasDiarias = new javax.swing.JTextField();
         txtCodigoProcesso = new javax.swing.JTextField();
         btnRemoverDis = new javax.swing.JButton();
         btnAdicionarDis = new javax.swing.JButton();
         btnVoltarDis = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaDisiciplinas = new javax.swing.JTable();
+        cbxDiaSemana = new javax.swing.JComboBox<>();
+        txtHoraInicial = new javax.swing.JFormattedTextField();
+        txtHorasDiarias = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(1000, 600));
 
@@ -128,27 +138,6 @@ public class disciplinasPanel extends javax.swing.JPanel {
         cbxCodigoCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxCodigoCursoActionPerformed(evt);
-            }
-        });
-
-        txtDiaSemana.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtDiaSemana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDiaSemanaActionPerformed(evt);
-            }
-        });
-
-        txtHoraInicial.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtHoraInicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHoraInicialActionPerformed(evt);
-            }
-        });
-
-        txtHorasDiarias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtHorasDiarias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHorasDiariasActionPerformed(evt);
             }
         });
 
@@ -222,6 +211,23 @@ public class disciplinasPanel extends javax.swing.JPanel {
             tabelaDisiciplinas.getColumnModel().getColumn(6).setResizable(false);
         }
 
+        cbxDiaSemana.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbxDiaSemana.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado" }));
+
+        try {
+            txtHoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtHoraInicial.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtHorasDiarias.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtHorasDiarias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHorasDiariasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout disciplinasPanelLayout = new javax.swing.GroupLayout(disciplinasPanel);
         disciplinasPanel.setLayout(disciplinasPanelLayout);
         disciplinasPanelLayout.setHorizontalGroup(
@@ -229,6 +235,13 @@ public class disciplinasPanel extends javax.swing.JPanel {
             .addGroup(disciplinasPanelLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(disciplinasPanelLayout.createSequentialGroup()
+                        .addComponent(btnAdicionarDis)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRemoverDis)
+                        .addGap(76, 76, 76)
+                        .addComponent(btnVoltarDis))
+                    .addComponent(jScrollPane2)
                     .addGroup(disciplinasPanelLayout.createSequentialGroup()
                         .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(disciplinasPanelLayout.createSequentialGroup()
@@ -239,40 +252,29 @@ public class disciplinasPanel extends javax.swing.JPanel {
                                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabelDis2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtNomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
                                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cbxCodigoCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabelDis3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(disciplinasPanelLayout.createSequentialGroup()
+                                .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelDis5)
+                                    .addComponent(cbxDiaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(74, 74, 74)
                                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(disciplinasPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabelDis5)
-                                        .addGap(53, 53, 53))
-                                    .addGroup(disciplinasPanelLayout.createSequentialGroup()
-                                        .addComponent(txtDiaSemana)
-                                        .addGap(8, 8, 8)))
-                                .addGap(21, 21, 21)
-                                .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelDis6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
+                                    .addComponent(jLabelDis6, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                    .addComponent(txtHoraInicial))
+                                .addGap(44, 44, 44)
                                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtHorasDiarias)
-                                    .addComponent(jLabelDis7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                                    .addComponent(jLabelDis7, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                    .addComponent(txtHorasDiarias))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCodigoProcesso)
                                     .addComponent(jLabelDis8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(38, 38, 38)
-                        .addComponent(lblIcone1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(disciplinasPanelLayout.createSequentialGroup()
-                        .addComponent(btnAdicionarDis)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRemoverDis)
-                        .addGap(96, 96, 96)
-                        .addComponent(btnVoltarDis))
-                    .addComponent(jScrollPane2))
-                .addGap(29, 29, 29))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblIcone1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49))
         );
         disciplinasPanelLayout.setVerticalGroup(
             disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,13 +300,13 @@ public class disciplinasPanel extends javax.swing.JPanel {
                                 .addComponent(jLabelDis5)
                                 .addComponent(jLabelDis6))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtDiaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbxDiaSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, disciplinasPanelLayout.createSequentialGroup()
                             .addComponent(jLabelDis7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtHorasDiarias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(disciplinasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtHoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtHorasDiarias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(disciplinasPanelLayout.createSequentialGroup()
                         .addComponent(jLabelDis8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -323,7 +325,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 1037, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -355,33 +357,99 @@ public class disciplinasPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxCodigoCursoActionPerformed
 
-    private void txtDiaSemanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaSemanaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDiaSemanaActionPerformed
-
-    private void txtHoraInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraInicialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHoraInicialActionPerformed
-
-    private void txtHorasDiariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHorasDiariasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHorasDiariasActionPerformed
-
     private void txtCodigoProcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProcessoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoProcessoActionPerformed
 
     private void btnRemoverDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverDisActionPerformed
-        // TODO add your handling code here:
+try {
+            String codigoStr = "";
+            int linhaSel = tabelaDisiciplinas.getSelectedRow();
+            
+            if (linhaSel != -1) {
+                codigoStr = tabelaDisiciplinas.getValueAt(linhaSel, 0).toString();
+            } else {
+                codigoStr = txtCodigoDisciplina.getText();
+            }
+
+            if (codigoStr.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Selecione na tabela ou digite o código para remover.");
+                return;
+            }
+
+            controller.removerDisciplina(Integer.parseInt(codigoStr));
+            
+            controller.preencherTabela((javax.swing.table.DefaultTableModel) tabelaDisiciplinas.getModel());
+            limparCampos();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao remover: " + e.getMessage());
+        }
+    }
+    
+    private void limparCampos() {
+        txtCodigoDisciplina.setText("");
+        txtNomeDisciplina.setText("");
+        if (cbxDiaSemana.getItemCount() > 0) {
+            cbxDiaSemana.setSelectedIndex(0);
+        }        
+        if (cbxCodigoCurso.getItemCount() > 0) {
+            cbxCodigoCurso.setSelectedIndex(0);
+        }
+        txtHoraInicial.setText(""); 
+        txtHoraInicial.setValue(null); 
+        txtHorasDiarias.setText("");
+        txtCodigoProcesso.setText("");
     }//GEN-LAST:event_btnRemoverDisActionPerformed
 
     private void btnAdicionarDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarDisActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (txtCodigoDisciplina.getText().isEmpty() || txtNomeDisciplina.getText().isEmpty()) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Preencha os campos obrigatórios!");
+                return;
+            }
+
+            int codigo = Integer.parseInt(txtCodigoDisciplina.getText());
+            String nome = txtNomeDisciplina.getText();
+            
+            String dia = (String) cbxDiaSemana.getSelectedItem();
+            
+            String horaIni = txtHoraInicial.getText();
+            if (horaIni.trim().equals(":")) {
+                horaIni = "00:00"; // Ou lance um erro pedindo hora
+            }
+
+            int horas = Integer.parseInt(txtHorasDiarias.getText());
+            String processo = txtCodigoProcesso.getText();
+            
+            String cursoSel = (String) cbxCodigoCurso.getSelectedItem();
+            int codCurso = 0;
+            if (cursoSel != null && !cursoSel.isEmpty()) {
+                 try { codCurso = Integer.parseInt(cursoSel.split(" ")[0]); } catch(Exception e){}
+            }
+
+            Disciplina disciplina = new Disciplina(codigo, nome, dia, horaIni, horas, codCurso, processo);            
+            controller.adicionarDisciplina(disciplina);
+            
+            controller.preencherTabela((javax.swing.table.DefaultTableModel) tabelaDisiciplinas.getModel());
+            
+            limparCampos();
+            javax.swing.JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
+
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Verifique os campos numéricos (Código, Horas)!");
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnAdicionarDisActionPerformed
 
     private void btnVoltarDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDisActionPerformed
         homePage.mostrarPainel("Consultas");
     }//GEN-LAST:event_btnVoltarDisActionPerformed
+
+    private void txtHorasDiariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHorasDiariasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHorasDiariasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -389,6 +457,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRemoverDis;
     private javax.swing.JButton btnVoltarDis;
     private javax.swing.JComboBox<String> cbxCodigoCurso;
+    private javax.swing.JComboBox<String> cbxDiaSemana;
     private javax.swing.JPanel disciplinasPanel;
     private javax.swing.JLabel jLabelDis1;
     private javax.swing.JLabel jLabelDis2;
@@ -402,8 +471,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
     private javax.swing.JTable tabelaDisiciplinas;
     private javax.swing.JTextField txtCodigoDisciplina;
     private javax.swing.JTextField txtCodigoProcesso;
-    private javax.swing.JTextField txtDiaSemana;
-    private javax.swing.JTextField txtHoraInicial;
+    private javax.swing.JFormattedTextField txtHoraInicial;
     private javax.swing.JTextField txtHorasDiarias;
     private javax.swing.JTextField txtNomeDisciplina;
     // End of variables declaration//GEN-END:variables
