@@ -158,11 +158,31 @@ public class DisciplinaController {
         }
         return false;
     }
-    
-    public Lista<String> buscarCodigosDisciplinas(){
-        return new Lista<>(); 
+
+    public Lista<String> buscarCodigosDisciplinas() {
+        Lista<String> lista = new Lista<>();
+        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
+            String linha;
+            while ((linha = ler.readLine()) != null) {
+                String[] dados = linha.split(separador);
+                // Verifica se tem pelo menos Código e Nome (indices 0 e 1)
+                if (dados.length >= 2) {
+                    // Formata para "1 - Estrutura de Dados"
+                    String item = dados[0].trim() + " - " + dados[1].trim();
+
+                    if (lista.isEmpty()) {
+                        lista.addFirst(item);
+                    } else {
+                        lista.addLast(item);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
     }
-    
+
     public void carregarHash() throws Exception {
         try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
             String linha;
