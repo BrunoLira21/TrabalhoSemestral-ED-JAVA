@@ -362,31 +362,38 @@ public class disciplinasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCodigoProcessoActionPerformed
 
     private void btnRemoverDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverDisActionPerformed
-try {
+        try {
             String codigoStr = "";
-            int linhaSel = tabelaDisiciplinas.getSelectedRow();
             
-            if (linhaSel != -1) {
-                codigoStr = tabelaDisiciplinas.getValueAt(linhaSel, 0).toString();
+            int linhaSelecionada = tabelaDisiciplinas.getSelectedRow();
+            
+            if (linhaSelecionada != -1) {
+                Object valorCelula = tabelaDisiciplinas.getValueAt(linhaSelecionada, 0);
+                codigoStr = valorCelula.toString();
             } else {
                 codigoStr = txtCodigoDisciplina.getText();
             }
 
             if (codigoStr.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Selecione na tabela ou digite o código para remover.");
+                JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha na tabela ou digite o código para remover.");
                 return;
+            }
+
+            int confirmacao = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja remover a disciplina " + codigoStr + "?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
+            if (confirmacao != JOptionPane.YES_OPTION) {
+                return; 
             }
 
             controller.removerDisciplina(Integer.parseInt(codigoStr));
             
             controller.preencherTabela((javax.swing.table.DefaultTableModel) tabelaDisiciplinas.getModel());
+            
             limparCampos();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao remover: " + e.getMessage());
         }
     }
-    
     private void limparCampos() {
         txtCodigoDisciplina.setText("");
         txtNomeDisciplina.setText("");
