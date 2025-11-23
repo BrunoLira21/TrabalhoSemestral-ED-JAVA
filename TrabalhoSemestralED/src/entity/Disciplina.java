@@ -7,7 +7,7 @@ public class Disciplina {
     private String horarioInicial;
     private int quantidadeHoras;
     private int codigoCurso;
-    //private boolean status;
+
 
     public Disciplina() {
         this.codigoDisciplina = 0;
@@ -16,7 +16,7 @@ public class Disciplina {
         this.horarioInicial = "";
         this.quantidadeHoras = 0;
         this.codigoCurso = 0;
-//        this.status = true;
+
     }
 
     @Override
@@ -28,12 +28,12 @@ public class Disciplina {
                 ", horarioInicial='" + horarioInicial + '\'' +
                 ", quantidadeHoras=" + quantidadeHoras +
                 ", codigoCurso=" + codigoCurso +
-//                "status=" + status +
+
                 '}';
     }
 
 
-//    public void setStatus(boolean status) {this.status = status;}
+
 
     public int getCodigoDisciplina() {
         return codigoDisciplina;
@@ -83,7 +83,7 @@ public class Disciplina {
         this.codigoCurso = codigoCurso;
     }
 
-//    public boolean isStatus() { return status; }
+
 
     public Disciplina(int codigoDisciplina, String nomeDisciplina, String diaSemana, String horarioInicial, int quantidadeHoras, int codigoCurso, boolean status) {
         this.codigoDisciplina = codigoDisciplina;
@@ -92,6 +92,6 @@ public class Disciplina {
         this.horarioInicial = horarioInicial;
         this.quantidadeHoras = quantidadeHoras;
         this.codigoCurso = codigoCurso;
-//        this.status = status;
+
     }
 }

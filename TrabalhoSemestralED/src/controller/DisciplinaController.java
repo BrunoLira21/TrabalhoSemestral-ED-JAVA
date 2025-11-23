@@ -30,9 +30,7 @@ public class DisciplinaController {
             String linha;
             while ((linha = ler.readLine()) != null) {
                 String[] colunas =  linha.split(separador);
-                // precisa verificar o status usando .equals(true) para disciplinas em aberto, depois realizar o hash code
                 if (colunas.length >= 6) {
-                    String status = colunas[6].trim();
                     Disciplina d = new Disciplina(
                             Integer.parseInt(colunas[0].trim()),
                             colunas[1].trim(),
@@ -43,9 +41,8 @@ public class DisciplinaController {
                             Boolean.parseBoolean(colunas[6].trim())
                     );
 
-//                    if (d.isStatus()) {
                     inserirNaHash(d);
-//                    }
+
                 }
             }
         } catch (Exception e) {
@@ -66,8 +63,8 @@ public class DisciplinaController {
         return posicao;
     }
 
-    public void adicionarDisciplina(Disciplina disciplina) throws Exception {
-
+    public boolean adicionarDisciplina(Disciplina disciplina) throws Exception {
+        // Verifica se tem alguma disciplina com o mesmo nome
         if (!exists(disciplina.getNomeDisciplina())) {
             try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, true))) {
                 String linha = disciplina.getCodigoDisciplina() + separador +
@@ -76,9 +73,10 @@ public class DisciplinaController {
                         disciplina.getHorarioInicial() + separador +
                         disciplina.getQuantidadeHoras() + separador +
                         disciplina.getCodigoCurso();
-//                       + separador + disciplina.isStatus();
                 escrever.write(linha);
                 escrever.newLine();
+                inserirNaHash(disciplina);
+                return true;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -86,9 +84,7 @@ public class DisciplinaController {
             JOptionPane.showMessageDialog(null, "Disciplina '" + disciplina.getNomeDisciplina() + "' já cadastrada!",
                     "Cadastro da Disciplina", JOptionPane.INFORMATION_MESSAGE);
         }
-//        if (disciplina.isStatus()) {
-        inserirNaHash(disciplina);
-//        }
+        return false;
     }
 
     public boolean removerDisciplina(Disciplina disciplinaParaRemover) throws Exception {
@@ -117,7 +113,7 @@ public class DisciplinaController {
         }catch(IOException e){
             throw new Exception("Erro ao ler o banco de dados: "+e.getMessage());
         }
-        // Com o curso na mão, vamo escrever no arquivo
+        // Com a disciplina na mão, vamo escrever no arquivo
         if(encontrou){
             reescreverArquivo(linhas);
             removerDaHash(disciplinaParaRemover.getCodigoDisciplina());
@@ -166,57 +162,6 @@ public class DisciplinaController {
             }
         }
     }
-
-//    public int archiveSize() {
-//        String linha;
-//        int ctd = 0;
-//        try (BufferedReader ler = new BufferedReader(new FileReader("Arquivos/disciplinas.csv"))) {
-//            // conta a quantidade de linhas
-//            while ((linha = ler.readLine()) != null) {
-//                ctd++;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return ctd;
-//    }
-
-
-//    public void atualizarDisciplina(Disciplina disciplina) throws Exception {
-//        File arquivo = new File(caminho);
-//        File arquivoTemp = new File("Arquivos/disciplinas_temp.csv");
-//
-//        try (
-//                BufferedReader ler = new BufferedReader(new FileReader(arquivo));
-//                BufferedWriter escrever = new BufferedWriter(new FileWriter(arquivoTemp))
-//        ) {
-//            String linha;
-//
-//            while ((linha = ler.readLine()) != null) {
-//                String[] colunas = linha.split(separador);
-//
-//                if (Integer.parseInt(colunas[0]) == disciplina.getCodigoDisciplina()) {
-//
-//                    // Substitui pela nova linha atualizada
-//                    String novaLinha = disciplina.getCodigoDisciplina() + separador +
-//                            disciplina.getNomeDisciplina() + separador +
-//                            disciplina.getDiaSemana() + separador +
-//                            disciplina.getHorarioInicial() + separador +
-//                            disciplina.getQuantidadeHoras() + separador +
-//                            disciplina.getCodigoCurso() + separador +
-//                            disciplina.isStatus();
-//
-//                    escrever.write(novaLinha);
-//                    escrever.newLine();
-//
-//                } else {
-//                    // COPIA LINHA SEM ALTERAÇÃO
-//                    escrever.write(linha);
-//                    escrever.newLine();
-//                }
-//            }
-//        }
-//    }
 
     private boolean exists(String nomeDisciplina) throws Exception {
         BufferedReader ler = new BufferedReader(new FileReader(caminho));
