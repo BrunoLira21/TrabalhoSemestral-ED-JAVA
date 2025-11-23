@@ -33,8 +33,8 @@ public class DisciplinaController {
                         disciplina.getDiaSemana() + separador +
                         disciplina.getHorarioInicial() + separador +
                         disciplina.getQuantidadeHoras() + separador +
-                        disciplina.getCodigoCurso() + separador +
-                        disciplina.isStatus();
+                        disciplina.getCodigoCurso();
+//                       + separador + disciplina.isStatus();
                 escrever.write(linha);
                 escrever.newLine();
             } catch (Exception e) {
@@ -44,9 +44,9 @@ public class DisciplinaController {
             JOptionPane.showMessageDialog(null, "Disciplina '" + disciplina.getNomeDisciplina() + "' já cadastrada!",
                     "Cadastro da Disciplina", JOptionPane.INFORMATION_MESSAGE);
         }
-        if (disciplina.isStatus()) {
-            inserirNaHash(disciplina);
-        }
+//        if (disciplina.isStatus()) {
+        inserirNaHash(disciplina);
+//        }
     }
 
     public void removerDisciplina() {
@@ -60,7 +60,7 @@ public class DisciplinaController {
             while ((linha = ler.readLine()) != null) {
                 String[] colunas =  linha.split(separador);
                 // precisa verificar o status usando .equals(true) para disciplinas em aberto, depois realizar o hash code
-                if (colunas.length == 7) {
+                if (colunas.length >= 6) {
                     String status = colunas[6].trim();
                     Disciplina d = new Disciplina(
                             Integer.parseInt(colunas[0].trim()),
@@ -72,9 +72,9 @@ public class DisciplinaController {
                             Boolean.parseBoolean(colunas[6].trim())
                     );
 
-                    if (d.isStatus()) {
-                        inserirNaHash(d);
-                    }
+//                    if (d.isStatus()) {
+                    inserirNaHash(d);
+//                    }
 
 //                    int codigoCurso = Integer.parseInt(colunas[5]);
 //                    if (status.equalsIgnoreCase("true")) {
@@ -123,6 +123,41 @@ public class DisciplinaController {
         return posicao;
     }
 
+//    public void atualizarDisciplina(Disciplina disciplina) throws Exception {
+//        File arquivo = new File(caminho);
+//        File arquivoTemp = new File("Arquivos/disciplinas_temp.csv");
+//
+//        try (
+//                BufferedReader ler = new BufferedReader(new FileReader(arquivo));
+//                BufferedWriter escrever = new BufferedWriter(new FileWriter(arquivoTemp))
+//        ) {
+//            String linha;
+//
+//            while ((linha = ler.readLine()) != null) {
+//                String[] colunas = linha.split(separador);
+//
+//                if (Integer.parseInt(colunas[0]) == disciplina.getCodigoDisciplina()) {
+//
+//                    // Substitui pela nova linha atualizada
+//                    String novaLinha = disciplina.getCodigoDisciplina() + separador +
+//                            disciplina.getNomeDisciplina() + separador +
+//                            disciplina.getDiaSemana() + separador +
+//                            disciplina.getHorarioInicial() + separador +
+//                            disciplina.getQuantidadeHoras() + separador +
+//                            disciplina.getCodigoCurso() + separador +
+//                            disciplina.isStatus();
+//
+//                    escrever.write(novaLinha);
+//                    escrever.newLine();
+//
+//                } else {
+//                    // COPIA LINHA SEM ALTERAÇÃO
+//                    escrever.write(linha);
+//                    escrever.newLine();
+//                }
+//            }
+//        }
+//    }
 
     private boolean exists(String nomeDisciplina) throws Exception {
         BufferedReader ler = new BufferedReader(new FileReader(caminho));
