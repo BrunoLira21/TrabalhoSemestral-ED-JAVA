@@ -82,6 +82,7 @@ public class cursosPanel extends javax.swing.JPanel {
             }
         });
 
+        txtCodigoCurso.setEditable(false);
         txtCodigoCurso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtCodigoCurso.setCaretColor(new java.awt.Color(255, 255, 255));
         txtCodigoCurso.addActionListener(new java.awt.event.ActionListener() {
