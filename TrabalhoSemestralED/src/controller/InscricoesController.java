@@ -79,14 +79,26 @@ public class InscricoesController {
             String linha;
             while ((linha = ler.readLine()) != null) {
                 String[] dados = linha.split(separador);
-                if (dados.length >= 3) {
-                    String cpfAtual = dados[0].replace("/uFEFF", "").trim();
-                    int codDiscAtual = Integer.parseInt(dados[1].trim());
-                // se cpf e disciplina forem iguais, não adiciona na lista (remove)
-                    if (cpfAtual.equals(cpf) && codDiscAtual == codDisciplina) {
-                        encontrou = true;
-                    } else {
-                        linhas.addLast(linha);
+                if (dados.length >= 2) {
+                    try {
+                        String cpfAtual = dados[0].trim();
+                        int codDiscAtual = Integer.parseInt(dados[1].trim());
+                        // Lógica de Comparação
+                        if (cpfAtual.equals(cpf) && codDiscAtual == codDisciplina) {
+                            encontrou = true; // Achoooou, então NÃO adicionamos na lista (será removido)
+                        } else {
+                            if (linhas.isEmpty()) {
+                                linhas.addFirst(linha);
+                            } else {
+                                linhas.addLast(linha);
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        if (linhas.isEmpty()) {
+                            linhas.addFirst(linha);
+                        } else {
+                            linhas.addLast(linha);
+                        }
                     }
                 }
             }
@@ -105,9 +117,12 @@ public class InscricoesController {
         try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho, false))) {
             int tamanho = lista.size();
             for (int i = 0; i < tamanho; i++) {
-                escrever.write(lista.get(i));
+                String linha = lista.get(i);
+                escrever.write(linha);
                 escrever.newLine();
             }
+        }catch(IOException e){
+            throw new Exception("Erro ao gravar no arquivo inscrições: " + e.getMessage());
         }
     }
 
