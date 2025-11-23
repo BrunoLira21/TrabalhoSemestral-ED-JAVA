@@ -36,7 +36,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
         this();
         this.homePage = hp;
         
-        
+        configurarIdsAutomaticos();
     }
     
     public void PreencherComboBox() throws Exception{
@@ -361,7 +361,7 @@ public class disciplinasPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoProcessoActionPerformed
 
-    private void btnRemoverDisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverDisActionPerformed
+    private void btnRemoverDisActionPerformed(java.awt.event.ActionEvent evt) {                                              
         try {
             String codigoStr = "";
 
@@ -387,7 +387,14 @@ public class disciplinasPanel extends javax.swing.JPanel {
             controller.removerDisciplina(Integer.parseInt(codigoStr));
             
             controller.preencherTabela((javax.swing.table.DefaultTableModel) tabelaDisiciplinas.getModel());
-
+            if (homePage != null && homePage.painelInscricoes != null) {
+                try {
+                homePage.painelInscricoes.atualizarComboBoxDisciplinas();
+            } catch (Exception ex) {
+                // Se der erro, não trava o sistema
+                System.out.println("Erro ao atualizar combo de inscrições após remoção: " + ex.getMessage());
+            }
+        }
             limparCampos();
 
         } catch (Exception e) {

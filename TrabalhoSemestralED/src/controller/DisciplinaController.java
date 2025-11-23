@@ -113,6 +113,9 @@ public class DisciplinaController {
             } catch (Exception e) {
                 throw new Exception("Erro ao gravar arquivo: " + e.getMessage());
             }
+            InscricoesController ic = new InscricoesController();
+            ic.excluirPorDisciplina(codigoParaRemover);
+            
             JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso!");
         } else {
             JOptionPane.showMessageDialog(null, "Disciplina não encontrada (Código: " + codigoParaRemover + ")");

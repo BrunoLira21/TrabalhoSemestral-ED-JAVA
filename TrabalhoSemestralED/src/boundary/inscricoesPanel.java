@@ -88,7 +88,6 @@ public class inscricoesPanel extends javax.swing.JPanel {
         cbxDisciplinaIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbxDisciplinaIns.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        txtCodProcessoIns.setEditable(false);
         txtCodProcessoIns.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtCodProcessoIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +157,11 @@ public class inscricoesPanel extends javax.swing.JPanel {
         txtCPFProfessorIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCPFProfessorInsActionPerformed(evt);
+            }
+        });
+        txtCPFProfessorIns.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCPFProfessorInsKeyTyped(evt);
             }
         });
 
@@ -311,6 +315,18 @@ public class inscricoesPanel extends javax.swing.JPanel {
     private void txtCPFProfessorInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFProfessorInsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCPFProfessorInsActionPerformed
+
+    private void txtCPFProfessorInsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCPFProfessorInsKeyTyped
+    // bloqueia qualquer coisa que não seja número e limita até 11 dígitos
+    txtCPFProfessorIns.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyTyped(java.awt.event.KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) || txtCPFProfessorIns.getText().length() >= 11) {
+            evt.consume(); 
+        }
+    }
+});
+    }//GEN-LAST:event_txtCPFProfessorInsKeyTyped
 
     // umas funções
 

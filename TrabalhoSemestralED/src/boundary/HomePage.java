@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class HomePage extends javax.swing.JFrame {
     public CardLayout cardLayout;
     private disciplinasPanel painelDisciplinas;
-    private inscricoesPanel painelInscricoes;
+    inscricoesPanel painelInscricoes;
 
     public HomePage() throws Exception {
         initComponents();

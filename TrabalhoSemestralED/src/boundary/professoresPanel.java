@@ -356,11 +356,15 @@ public class professoresPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnVoltarCurActionPerformed
 
     private void txtCPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCPFKeyTyped
-// bloqueia o caractere que não é letra, espaço e nem delete
-char c = evt.getKeyChar();
-if (!Character.isDigit(c) && c != VK_BACK_SPACE && c != VK_DELETE) {
-    evt.consume();  
-}
+  //bloqueia qualquer coisa que não seja número e limite a 11 dígitos
+    txtCPF.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyTyped(java.awt.event.KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) || txtCPF.getText().length() >= 11) {
+            evt.consume(); 
+        }
+    }
+});
     }//GEN-LAST:event_txtCPFKeyTyped
 
     // Funções
