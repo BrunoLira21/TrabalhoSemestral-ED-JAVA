@@ -56,41 +56,68 @@ public class DisciplinaController {
         // inserirNaHash(disciplina);
     }
 
-    public void removerDisciplina(int codigoParaRemover) throws Exception {
+public void removerDisciplina(int codigoParaRemover) throws Exception {
+
         Lista<String> linhasParaManter = new Lista<>();
         boolean encontrou = false;
 
-        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
+        File arquivo = new File(caminho);
+        if (!arquivo.exists()) {
+            throw new Exception("Arquivo não encontrado!");
+        }
+
+        try (BufferedReader ler = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             while ((linha = ler.readLine()) != null) {
+                if (linha.trim().isEmpty()) continue; // Pula linha vazia
+
                 String[] dados = linha.split(separador, -1);
-                if (dados.length > 0) {
+                
+                if (dados.length > 0 && !dados[0].trim().isEmpty()) {
                     try {
                         int codAtual = Integer.parseInt(dados[0].trim());
-                        if (codAtual != codigoParaRemover) {
-                            linhasParaManter.addLast(linha); 
+                        
+                        if (codAtual == codigoParaRemover) {
+                            encontrou = true;
                         } else {
-                            encontrou = true; 
+                            if (linhasParaManter.isEmpty()) {
+                                linhasParaManter.addFirst(linha);
+                            } else {
+                                linhasParaManter.addLast(linha);
+                            }
                         }
                     } catch (NumberFormatException e) {
-                        continue; 
+                        if (linhasParaManter.isEmpty()) {
+                            linhasParaManter.addFirst(linha);
+                        } else {
+                            linhasParaManter.addLast(linha);
+                        }
                     }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Erro ao ler arquivo: " + e.getMessage());
         }
 
         if (encontrou) {
-            try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho))) {
-                int tamanhoLista = linhasParaManter.size();
-                for (int i = 0; i < tamanhoLista; i++) {
-                    escrever.write(linhasParaManter.get(i));
-                    escrever.newLine();
+            try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho))) { // false = apaga tudo e escreve de novo
+                if (!linhasParaManter.isEmpty()) {
+                    int tamanho = linhasParaManter.size();
+                    for (int i = 0; i < tamanho; i++) {
+                        String texto = linhasParaManter.get(i);
+                        escrever.write(texto);
+                        escrever.newLine();
+                    }
                 }
+            } catch (Exception e) {
+                throw new Exception("Erro ao gravar arquivo: " + e.getMessage());
             }
             JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(null, "Disciplina não encontrada.");
+            JOptionPane.showMessageDialog(null, "Disciplina não encontrada (Código: " + codigoParaRemover + ")");
         }
+        
     }
 
     public void preencherTabela(DefaultTableModel modelo) {
