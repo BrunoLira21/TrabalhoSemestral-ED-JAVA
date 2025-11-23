@@ -77,26 +77,42 @@ public class DisciplinaController {
         return false;
     }
 
-    public boolean removerDisciplina(Disciplina disciplinaParaRemover) throws Exception {
-        // Lista de linhas que vão ficar...
-        Lista<String> linhas = new Lista<>();
+    public void removerDisciplina(int codigoParaRemover) throws Exception {
+
+        Lista<String> linhasParaManter = new Lista<>();
         boolean encontrou = false;
 
-        try (BufferedReader ler = new BufferedReader(new FileReader(caminho))) {
+        File arquivo = new File(caminho);
+        if (!arquivo.exists()) {
+            throw new Exception("Arquivo não encontrado!");
+        }
+
+        try (BufferedReader ler = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             while ((linha = ler.readLine()) != null) {
-                String[] dados = linha.split(separador);
-                if (dados.length > 0) {
+                if (linha.trim().isEmpty()) continue; // Pula linha vazia
+
+                String[] dados = linha.split(separador, -1);
+                
+                if (dados.length > 0 && !dados[0].trim().isEmpty()) {
                     try {
-                        int codigoAtual = Integer.parseInt(dados[0].trim());
+                        int codAtual = Integer.parseInt(dados[0].trim());
                         
-                        if (codigoAtual == disciplinaParaRemover.getCodigoDisciplina()) {
+                        if (codAtual == codigoParaRemover) {
                             encontrou = true;
                         } else {
-                            adicionarNaLista(linhas, linha);
-                            } 
+                            if (linhasParaManter.isEmpty()) {
+                                linhasParaManter.addFirst(linha);
+                            } else {
+                                linhasParaManter.addLast(linha);
+                            }
+                        }
                     } catch (NumberFormatException e) {
-                        adicionarNaLista(linhas, linha);
+                        if (linhasParaManter.isEmpty()) {
+                            linhasParaManter.addFirst(linha);
+                        } else {
+                            linhasParaManter.addLast(linha);
+                        }
                     }
                 }
             }
@@ -106,12 +122,26 @@ public class DisciplinaController {
         }
 
         if (encontrou) {
-            reescreverArquivo(linhas);
-            removerDaHash(disciplinaParaRemover.getCodigoCurso());
-            return true;
-        } else{
-            return false; //nunca vai acontecer, mas vai que né
-        }    
+            try (BufferedWriter escrever = new BufferedWriter(new FileWriter(caminho))) { // false = apaga tudo e escreve de novo
+                if (!linhasParaManter.isEmpty()) {
+                    int tamanho = linhasParaManter.size();
+                    for (int i = 0; i < tamanho; i++) {
+                        String texto = linhasParaManter.get(i);
+                        escrever.write(texto);
+                        escrever.newLine();
+                    }
+                }
+            } catch (Exception e) {
+                throw new Exception("Erro ao gravar arquivo: " + e.getMessage());
+            }
+            InscricoesController ic = new InscricoesController();
+            ic.excluirPorDisciplina(codigoParaRemover);
+            
+            JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Disciplina não encontrada (Código: " + codigoParaRemover + ")");
+        }
+        
     }
     
     private void reescreverArquivo(Lista<String> lista) throws Exception{
