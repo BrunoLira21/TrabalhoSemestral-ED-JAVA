@@ -146,7 +146,6 @@ public class listaInscritosPanel extends javax.swing.JPanel {
         jLabelLis1 = new javax.swing.JLabel();
         lbLogoFatec = new javax.swing.JLabel();
         btnVoltarLis = new javax.swing.JButton();
-        btnBuscarRanking = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaRankingLista = new javax.swing.JTable();
         bxbDisciplina = new javax.swing.JComboBox<>();
@@ -164,15 +163,6 @@ public class listaInscritosPanel extends javax.swing.JPanel {
         btnVoltarLis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarLisActionPerformed(evt);
-            }
-        });
-
-        btnBuscarRanking.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnBuscarRanking.setForeground(new java.awt.Color(0, 153, 0));
-        btnBuscarRanking.setLabel("Buscar Ranking");
-        btnBuscarRanking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarRankingActionPerformed(evt);
             }
         });
 
@@ -226,10 +216,7 @@ public class listaInscritosPanel extends javax.swing.JPanel {
                                 .addComponent(bxbDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(559, 559, 559)
                             .addComponent(lbLogoFatec, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(listaInscritosPanelLayout.createSequentialGroup()
-                            .addComponent(btnBuscarRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(616, 616, 616)
-                            .addComponent(btnVoltarLis)))
+                        .addComponent(btnVoltarLis))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 853, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
@@ -249,9 +236,7 @@ public class listaInscritosPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(listaInscritosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltarLis)
-                    .addComponent(btnBuscarRanking))
+                .addComponent(btnVoltarLis)
                 .addGap(389, 389, 389))
         );
 
@@ -283,13 +268,8 @@ public class listaInscritosPanel extends javax.swing.JPanel {
         homePage.mostrarPainel("Consultas");
     }//GEN-LAST:event_btnVoltarLisActionPerformed
 
-    private void btnBuscarRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRankingActionPerformed
-
-    }//GEN-LAST:event_btnBuscarRankingActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarRanking;
     private javax.swing.JButton btnVoltarLis;
     private javax.swing.JComboBox<String> bxbDisciplina;
     private javax.swing.JLabel jLabelLis1;
