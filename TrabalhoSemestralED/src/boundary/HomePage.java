@@ -82,20 +82,6 @@ public class HomePage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-  
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new HomePage().setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jContentPane;
     // End of variables declaration//GEN-END:variables
