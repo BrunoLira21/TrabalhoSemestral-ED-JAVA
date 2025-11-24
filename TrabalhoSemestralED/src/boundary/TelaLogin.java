@@ -105,7 +105,7 @@ GerenciadorCentral gc = new GerenciadorCentral();
         lbLogoFatec = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastro de Professor");
+        setTitle("Sistema AVANTE");
         setAlwaysOnTop(true);
         setPreferredSize(new java.awt.Dimension(800, 800));
         setResizable(false);
@@ -175,7 +175,7 @@ GerenciadorCentral gc = new GerenciadorCentral();
         lbCadastro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbCadastro.setForeground(new java.awt.Color(0, 128, 96));
         lbCadastro.setText("Clique aqui!");
-        lbCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbCadastroMouseClicked(evt);
